@@ -1,0 +1,334 @@
+/* ======================================================= */
+/* === VARIÁVEIS E BASE === */
+/* ======================================================= */
+:root {
+  --page-background: #FAF5EF;
+  --primary-color: #8c0f2a;
+  --secondary-text-color: #3D3D3D;
+  --button-text-color: #FFFFFF;
+  --light-text-color: #3D3D3D;
+  --footer-text-color: rgba(61, 61, 61, 0.7);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--page-background);
+  overflow-x: hidden; 
+}
+
+/* Container principal */
+.scroll-container {
+  height: 100vh;
+  overflow-y: auto;
+  /* Scroll Snap desativado por padrão para evitar bugs de corte, 
+     ativamos apenas se o conteúdo couber na tela */
+  scroll-behavior: smooth;
+  padding-top: 70px; /* Espaço exato para o header fixo não cobrir o título */
+}
+
+/* Seções */
+.fullscreen-section {
+  min-height: 100vh; /* Permite crescer se o conteúdo for maior que a tela */
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ======================================================= */
+/* === CABEÇALHO (IDÊNTICO AO LOGIN-FEITO) === */
+/* ======================================================= */
+header { 
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 1000;
+    background-color: var(--page-background);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    /* Padding e Borda IDÊNTICOS ao login-feito.css */
+    padding: 10px 20px; 
+    border-bottom: 2px solid var(--primary-color); 
+    height: auto;
+}
+
+.header-left, .logo-link { display: flex; align-items: center; text-decoration: none; }
+/* Logo com tamanho controlado igual ao sistema interno */
+.logo-image { height: 35px; width: auto; margin-left: 10px; } 
+.header-left .logo { 
+    font-family: 'Trend sans one', serif; 
+    font-size: 1.8rem; /* Tamanho ajustado */
+    color: var(--primary-color); 
+    font-weight: 700;
+}
+
+.header-right { display: flex; align-items: center; gap: 20px; }
+
+.header-nav-link { 
+    font-family:'Montserrat', sans-serif; 
+    color: var(--secondary-text-color); 
+    text-decoration: none; 
+    font-weight: 600; 
+    font-size: 0.95rem; 
+    text-transform: uppercase; 
+}
+.header-nav-link:hover { color: var(--primary-color); }
+
+.header-right .btn-login { 
+    font-family:'Montserrat', sans-serif; 
+    background-color: var(--primary-color); 
+    color: var(--button-text-color); 
+    border: none; 
+    padding: 8px 20px; /* Botão mais compacto */
+    border-radius: 50px; 
+    text-decoration: none; 
+    font-weight: 600; 
+    text-transform: uppercase; 
+    font-size: 0.9rem; 
+    white-space: nowrap;
+    transition: background 0.3s;
+}
+.header-right .btn-login:hover { background-color: #5d0819; }
+
+/* ======================================================= */
+/* === SEÇÃO 1: HERO === */
+/* ======================================================= */
+.light-section {
+  background-color: var(--page-background);
+  justify-content: center;
+  align-items: center;
+  padding: 40px 5%;
+}
+
+.main-hero {
+    width: 100%; display: flex; justify-content: center; }
+
+.hero-section { 
+    display: flex; align-items:center justify-content: space-between;
+    width: 100%; max-width: 1300px; gap: 4rem;
+    position: relative;
+    /* Backgrounds decorativos */
+    background-image: url('../images/localizacaofundo.png'), url('../images/linhapontilhada.png'), url('../images/cursormouse.png');
+    background-repeat: no-repeat;
+    background-position: top left 10%, bottom right 10%, bottom left 45%;
+    background-size: 280px, 150px, 50px;
+}
+
+.hero-text-column { flex: 1; z-index: 2; }
+.hero-image-column { flex: 1; display: flex; justify-content: center; z-index: 2; }
+
+.hero-main-title { 
+    font-family: 'Trend Sans One', serif; 
+    font-size: 3.5rem; 
+    color: var(--primary-color); 
+    font-weight: 800; 
+    text-transform: uppercase; 
+    line-height: 1.1; 
+    margin-bottom: 20px;
+    margin-left: 50px;
+}
+
+.content-block { max-width: 500px; }
+.dashboard-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem; }
+p.content-text { font-size: 1rem; line-height: 1.6; color: var(--secondary-text-color); margin-bottom: 1.5rem; }
+.explore-text { font-weight: 700; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 2rem; display: block; }
+
+.surpresa-btn { 
+    background-color: var(--primary-color); color: #fff; padding: 12px 30px; 
+    border-radius: 50px; font-weight: 700; text-transform: uppercase; 
+    text-decoration: none; display: inline-block; transition: transform 0.2s;
+}
+.surpresa-btn:hover { transform: scale(1.05); background-color: #6b0b20; }
+
+/* ======================================================= */
+/* === SEÇÃO 2: ESTILOS DE DATE (CARROSSEL) === */
+/* ======================================================= */
+.date-style-section {
+    background-color: var(--page-background);
+    padding: 60px 5%;
+    align-items: center; justify-content: center;
+}
+
+.style-section-container {
+    background-color: #5d0819; 
+    border-radius: 20px; padding: 50px; 
+    width: 100%; max-width: 1300px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    display: flex; flex-direction: column; align-items: center;
+}
+
+.date-style-header { text-align: center; margin-bottom: 3rem; color: #fff; }
+.date-style-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 2rem; margin-bottom: 1rem; text-transform: uppercase; }
+.date-style-description { font-size: 1rem; line-height: 1.5; color: #eee; }
+
+.style-grid-container {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; gap: 20px;
+}
+
+.nav-arrow {
+    background: transparent; border: 2px solid #FAF5EF; color: #FAF5EF;
+    border-radius: 50%; width: 40px; height: 40px; cursor: pointer;
+    display: flex; justify-content: center; align-items: center; transition: 0.3s;
+}
+.nav-arrow:hover { background: #FAF5EF; color: var(--primary-color); }
+
+.style-grid { width: 100%; overflow: hidden; }
+
+.card-group {
+  display: none; 
+  justify-content: center; gap: 20px; width: 100%;
+  animation: fadeIn 0.5s ease;
+}
+.card-group.active { display: flex; } /* Classe que o JS ativa */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.style-card {
+  width: 260px; height: 360px;
+  display: flex; flex-direction: row; justify-content: space-between; align-items: flex-end;
+  padding: 20px; border-radius: 20px;
+  background-color: #791021; color: #fff; text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  position: relative; overflow: hidden; transition: transform 0.3s;
+}
+.style-card:hover { transform: translateY(-10px); }
+
+.style-card::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); transition: 0.3s; z-index: 0;
+}
+.style-card:hover::before { background-color: rgba(0, 0, 0, 0.4); }
+
+.style-card p, .style-card i { position: relative; z-index: 1; font-weight: bold; font-size: 1rem; }
+.style-card i { font-size: 1.4rem; }
+
+/* ======================================================= */
+/* === SEÇÃO 3: SOBRE === */
+/* ======================================================= */
+.about-section {
+    background-color: var(--page-background);
+    padding: 80px 5%; justify-content: center;
+}
+
+.about-container {
+    display: flex; align-items: center; justify-content: center;
+    gap: 5rem; max-width: 1200px; margin: 0 auto;
+}
+
+.about-text-column { flex: 1; }
+.pre-title { color: var(--primary-color); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 10px; }
+.about-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem; }
+.about-description { font-size: 1rem; line-height: 1.6; margin-bottom: 2rem; color: var(--secondary-text-color); }
+
+.checklist { display: flex; flex-direction: column; gap: 0.8rem; }
+.check-item { display: flex; align-items: center; gap: 10px; font-weight: 600; color: #3d3d3d; }
+.check-item i { color: var(--primary-color); }
+
+.about-image-column {
+    flex: 1; position: relative; display: flex; justify-content: center;
+}
+.about-image-column {
+    width: 100px; height: 400px;
+    background-image: url('../images/paraqueme.png');
+    background-size: cover; background-position: center;
+    border-radius: 50%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+.about-image-column::before {
+    content: ''; position: absolute; z-index: -1;
+    background-color: #8c0f2a;
+    width: 100%; height: 100%; border-radius: 50%;
+    top: 15px; right: -15px; 
+}
+
+/* ======================================================= */
+/* === SEÇÃO 4: FAQ & FOOTER === */
+/* ======================================================= */
+.faq-section {
+    background-color: var(--page-background);
+    padding: 80px 5% 120px 5%; /* Padding bottom para o footer */
+    justify-content: flex-start; align-items: center;
+}
+
+.faq-container { width: 100%; max-width: 800px; text-align: center; }
+.faq-main-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem; }
+.faq-description { margin-bottom: 3rem; color: #666; }
+
+.faq-accordion { text-align: left; background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.faq-item { border-bottom: 1px solid #eee; }
+.faq-item:last-child { border-bottom: none; }
+
+.faq-question {
+    width: 100%; background: none; border: none; padding: 1.5rem 1rem;
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; font-size: 1rem; font-weight: 700; color: #333; font-family: 'Montserrat', sans-serif;
+}
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+.faq-answer p { padding: 0 1rem 1.5rem; font-size: 0.95rem; color: #666; line-height: 1.6; }
+.faq-item.open .faq-question { color: var(--primary-color); }
+.faq-item.open .faq-question i { transform: rotate(180deg); }
+
+/* Rodapé */
+.site-footer {
+    position: absolute; bottom: 0; left: 0; width: 100%;
+    padding: 20px; text-align: center; background-color: var(--page-background);
+    border-top: 1px solid #ddd;
+}
+.footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 10px; flex-wrap: wrap; }
+.footer-links a { color: #666; font-size: 0.85rem; }
+.footer-copyright { font-size: 0.75rem; color: #999; }
+
+
+/* ======================================================= */
+/* === RESPONSIVIDADE (TABLETS E MOBILE) === */
+/* ======================================================= */
+
+/* TABLETS (Até 1024px) */
+@media (max-width: 1024px) {
+    .hero-main-title { font-size: 3rem; }
+    
+    /* Remove imagens de fundo que atrapalham em telas menores */
+    .hero-section { background-image: none; gap: 2rem; }
+    
+    .card-group { flex-wrap: wrap; } /* Cards quebram linha */
+    .style-card { width: 45%; margin-bottom: 20px; }
+}
+
+/* CELULARES (Até 768px) */
+@media (max-width: 768px) {
+    .scroll-container { padding-top: 60px; } /* Ajuste fino */
+    
+    /* Header Mobile */
+    header { padding: 10px 15px; flex-wrap: wrap; gap: 10px; }
+    .header-nav-link { display: none; } /* Esconde links de texto */
+    .header-right { gap: 10px; margin-left: auto; }
+    .header-right .btn-login { padding: 6px 15px; font-size: 0.8rem; }
+
+    /* Hero */
+    .hero-section { flex-direction: column; text-align: center; margin-top: 20px; }
+    .hero-main-title { font-size: 2.2rem; }
+    .hero-image-column { order: -1; margin-bottom: 20px; } /* Imagem sobe */
+    
+    /* Carrossel */
+    .style-section-container { padding: 20px; }
+    .date-style-title { font-size: 1.5rem; }
+    .nav-arrow { display: none; } /* Setas somem, vira scroll */
+    .style-grid { overflow-x: auto; display: flex; gap: 15px; padding-bottom: 10px; }
+    .card-group { display: flex !important; width: auto; flex-wrap: nowrap; opacity: 1; }
+    .style-card { width: 220px; height: 300px; flex-shrink: 0; }
+
+    /* About */
+    .about-section { padding: 40px 5%; }
+    .about-container { flex-direction: column-reverse; gap: 30px; text-align: center; }
+    .checklist { align-items: center; }
+    .about-image-column { width: 250px; height: 250px; }
+    .about-image-column::before { top: 10px; right: -10px; }
+
+    /* FAQ */
+    .faq-main-title { font-size: 2rem; }
+    .site-footer { position: relative; margin-top: 40px; }
+}

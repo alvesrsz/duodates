@@ -1,0 +1,267 @@
+/* Cores principais e fontes (consistente com index.css) */
+:root {
+  --page-background: #FAF5EF;
+  --primary-color: #800020;
+  --secondary-text-color: #3D3D3D;
+  --button-text-color: #FFFFFF;
+  --input-border-color: #D1C7BC; /* Uma cor suave para bordas de input */
+  --input-focus-border-color: var(--primary-color);
+  --error-message-color: #D32F2F; /* Vermelho para mensagens de erro */
+  --link-color: var(--primary-color);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Trend Sans One', sans-serif; 
+  background-color: var(--page-background);
+  color: var(--secondary-text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  line-height: 1.6;
+  background-image:  url('../images/linhapontilhada.png'), url('../images/cursormouse.png');
+  background-repeat: no-repeat,  no-repeat;
+   /* Posição e tamanho ajustados para replicar o exemplo */
+  background-position:   bottom 100px  right 100px, bottom 400px  right 300px;
+  background-size: 280px auto, 70px auto;}
+}
+
+
+/* Cabeçalho da Página de Login */
+.login-header {
+  display: flex;
+  justify-content: center; /* Centraliza o logo se for o único elemento */
+  align-items: center;
+  padding: 2rem 2rem;
+  background-color: var(--page-background);
+  font-size: 3rem;
+   width: 100%;
+}
+
+.logo-container .logo-link {
+  font-family: 'Playfair Display', sans-serif;
+  font-size: 2.6rem; /* Ajuste conforme o logo do index.css */
+  color: var(--primary-color);
+  text-decoration: none;
+  display: flex;             /* Torna o contêiner flexível */
+  align-items: center;       /* Alinha verticalmente os itens ao centro */
+  gap: 3px;  
+  margin-top: 50px;
+  margin-left: 780px;
+ 
+}
+.logo-image {
+   width: 38px;                 /* tamanho do ícone */
+  height: 38px;
+   
+   }
+
+/* Conteúdo Principal da Página de Login */
+.login-main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.login-container {
+  background-color: #FFFFFF; /* Fundo branco para o card de login */
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px; /* Largura máxima do formulário */
+}
+
+.login-form h1 {
+  font-family: 'Montserrat', sans-serif;  /* Usando Poppins para consistência com o corpo */
+  font-size: 1.8rem; /* Tamanho do título */
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  margin-bottom: 1.25rem;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--secondary-text-color);
+}
+
+.input-group input[type="email"],
+.input-group input[type="password"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--input-border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  color: var(--secondary-text-color);
+  background-color: #FDFDFD;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input[type="email"]::placeholder,
+.input-group input[type="password"]::placeholder {
+  color: #A0A0A0;
+  font-style: italic;
+}
+
+.input-group input[type="email"]:focus,
+.input-group input[type="password"]:focus {
+  outline: none;
+  border-color: var(--input-focus-border-color);
+  box-shadow: 0 0 0 3px rgba(167, 58, 54, 0.15);
+}
+
+.btn-login-submit {
+  width: 100%;
+  padding: 0.85rem 1.5rem;
+  background-color: var(--primary-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 8px; /* Consistente com inputs */
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 0.5rem; /* Espaço antes do botão */
+}
+
+.btn-login-submit:hover {
+  background-color: #8c2d29; /* Tom mais escuro do primário */
+  transform: translateY(-2px);
+}
+
+.login-links {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.login-links .forgot-password {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--link-color);
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+  transition: color 0.3s ease;
+}
+
+.login-links .forgot-password:hover {
+  text-decoration: underline;
+  color: #8c2d29;
+}
+
+.login-links .signup-link {
+  font-size: 0.9rem;
+  color: var(--secondary-text-color);
+}
+
+.login-links .signup-link a {
+  color: var(--link-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.login-links .signup-link a:hover {
+  text-decoration: underline;
+  color: #8c2d29;
+}
+
+.error-message {
+  background-color: rgba(211, 47, 47, 0.1);
+  color: var(--error-message-color);
+  padding: 0.75rem;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(211, 47, 47, 0.3);
+}
+
+
+/* Rodapé da Página de Login */
+.login-footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--page-background);
+  color: var(--secondary-text-color);
+  font-size: 0.85rem;
+  /* border-top: 1px solid var(--input-border-color); */ /* Borda sutil opcional */
+}
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 15px;
+  border: 1px solid #c3e6cb;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 2rem 1.5rem;
+    margin: 1rem; /* Adiciona margem nas laterais em telas pequenas */
+    box-shadow: none; /* Remove sombra em telas muito pequenas se preferir */
+  }
+
+  .login-form h1 {
+    font-size: 1.6rem;
+  }
+
+  .input-group input[type="email"],
+  .input-group input[type="password"],
+  .btn-login-submit {
+    font-size: 0.95rem;
+    padding: 0.7rem 0.9rem;
+  }
+}
+/* Adicionar este bloco ao final do seu arquivo login.css */
+
+.success-box {
+    background-color: #e8f5e9; /* Fundo verde bem claro */
+    color: #2e7d32; /* Texto verde escuro */
+    border: 1px solid #a5d6a7; /* Borda verde claro */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.success-box i {
+    font-size: 2rem; /* Tamanho do ícone */
+    color: #4caf50; /* Ícone verde */
+}
+
+.success-box h4 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #1b5e20; /* Título mais escuro */
+}
+
+.success-box p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}

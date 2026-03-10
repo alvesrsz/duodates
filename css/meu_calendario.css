@@ -1,0 +1,123 @@
+/* === ESTILOS ESPECÍFICOS PARA O CALENDÁRIO === */
+
+/* IMPORTANTE: Não coloque estilos de .main-header ou .logo aqui.
+   O calendário agora usa o estilo padrão do login-feito.css.
+*/
+
+/* 1. Ajuste do Layout para 2 Colunas */
+.profile-dashboard.calendar-layout {
+    display: grid;
+    /* Coluna Esquerda: 250px | Coluna Direita: Ocupa todo o resto */
+    grid-template-columns: 250px 1fr; 
+    gap: 30px;
+}
+
+/* 2. Container do Calendário */
+#calendar-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    /* Limita largura em telas muito grandes para não esticar demais */
+    max-width: 900px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 3. Seção "Adicionar Novo" */
+.add-new-section {
+    background-color: var(--sidebar-bg);
+    padding: 20px; 
+    border-radius: 8px; 
+    margin-bottom: 30px;
+    text-align: center; 
+    border: 1px dashed var(--border-color);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.add-new-section p { margin: 0 0 15px 0; color: #555; font-size: 0.95rem; }
+
+/* 4. Lista de Agendamentos */
+.agendamento-list { 
+    margin-top: 20px; 
+    max-width: 900px; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+.agendamento-list h4 {
+    font-size: 1.1rem; color: var(--primary-color);
+    margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px solid var(--border-color);
+}
+
+.agendamento-item {
+    display: flex; align-items: center; gap: 20px; padding: 15px;
+    background-color: #fff; border: 1px solid var(--border-color);
+    border-radius: 8px; margin-bottom: 15px; transition: box-shadow 0.3s;
+}
+.agendamento-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+.agendamento-date {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background-color: var(--primary-color); color: white;
+    padding: 10px; border-radius: 6px; min-width: 60px; text-align: center;
+}
+.agendamento-date .day { font-size: 1.8rem; font-weight: bold; line-height: 1; }
+.agendamento-date .month { font-size: 0.9rem; text-transform: uppercase; font-weight: 600; }
+.agendamento-date .time { font-size: 0.8rem; margin-top: 3px; opacity: 0.8; }
+
+.agendamento-details { display: flex; flex-direction: column; gap: 5px; }
+.event-title { font-size: 1.2rem; font-weight: 600; color: var(--font-color); }
+.event-location { font-size: 0.9rem; color: #666; }
+.event-location i { margin-right: 5px; color: var(--accent-color); }
+
+.empty-state-calendar {
+    text-align: center; padding: 50px 20px;
+    border: 2px dashed var(--border-color); border-radius: 10px; margin-top: 20px;
+}
+.empty-state-calendar i { font-size: 3rem; color: var(--border-color); margin-bottom: 15px; }
+
+/* 5. Cores do FullCalendar */
+.fc .fc-button-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    text-transform: capitalize;
+}
+.fc .fc-button-primary:hover {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+.fc .fc-daygrid-day.fc-day-today { background-color: #fcf8e3 !important; }
+.fc .fc-event {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white; font-weight: 500; cursor: pointer;
+}
+.fc .fc-toolbar-title { color: var(--primary-color); font-size: 1.5rem; }
+
+
+/* ======================================================= */
+/* === RESPONSIVIDADE (Específica do layout 2 colunas) === */
+/* ======================================================= */
+
+/* Tablets (Até 992px) */
+@media (max-width: 992px) {
+    .profile-dashboard.calendar-layout {
+        grid-template-columns: 80px 1fr; /* Sidebar compacta | Conteúdo */
+        gap: 15px;
+    }
+    .fc-toolbar-title { font-size: 1.2rem; }
+}
+
+/* Celulares (Até 768px) */
+@media (max-width: 768px) {
+    .profile-dashboard.calendar-layout {
+        display: flex; flex-direction: column;
+        gap: 20px;
+    }
+    #calendar-container { padding: 10px; }
+    .agendamento-item { flex-direction: column; text-align: center; gap: 10px; }
+    .agendamento-date { width: 100%; flex-direction: row; gap: 10px; padding: 5px; }
+    .fc-header-toolbar { flex-direction: column; gap: 10px; }
+}

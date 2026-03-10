@@ -1,0 +1,211 @@
+:root {
+    /* --- CORES ATUALIZADAS (baseadas na imagem) --- */
+    --cor-vinho: #702632;        /* Vermelho mais forte e escuro */
+    --cor-bege: #F5F0E8;         /* Bege claro para o painel e coração */
+    --cor-texto-logo: #572A31;   /* Cor do texto "DuoDates" */
+    --cor-texto-claro: #F5F0E8;  /* Cor do texto no painel vinho */
+    --cor-botao-bege: #EFEBE4;   /* Cor do botão "COMEÇAR" */
+}
+
+/* ------------------- BASE E ESTRUTURA GLOBAL ------------------- */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif; /* Certifique-se de que esta fonte está importada */
+    overflow: hidden; /* Evita barras de rolagem estranhas */
+}
+
+/* O container principal que ocupa a tela inteira */
+.welcome-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: var(--cor-vinho); /* Fundo é vinho */
+    position: relative;
+    overflow: hidden;
+}
+
+/* ------------------- PAINEL ESQUERDO (BEGE) ------------------- */
+.welcome-left {
+    flex-basis: 50%;
+    background-color: var(--cor-vinho);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    
+    /* Curvatura sutil da borda */
+    position: relative;
+    z-index: 10; /* Deve estar acima do coração */
+    box-shadow: 10px 0 20px -10px rgba(0,0,0,0.2);
+}
+.welcome-left::after {
+    content: '';
+    position: absolute;
+    
+    /* Posição que move o centro do círculo para fora da tela */
+    top: -45px; 
+    left: -100px; 
+    
+    /* Tamanho do círculo gigante */
+    width: 700px; 
+    height: 900px; 
+    background-color: #F5F0E8; /* Cor Branca/Bege Clara */
+    
+    /* CRIA A FORMA DO MEIO CORAÇÃO:
+       1. Transforma o quadrado em círculo.
+       2. Rotaciona o círculo para formar a ponta. */
+    border-radius: 50%;
+    transform: rotate(45deg); 
+    
+    z-index: -1; /* Fica atrás da logo */
+}
+
+/* O elemento PARENTAL ( welcome-left) precisa ter o z-index correto: */
+
+/* --- AJUSTES DE LOGO --- */
+.welcome-left .logo-text {
+    font-family: 'Playfair Display', serif; /* Certifique-se de importar esta fonte */
+    font-size: 4.6rem;
+    color: var(--cor-texto-logo);
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.welcome-left .logo-img {
+    width: 130px;
+    margin-top: 20px;
+}
+
+/* ------------------- PAINEL DIREITO (VINHO) E O CORAÇÃO ------------------- */
+.welcome-right {
+    flex-basis: 60%;
+    /* Removendo padding desnecessário na lateral */
+    margin-left: 0;
+    padding: 50px 60px 50px 300px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Alinha o conteúdo à esquerda */
+    text-align: left;
+    position: relative;
+    z-index: 2;
+    background-color: var(--cor-vinho);
+    
+    /* Ajuste para acomodar a invasão do coração e o texto */
+    margin-left: -150px; 
+    padding-left: 200px;
+    
+    background-color: var(--cor-vinho);
+    
+    /* Decorações: linha pontilhada e cursor */
+    background-image:
+        url('../images/linhapontilhada.png'), 
+        url('../images/cursormouse.png');
+    background-repeat: no-repeat, no-repeat;
+    
+    background-position:
+        bottom 10px right 20px, 
+        bottom 70px left 520px; 
+        
+    background-size:
+        230px auto, 
+        80px auto; 
+}
+
+/* O PRÓPRIO CORAÇÃO (Pseudo-elemento no painel direito) */
+.welcome-right::before {
+    content: '';
+    position: absolute;
+    /* Posição para invadir o painel esquerdo */
+    top: -100px;
+    left: -200px 
+    
+    width: 600px; 
+    height: 600px;
+    background-color: var(--cor-bege); /* A cor bege do coração */
+    
+    /* Transforma o círculo na forma que invade o painel */
+    transform: rotate(45deg); 
+    border-radius: 50%;
+    
+    /* Fica atrás do conteúdo de ambos os painéis (mas a frente do background) */
+    z-index: 1; 
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+/* CÍRCULO SUPERIOR EXTRA (o pequeno toque de estilo) */
+.welcome-right::after {
+    content: '';
+    position: absolute;
+    top: -10px; /* Posição alta */
+    left: -100px; 
+    width: 300px; 
+    height: 300px; 
+    background-color: rgba(245, 240, 232, 0.5); /* Cor bege com transparência */
+    border-radius: 50%;
+    z-index: 20; /* Fica atrás do círculo principal (::before) */
+}
+
+
+/* ------------------- ESTILOS DO CONTEÚDO (DIREITA) ------------------- */
+.welcome-right h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--cor-texto-claro);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.welcome-right .subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--cor-texto-claro);
+    max-width: 380px;
+    line-height: 1.5;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.welcome-right .subtitle strong {
+    font-weight: 700;
+}
+
+.welcome-right .description {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--cor-texto-claro);
+    opacity: 0.9;
+    max-width: 380px;
+    line-height: 1.6;
+}
+
+/* --- AJUSTES DO BOTÃO --- */
+.btn-comecar {
+    background-color: var(--cor-botao-bege);
+    color: var(--cor-vinho);
+    padding: 14px 35px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 50px;
+    margin-top: 2.5rem;
+    text-align: center;
+    width: 160px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+.btn-comecar:hover {
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}

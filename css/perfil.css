@@ -1,0 +1,293 @@
+ /* ============================================== */
+/* === GERAL E TEMA DE CORES === */
+/* ============================================== */
+:root {
+    --cor-primaria: #E94D73; /* Rosa principal, vibrante */
+    --cor-primaria-hover: #D83C61; /* Tom mais escuro para hover */
+    --cor-secundaria: #F8F0E3; /* Um bege/creme suave para fundos */
+    --cor-texto-principal: #333333; /* Carvão, mais suave que preto puro */
+    --cor-texto-secundario: #777777;
+    --cor-fundo-pagina: #FDFCFB; /* Fundo geral quase branco */
+    --cor-branco: #FFFFFF;
+    --sombra-suave: 0 5px 25px rgba(0, 0, 0, 0.07);
+}
+
+/* Importando a fonte Poppins (usada na sua tela de login) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cor-fundo-pagina);
+    color: var(--cor-texto-principal);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 0 1.5rem;
+}
+
+
+/* ============================================== */
+/* === CARD DE PERFIL (AVATAR E NOME) === */
+/* ============================================== */
+.profile-card {
+    background-color: var(--cor-branco);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: var(--sombra-suave);
+    margin-bottom: 30px;
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--cor-primaria);
+    margin-bottom: 1.5rem;
+}
+
+.profile-name {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.profile-email {
+    font-size: 1rem;
+    color: var(--cor-texto-secundario);
+    margin-top: 0.5rem;
+}
+
+
+/* ============================================== */
+/* === BOTÕES DE AÇÃO === */
+/* ============================================== */
+.profile-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.action-btn, .action-btn-logout {
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px; /* Bordas arredondadas para um visual moderno */
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+/* Estilo Secundário (Alterar Senha, etc) */
+.action-btn {
+    background-color: #f0f2f5;
+    color: var(--cor-texto-principal);
+}
+
+.action-btn:hover {
+    background-color: #e4e6eb;
+    transform: translateY(-2px);
+}
+
+/* Estilo Primário (Sair) */
+.action-btn-logout {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+}
+
+.action-btn-logout:hover {
+    background-color: var(--cor-primaria-hover);
+    transform: translateY(-2px);
+}
+
+
+/* ============================================== */
+/* === SEÇÃO DE PREFERÊNCIAS === */
+/* ============================================== */
+.profile-section {
+    background-color: var(--cor-branco);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: var(--sombra-suave);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+/* Grid das "tags" de preferência */
+.preferences-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+}
+
+.preference-item {
+ background-color: var(--cor-fundo-pagina);
+ border: 2px solid #e4e6eb;
+ padding: 10px 20px; /* Aumentei o padding horizontal */
+ border-radius: 50px;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ font-size: 14px;
+ font-weight: 500;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ min-width: 120px; /* Adicionei uma largura mínima para dar mais espaço */
+ justify-content: center; /* Centraliza o texto dentro do item */
+}
+
+.preference-item:hover {
+    border-color: var(--cor-primaria);
+    background-color: var(--cor-secundaria);
+}
+
+/* Estilizando o checkbox para ficar mais moderno */
+.preference-item input[type="checkbox"] {
+    appearance: none; /* Remove o estilo padrão */
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+    flex-shrink: 0; /* Impede que o checkbox encolha */
+}
+
+/* Estilo do checkbox quando está marcado */
+.preference-item input[type="checkbox"]:checked {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+/* Adicionando o "check" (✓) dentro do checkbox marcado */
+.preference-item input[type="checkbox"]:checked::after {
+    content: '✔';
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* Botão de Salvar no mesmo contexto dos outros */
+.save-btn {
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 30px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+    background-color: var(--cor-primaria-hover);
+    transform: translateY(-2px);
+}
+
+/* ============================================== */
+/* === FOOTER === */
+/* ============================================== */
+.profile-footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: #aaa;
+}
+.profile-pic-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 15px auto; /* Centraliza e adiciona espaço abaixo */
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+#profilePicPreview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.change-pic-btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-pic-container:hover .change-pic-btn {
+    opacity: 1;
+}
+/* Container para o nome e email no modo de edição */
+.profile-info {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px; /* Adiciona um espaço acima do nome */
+    margin-bottom: 25px; /* Adiciona um espaço maior abaixo, antes dos botões */
+}
+
+/* Estilo para a label "Nome de Usuário" */
+.input-label {
+    display: block; /* Garante que a label ocupe sua própria linha */
+    text-align: left; /* Alinha o texto da label à esquerda */
+    margin-bottom: 8px; /* Espaço entre a label e a caixa de input */
+    font-weight: 600; /* Deixa o texto da label em negrito */
+    color: #4A4A4A; /* Cor de texto um pouco mais escura */
+    font-size: 0.9em;
+}
+
+/* Estilo principal para a caixa de texto do nome */
+.profile-name-input {
+    width: 100%;
+    padding: 12px 15px; /* Aumenta o espaçamento interno para conforto */
+    font-size: 1rem; /* Tamanho da fonte padrão */
+    color: #333;
+    background-color: #fff; /* Fundo branco */
+    border: 1px solid #ccc; /* Borda cinza claro */
+    border-radius: 8px; /* Cantos mais arredondados */
+    box-sizing: border-box; /* Impede que padding e borda alterem a largura total */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.06); /* Sombra interna sutil */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Transição suave para o efeito de foco */
+}
+
+/* Efeito visual quando o usuário clica na caixa de texto */
+.profile-name-input:focus {
+    outline: none; /* Remove a borda azul padrão do navegador */
+    border-color: #8A2BE2; /* Cor da borda quando selecionado (roxo) */
+    box-shadow: 0 0 5px rgba(138, 43, 226, 0.4); /* Adiciona um brilho ao redor */
+}

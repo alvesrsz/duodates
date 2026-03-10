@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary-color: #58181F;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --card-background: #ffffff;
+    --light-text: #fdfdfd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Deixamos a fonte Poppins como backup, mas o login-feito.css define Montserrat para o corpo principal */
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- HEADER REMOVIDO DAQUI --- */
+/* O header agora é controlado pelo login-feito.css para manter padrão */
+
+/* .back-button-link, .arrow -> REMOVIDOS POIS AGORA USAMOS .btn-voltar NO HTML */
+
+.page-title {
+    text-align: center;
+    margin-block: 30px 50px;
+}
+
+.page-title h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.page-title p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.suggestions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative; 
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    background-color: #eee;
+}
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 0.9rem;
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; 
+}
+
+.card-button {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+.card-button:hover {
+    background-color: #7a2833;
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 10;
+}
+
+.favorite-btn svg {
+    width: 28px;
+    height: 28px;
+    stroke: var(--primary-color);
+    stroke-width: 2;
+    fill: rgba(255, 255, 255, 0.7);
+    transition: fill 0.2s ease-in-out, transform 0.2s ease;
+}
+
+.favorite-btn.favorited svg {
+    fill: #e53e3e;
+    stroke: #e53e3e;
+}
+
+.favorite-btn:hover svg {
+    transform: scale(1.1);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #333;
+    color: var(--light-text);
+}
+
+/* --- ESTILOS DE MODAL (GENÉRICO) --- */
+
+.modal-overlay {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.modal-overlay.show {
+    display: flex; 
+}
+
+.modal-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 1001;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    text-align: center;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: #333;
+}
+
+.modal-container h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+/* --- ESTILOS DO MODAL DE AGENDAMENTO --- */
+
+#agendamento-form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+#agendamento-form input,
+#agendamento-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#agendamento-form button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #E94D73;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#agendamento-form button:hover {
+    background-color: #d13a5f;
+}
+
+/* --- NOVOS ESTILOS DO MODAL DE LOGIN --- */
+
+#login-modal .modal-container p {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    font-size: 1rem;
+    color: #666;
+}
+
+.login-modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-modal-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.login-modal-btn.login {
+    background-color: var(--primary-color);
+}
+.login-modal-btn.login:hover {
+    background-color: #7a2833;
+}
+
+.login-modal-btn.register {
+    background-color: #E94D73;
+}
+.login-modal-btn.register:hover {
+    background-color: #d13a5f;
+}

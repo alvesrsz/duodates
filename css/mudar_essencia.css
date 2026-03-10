@@ -1,0 +1,174 @@
+:root {
+  --cor-vinho: #8c0f2a;
+  --cor-bege: #faf5ef;
+  --cor-texto-vinho: #791021;
+  --cor-botao-vinho: #3f020d;
+  --cor-botao-texto: #faf5ef;
+}
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: var(--cor-bege);
+  color: var(--cor-texto-vinho);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+
+/* 2. Aplica Flexbox ao link para alinhar a Imagem e o Texto */
+
+
+.header-left { display: flex; align-items: center;}
+
+.header-left .logo { align-items: center; display: flex; font-family: 'Playfair Display', serif; font-size: 2.2rem; align-items: center; color: var(--primary-color); text-decoration: none;  }
+
+
+.logo-image { height: 35px; width: auto; margin-left: 10px;}
+
+.logo-link {
+  display: flex;
+  align-items: center;         /* alinha verticalmente o texto e o ícone */
+  gap: 10px;                   /* espaçamento entre o texto e o ícone */
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #8c0f2a;              /* vinho */
+  text-decoration: none;
+}
+
+
+
+.header-logo {
+    /* Mover o logo para a extrema esquerda */
+    margin-right: auto; 
+    align-items: center;
+    font-family: 'Playfair Display', serif; 
+    font-size: 2.2rem; 
+    align-items: center; 
+    color: #8c0f2a; }
+
+.header-bar {
+  height: 5px;
+  width: 100%;
+  background-color: var(--cor-vinho);
+}
+
+/* ===== CONTEÚDO ===== */
+.content {
+  flex: 1;
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  letter-spacing: 1px;
+}
+
+/* ===== CARDS ===== */
+.options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 180px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  border: 3px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover,
+.card:focus,
+.card.active {
+  border-color: var(--cor-vinho);
+  transform: translateY(-3px);
+}
+
+.card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.card p {
+  background-color: #fff;
+  padding: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--cor-texto-vinho);
+}
+
+/* ===== BOTÃO ===== */
+.button-area {
+  margin-top: 1rem;
+}
+
+.btn-proximo {
+  background-color: var(--cor-botao-vinho);
+  color: var(--cor-botao-texto);
+  border: none;
+  padding: 10px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-proximo:hover {
+  background-color: #501a23;
+  transform: scale(1.05);
+}
+
+/* ===== BARRA DE PROGRESSO ===== */
+.progress-bar {
+  width: 80%;
+  height: 5px;
+  background-color: #ddd;
+  border-radius: 10px;
+  margin: 2rem auto 1rem auto;
+  overflow: hidden;
+}
+
+.progress {
+  width: 25%; /* Ajuste conforme a etapa */
+  height: 100%;
+  background-color: var(--cor-vinho);
+  transition: width 0.5s ease;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+  .options {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 70%;
+  }
+
+  .progress-bar {
+    width: 90%;
+  }
+}

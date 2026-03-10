@@ -1,0 +1,74 @@
+/* Importando a fonte principal do site */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --cor-primaria: #E94D73;
+    --cor-fundo-pagina: #FDFCFB;
+    --cor-branco: #FFFFFF;
+    --cor-texto-principal: #333333;
+    --sombra-suave: 0 5px 25px rgba(0, 0, 0, 0.07);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cor-fundo-pagina);
+    color: var(--cor-texto-principal);
+    margin: 0;
+}
+
+/* Reutilizando o estilo do header das outras páginas */
+header {
+    background-color: #fff;
+    padding: 1em 20px;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+header h1 { margin: 0; font-size: 1.5em; color: var(--cor-primaria); }
+.back-button-link { color: var(--cor-texto-principal); text-decoration: none; margin-right: 20px; font-size: 1.2em; }
+.back-button-link .arrow { border: solid var(--cor-texto-principal); border-width: 0 2px 2px 0; display: inline-block; padding: 3px; transform: rotate(135deg); }
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 1.5rem;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#calendar-container {
+    background-color: var(--cor-branco);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: var(--sombra-suave);
+}
+
+/* --- Personalização do FullCalendar --- */
+
+/* Cor dos botões (Hoje, Mês, Semana) */
+.fc-button-primary {
+    background-color: var(--cor-primaria) !important;
+    border-color: var(--cor-primaria) !important;
+}
+
+.fc-button-primary:hover {
+    background-color: #D83C61 !important;
+    border-color: #D83C61 !important;
+}
+
+/* Cor do dia de hoje */
+.fc-day-today {
+    background-color: #fdf0e3 !important;
+}
+
+/* Cor dos eventos no calendário */
+.fc-event {
+    background-color: #3788d8; /* Azul padrão do FullCalendar, pode ser alterado */
+    border-color: #3788d8;
+}
