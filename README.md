@@ -16,3 +16,4 @@ link para documentação complementar:
 https://github.com/alvesrsz/duodates/new/main?filename=README.md#:~:text=Dates_%20Visa%CC%83o%20de-,Nego%CC%81cio,-e%20Arquitetura%20Te%CC%81cnica
 https://github.com/alvesrsz/duodates/new/main?filename=README.md#:~:text=Resumo%20Executivo%20%2D-,Duo,-Dates.pdf
 https://dev.azure.com/DuoDates/DuoDates/_backlogs/backlog/DuoDates%20Team/Epics?showParents=false
+https://duodate.ct.ws/?i=1#
