@@ -1,0 +1,61 @@
+/* === ESTILOS ESPECÍFICOS PARA A PÁGINA DE EDITAR PERFIL === */
+
+/* 1. SOBRESCREVE O GRID PRINCIPAL PARA 2 COLUNAS */
+.profile-dashboard.edit-profile-layout {
+    display: grid;
+    /* Coluna Esquerda: 250px | Coluna Direita: Ocupa todo o resto */
+    grid-template-columns: 250px 1fr; 
+    gap: 30px;
+}
+
+/* 2. AJUSTES DO FORMULÁRIO */
+.edit-profile-form {
+    max-width: 800px; /* Evita que o formulário fique muito largo em telas grandes */
+    margin: 0 auto;
+}
+
+/* A estrutura .edit-grid, .form-group, etc., já está no login-feito.css,
+   então não precisamos repetir aqui, a menos que queira mudar algo específico. */
+
+
+/* ======================================================= */
+/* === RESPONSIVIDADE (Específica do layout 2 colunas) === */
+/* ======================================================= */
+
+/* Tablets (Até 992px) */
+@media (max-width: 992px) {
+    .profile-dashboard.edit-profile-layout {
+        grid-template-columns: 80px 1fr; /* Sidebar compacta | Conteúdo */
+        gap: 15px;
+    }
+}
+
+/* Celulares (Até 768px) */
+@media (max-width: 768px) {
+    .profile-dashboard.edit-profile-layout {
+        display: flex; flex-direction: column;
+        gap: 20px;
+    }
+    
+    /* Ajuste para o formulário no mobile */
+    .edit-grid {
+        grid-template-columns: 1fr; /* Foto em cima, campos embaixo */
+        gap: 20px;
+        justify-items: center; /* Centraliza a foto */
+    }
+    
+    .info-section {
+        width: 100%; /* Campos ocupam largura total */
+    }
+    
+    .form-actions {
+        flex-direction: column-reverse; /* Botão Salvar em cima */
+        gap: 10px;
+    }
+    
+    .btn-salvar, .btn-cancel {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}

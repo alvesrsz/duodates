@@ -1,0 +1,240 @@
+/* Cores e fontes do seu site */
+:root {
+    --page-background: #FAF5EF;
+    --primary-color: #A73A36;
+    --secondary-text-color: #3D3D3D;
+    --card-background: #FFFFFF;
+    --input-border-color: #D1C7BC;
+    --danger-color: #d9534f;
+    --font-primary: 'Playfair Display', serif;
+    --font-secondary: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-secondary);
+    background-color: var(--page-background);
+    color: var(--secondary-text-color);
+    line-height: 1.6;
+}
+
+/* --- Header --- */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background-color: var(--page-background);
+    border-bottom: 1px solid var(--input-border-color);
+}
+
+.back-button {
+    color: var(--primary-color);
+    text-decoration: none;
+    flex-basis: 40px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+header h1 {
+    font-family: var(--font-primary);
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+}
+
+.delete-all-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--secondary-text-color);
+    padding: 5px;
+    flex-basis: 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.delete-all-btn:hover {
+    color: var(--danger-color);
+}
+
+
+/* --- TOOLTIP CORRIGIDO --- */
+[data-tooltip] {
+    position: relative;
+}
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    /* A CORREÇÃO: Posiciona o tooltip ABAIXO do ícone */
+    top: 100%;
+    right: 0; /* Alinha à direita do ícone */
+    margin-top: 8px; /* Adiciona um pequeno espaço */
+    /* Fim da Correção */
+
+    background-color: #333;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    z-index: 100; /* Garante que fique por cima de outros elementos */
+}
+[data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.favoritos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.favorito-item-wrapper {
+    position: relative;
+}
+
+.favorito-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.unfavorite-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-text-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.2s, color 0.2s;
+    z-index: 10;
+}
+
+.unfavorite-btn:hover {
+    background-color: var(--danger-color);
+    color: #fff;
+}
+
+.favorito-item {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    min-height: 180px;
+    transition: box-shadow 0.3s ease;
+}
+
+.favorito-item-wrapper:hover .favorito-item {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+.favorito-item img {
+    width: 220px;
+    object-fit: cover;
+    display: block;
+    border-radius: 0 12px 12px 0;
+    order: 2;
+}
+
+.favorito-item .info {
+    padding: 1.5rem 2rem;
+    flex-grow: 1;
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.favorito-item h3 {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--secondary-text-color);
+    margin-bottom: 0.5rem;
+}
+
+.favorito-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+
+/* Mensagem de "Não há favoritos" */
+.no-favorites-container {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    border: 1px dashed var(--input-border-color);
+    margin-top: 2rem;
+}
+
+.no-favorites-message {
+    font-size: 1.1rem;
+    color: #777;
+    margin-bottom: 1.5rem;
+}
+
+.explore-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.explore-button:hover {
+    background-color: #8c2e2a;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .favorito-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    .favorito-item img {
+        width: 100%;
+        height: 180px;
+        border-radius: 12px 12px 0 0;
+        order: 1;
+    }
+    .favorito-item .info { order: 2; padding: 1.5rem; }
+    .unfavorite-btn { top: 0.75rem; right: 0.75rem; }
+    header h1 { font-size: 1.2rem; }
+}

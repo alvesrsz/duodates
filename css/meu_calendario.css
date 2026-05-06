@@ -1,0 +1,293 @@
+/* === ESTILOS ESPECÍFICOS PARA O CALENDÁRIO === */
+
+/* IMPORTANTE: Não coloque estilos de .main-header ou .logo aqui.
+   O calendário agora usa o estilo padrão do login-feito.css.
+*/
+
+/* 1. Ajuste do Layout para 2 Colunas */
+.profile-dashboard.calendar-layout {
+    display: grid;
+    /* Coluna Esquerda: 250px | Coluna Direita: Ocupa todo o resto */
+    grid-template-columns: 250px 1fr; 
+    gap: 30px;
+}
+
+/* 2. Container do Calendário */
+#calendar-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    /* Limita largura em telas muito grandes para não esticar demais */
+    max-width: 900px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 3. Seção "Adicionar Novo" */
+.add-new-section {
+    background-color: var(--sidebar-bg);
+    padding: 20px; 
+    border-radius: 8px; 
+    margin-bottom: 30px;
+    text-align: center; 
+    border: 1px dashed var(--border-color);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.add-new-section p { margin: 0 0 15px 0; color: #555; font-size: 0.95rem; }
+
+/* 4. Lista de Agendamentos */
+.agendamento-list { 
+    margin-top: 20px; 
+    max-width: 900px; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+.agendamento-list h4 {
+    font-size: 1.1rem; color: var(--primary-color);
+    margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px solid var(--border-color);
+}
+
+.agendamento-item {
+    display: flex; align-items: center; gap: 20px; padding: 15px;
+    background-color: #fff; border: 1px solid var(--border-color);
+    border-radius: 8px; margin-bottom: 15px; transition: box-shadow 0.3s;
+}
+.agendamento-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+.agendamento-date {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background-color: var(--primary-color); color: white;
+    padding: 10px; border-radius: 6px; min-width: 60px; text-align: center;
+}
+.agendamento-date .day { font-size: 1.8rem; font-weight: bold; line-height: 1; }
+.agendamento-date .month { font-size: 0.9rem; text-transform: uppercase; font-weight: 600; }
+.agendamento-date .time { font-size: 0.8rem; margin-top: 3px; opacity: 0.8; }
+
+.agendamento-details { display: flex; flex-direction: column; gap: 5px; }
+.event-title { font-size: 1.2rem; font-weight: 600; color: var(--font-color); }
+.event-location { font-size: 0.9rem; color: #666; }
+.event-location i { margin-right: 5px; color: var(--accent-color); }
+
+.empty-state-calendar {
+    text-align: center; padding: 50px 20px;
+    border: 2px dashed var(--border-color); border-radius: 10px; margin-top: 20px;
+}
+.empty-state-calendar i { font-size: 3rem; color: var(--border-color); margin-bottom: 15px; }
+
+/* 5. Cores do FullCalendar */
+.fc .fc-button-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    text-transform: capitalize;
+}
+.fc .fc-button-primary:hover {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+.fc .fc-daygrid-day.fc-day-today { background-color: #fcf8e3 !important; }
+.fc .fc-event {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white; font-weight: 500; cursor: pointer;
+}
+.fc .fc-toolbar-title { color: var(--primary-color); font-size: 1.5rem; }
+
+
+/* ======================================================= */
+/* === RESPONSIVIDADE (Específica do layout 2 colunas) === */
+/* ======================================================= */
+
+/* Tablets (Até 992px) */
+@media (max-width: 992px) {
+    .profile-dashboard.calendar-layout {
+        grid-template-columns: 80px 1fr; /* Sidebar compacta | Conteúdo */
+        gap: 15px;
+    }
+    .fc-toolbar-title { font-size: 1.2rem; }
+}
+
+/* Celulares (Até 768px) */
+@media (max-width: 768px) {
+    .profile-dashboard.calendar-layout {
+        display: flex; flex-direction: column;
+        gap: 20px;
+    }
+    #calendar-container { padding: 10px; }
+    .agendamento-item { flex-direction: column; text-align: center; gap: 10px; }
+    .agendamento-date { width: 100%; flex-direction: row; gap: 10px; padding: 5px; }
+    .fc-header-toolbar { flex-direction: column; gap: 10px; }
+}
+
+.agendamento-actions {
+    margin-top: 8px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.agendamento-actions a {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+/* Confirmar */
+.btn-confirm {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.btn-confirm:hover {
+    background-color: #c3e6cb;
+}
+
+/* Alterar */
+.btn-edit {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.btn-edit:hover {
+    background-color: #ffeeba;
+}
+
+/* Excluir */
+.btn-delete {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.btn-delete:hover {
+    background-color: #f5c6cb;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 320px;
+}
+
+.modal-box input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 6px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+}
+
+.modal-overlay.ativo {
+    display: flex;
+}
+
+.modal-container {
+    background: #fff;
+    border-radius: 12px;
+    width: 350px;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-close {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.form-group {
+    margin-top: 15px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.modal-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* BOTÕES PADRÃO DO MODAL */
+.modal-footer button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* BOTÃO SALVAR */
+.btn-confirm {
+    background: linear-gradient(135deg, #ff4d6d, #ff758f);
+    color: #fff;
+    margin-right: 8px;
+}
+
+.btn-confirm:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+}
+
+/* BOTÃO CANCELAR / EXCLUIR */
+.btn-delete {
+    background: #f1f1f1;
+    color: #555;
+}
+
+.btn-delete:hover {
+    background: #e4e4e4;
+    transform: translateY(-1px);
+}
+
+/* ÍCONES */
+.modal-footer i {
+    margin-right: 6px;
+}

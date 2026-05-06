@@ -1,0 +1,353 @@
+/* ======================================================= */
+/* === VARIÁVEIS E BASE === */
+/* ======================================================= */
+:root {
+  --page-background: #FAF5EF;
+  --primary-color: #5C151B; 
+  --btn-color: #4A0E15;
+  --secondary-text-color: #3D3D3D;
+  --gold-text: #C8A476;
+  --white: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--page-background);
+  overflow-x: hidden; 
+}
+
+.scroll-container {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.fullscreen-section {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ======================================================= */
+/* === HEADER === */
+/* ======================================================= */
+.new-header {
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  position: relative;
+  z-index: 100;
+}
+
+.new-header .logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.header-center-pin {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -10; 
+  z-index: 999; /* Garante que ele fique por cima de tudo */
+  pointer-events: none; /* Isso permite que você clique nos botões 'atrás' da imagem se precisar */
+}
+
+.header-center-pin img {
+  height: 500px !important; /* Força o tamanho que você deseja */
+  width: auto;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+  display: block;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-nav-link {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.btn-login-white {
+  background-color: var(--white);
+  color: var(--primary-color);
+  padding: 10px 50px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+/* ======================================================= */
+/* === HERO SECTION === */
+/* ======================================================= */
+.new-hero-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 80px 5%; /* Menos borda lateral para as coisas crescerem */
+}
+
+.hero-content-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px; /* Menos espaço vazio no meio */
+}
+
+.hero-left-content {
+  max-width: 1000px !important; /* Aumentamos a largura da caixa de texto para caber mais palavras */
+  position: relative;
+  z-index: 10; 
+  margin-top: 40px;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.8rem !important; /* Diminuímos o tamanho da letra (antes estava 6rem ou 5.5rem) */
+  color: var(--primary-color);
+  line-height: 1.05;
+  margin-bottom: 40px;
+  z-index: 10;
+  position: relative;
+}
+
+.btn-comecar-agora {
+  display: inline-block;
+  background-color: var(--btn-color);
+  color: var(--white);
+  padding: 20px 50px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 70px;
+  transition: transform 0.2s;
+}
+
+.btn-comecar-agora:hover { transform: scale(1.05); }
+
+/* LOSANGOS GIGANTES */
+.hero-features {
+  display: flex;
+  gap: 100px; /* Mais espaço entre eles */
+}
+
+.feature-item {
+  text-align: center;
+}
+
+.diamond-icon {
+  width: 130px;  /* BEM MAIOR */
+  height: 130px; /* BEM MAIOR */
+  background-color: var(--primary-color);
+  transform: rotate(45deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 45px;
+  margin-left: 15px;
+  border-radius: 12px;
+}
+
+.diamond-icon img {
+  transform: rotate(-45deg);
+  width: 650px; /* ÍCONE DE DENTRO MAIOR */
+  filter: none;
+}
+
+.feature-item p {
+  font-size: 1.1rem; /* TEXTO MAIOR */
+  font-weight: 700;
+  color: var(--secondary-text-color);
+}
+
+/* ======================================================= */
+/* === IMAGEM DA MESA (MANTIDA) + NOVOS ELEMENTOS === */
+/* ======================================================= */
+.hero-right-illustration {
+    position: absolute !important;
+    right: -550px !important; /* MANTIDO conforme seu original */
+    bottom: -120px !important; /* MANTIDO conforme seu original */
+    z-index: 1;
+    pointer-events: none;
+    
+    /* Adicionado para gerenciar as 3 camadas internas */
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+/* --- ADICIONADO: CAMADA 1: ESCRITAS (Atrás) --- */
+.bg-writing {
+    position: absolute;
+    z-index: 1;
+    width: 1500px; /* Tamanho grande para acompanhar a mesa */
+    bottom: 300px;
+    right: 110px;
+    opacity: 0.6;
+}
+
+
+/* --- MANTIDO: CAMADA 3: MESA (Frente) --- */
+.illustration-img {
+    position: relative !important;
+    z-index: 3; /* Garante que fique ACIMA do círculo e escritas */
+    width: 2000px !important; /* MANTIDO conforme seu original */
+    height: auto !important;
+    max-width: none !important;
+    mix-blend-mode: multiply !important; 
+    filter: none !important; 
+    opacity: 0.95; 
+}
+
+/* MANTIDO original */
+.new-hero-main {
+    position: relative !important;
+    overflow: hidden !important;
+    min-height: 100vh;
+}
+
+/* ======================================================= */
+/* === ESTATÍSTICAS === */
+/* ======================================================= */
+.stats-banner {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 80px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stats-text-area { max-width: 50%; }
+.stats-text-area h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: var(--gold-text);
+  margin-bottom: 15px;
+}
+.stats-text-area p { font-size: 1.1rem; line-height: 1.6; }
+
+.stats-numbers-area {
+  display: flex;
+  gap: 60px;
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  color: var(--gold-text);
+  text-align: center;
+}
+
+.stat-number span { color: var(--white); }
+
+/* ======================================================= */
+/* === CARROSSEL E FAQ === */
+/* ======================================================= */
+.date-style-section { background-color: var(--page-background); padding: 100px 0; }
+.date-style-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--primary-color); margin-bottom: 60px; }
+.carousel-wrapper { display: flex; align-items: center; justify-content: center; gap: 40px; }
+.style-grid { display: flex; gap: 20px; }
+.card-group { display: flex; gap: 30px; }
+.style-card { width: 320px; height: 450px; border-radius: 20px; overflow: hidden; position: relative; text-decoration: none; box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+.card-image { width: 100%; height: 100%; background-size: cover; background-position: center; transition: 0.6s; }
+.style-card:hover .card-image { transform: scale(1.1); }
+.card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; color: white; }
+.card-overlay i { font-size: 2.8rem; margin-bottom: 15px; }
+.card-overlay span { font-size: 1.6rem; font-weight: 700; }
+.nav-arrow { background: none; border: none; font-size: 3.5rem; color: var(--primary-color); cursor: pointer; transition: 0.3s; }
+.nav-arrow:hover { color: var(--gold-text); transform: scale(1.1); }
+
+.faq-section { background-color: var(--page-background); padding: 100px 15%; }
+.faq-title { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--primary-color); margin-bottom: 50px; text-align: center; }
+.faq-item { border-bottom: 1px solid #D1C7BC; padding: 30px 0; }
+.faq-question { width: 100%; text-align: left; background: none; border: none; font-size: 1.5rem; font-weight: 700; color: var(--primary-color); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-answer { display: none; padding-top: 20px; font-size: 1.2rem; color: var(--secondary-text-color); line-height: 1.6; }
+.faq-item.active .faq-answer { display: block; }
+.faq-item.active i { transform: rotate(180deg); transition: 0.3s; }
+
+.main-footer { text-align: center; padding: 50px; background-color: var(--page-background); border-top: 1px solid #D1C7BC; color: var(--secondary-text-color); font-size: 1rem; }
+
+/* ======================================================= */
+/* === RESPONSIVIDADE (Tablets e Celulares) === */
+/* ======================================================= */
+@media (max-width: 1200px) {
+  .hero-content-wrapper { flex-direction: column; text-align: center; }
+  .hero-right-illustration { justify-content: center; margin-top: 50px; }
+  .illustration-img { max-width: 700px; }
+  .hero-features { justify-content: center; flex-wrap: wrap; }
+  .diamond-icon { margin-left: auto; margin-right: auto; }
+}
+
+@media (max-width: 900px) {
+  .hero-title { font-size: 3.5rem; }
+  .header-center-pin img { height: 100px; top: 15px; }
+  .stats-banner { flex-direction: column; text-align: center; gap: 50px; padding: 60px 5%; }
+  .stats-text-area { max-width: 100%; }
+  .card-group { flex-direction: column; }
+  .style-card { width: 100%; height: 300px; }
+  .faq-section { padding: 60px 5%; }
+}
+
+/* ======================================================= */
+/* === ANIMAÇÕES DE HOVER (PASSAR O MOUSE) NOS BOTÕES === */
+/* ======================================================= */
+
+/* Prepara os botões para terem um movimento suave (duração de 0.3 segundos) */
+.btn-login-white, 
+.btn-comecar-agora {
+    transition: all 0.3s ease !important;
+}
+
+/* Efeito no botão de Login ao passar o mouse */
+.btn-login-white:hover {
+    transform: translateY(-3px) scale(1.05) !important; /* Sobe 3px e aumenta 5% */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important; /* Cria uma sombra suave */
+    color: var(--primary-color) !important; /* Mantém a cor do texto */
+}
+
+/* Efeito no botão "Começar Agora" ao passar o mouse */
+.btn-comecar-agora:hover {
+    transform: translateY(-5px) scale(1.05) !important; /* Sobe 5px e aumenta 5% */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3) !important; /* Sombra um pouco mais forte */
+    /* Opcional: deixa a cor um pouquinho mais clara para dar brilho */
+    filter: brightness(1.1) !important; 
+}
+
+/* ======================================================= */
+/* === EFEITO DE LEVANTE NOS ÍCONES (LOSANGOS) === */
+/* ======================================================= */
+
+/* 1. Prepara o item inteiro para o movimento suave */
+.feature-item {
+    transition: transform 0.3s ease !important;
+    cursor: default; /* Mostra que não é um botão clicável, mas interativo */
+}
+
+/* 2. Faz o conjunto (Ícone + Texto) subir ao passar o mouse */
+.feature-item:hover {
+    transform: translateY(-12px) !important; /* Ajuste o número para subir mais ou menos */
+}
+
+/* 3. Opcional: Deixar o losango com uma sombra mais forte ao subir */
+.feature-item:hover .diamond-icon {
+    box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.2) !important;
+    filter: brightness(1.1) !important; /* Dá um leve brilho na cor */
+}

@@ -1,0 +1,411 @@
+/* questionario.css (CORRIGIDO) */
+:root {
+  --cor-vinho: #8c0f2a;
+  --cor-bege: #faf5ef;
+  --cor-texto: #3d3d3d;
+  --cor-cinza-claro: #ddd;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--cor-bege);
+  font-family: 'Poppins', sans-serif;
+  color: var(--cor-texto);
+}
+
+/* --- CABEÇALHO --- */
+.questionario-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem 5%;
+  gap: 6px;
+}
+
+.questionario-header .logo-link {
+  font-family: 'Playfair Display', serif;
+  color: var(--cor-vinho);
+  font-size: 2rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.questionario-header .logo-img { height: 35px; width: auto; margin-left: 10px;}
+
+
+.divider-container {
+  padding: 0 5%;
+  margin-top: -0.5rem;
+}
+.divider-line {
+  height: 4px; /* Mantido do seu último código */
+  background-color: var(--cor-vinho);
+  opacity: 0.8; /* Mantido do seu último código */
+  border: none; /* Mantido do seu último código */
+}
+.divider-container::before,
+.divider-container::after {
+  content: none !important; /* Mantido do seu último código */
+}
+
+/* --- LAYOUT ESPECÍFICO PARA PERGUNTA 1 (MAIOR) --- */
+.p1-options-large {
+  grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+  gap: 30px; /* Espaço maior entre os cards */
+}
+
+.p1-options-large .option-card img {
+  height: 200px; /* Aumenta a altura da imagem */
+}
+
+/* Garante que no mobile (max-width: 768px), volte para 1 coluna */
+@media (max-width: 480px) {
+  .p1-options-large {
+    grid-template-columns: 1fr; /* 1 coluna em telas muito pequenas */
+  }
+}
+/* --- CONTEÚDO PRINCIPAL --- */
+.questionario-main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Esconde o input radio/checkbox real */
+.question-step input[type="radio"],
+.question-step input[type="checkbox"] {
+  display: none;
+}
+
+.question-step h1 {
+  font-family: 'Playfair Display', serif;
+  color: var(--cor-vinho);
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+/* NOVO CÓDIGO: Aumenta o espaçamento abaixo do h1 APENAS para a primeira pergunta (Step 1) */
+#step-1 h1 {
+  margin-bottom: 3rem; 
+}
+
+/* questionario.css */
+
+/* ... (código anterior) ... */
+
+/* --- LAYOUT ESPECÍFICO PARA PERGUNTA 1 (MAIOR) --- */
+.p1-options-large {
+  grid-template-columns: repeat(2, 1fr); /* <--- ISTO JÁ DEIXA 2 CARDS POR LINHA */
+  gap: 30px; 
+}
+
+.p1-options-large .option-card img {
+  height: 200px; 
+}
+
+/* Garante que no mobile (max-width: 480px), volte para 1 coluna */
+@media (max-width: 480px) {
+  .p1-options-large {
+    grid-template-columns: 1fr; /* 1 coluna em telas muito pequenas */
+  }
+}
+
+/* ... (código posterior) ... */
+
+/* NOVO CÓDIGO DO PEDIDO ANTERIOR: Aumenta o espaçamento abaixo do h1 APENAS para a primeira pergunta (Step 1) */
+#step-1 h1 {
+  margin-bottom: 3rem; 
+}
+.question-step p {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--cor-texto);
+  margin-top: -0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Estilo PADRÃO para o container de opções (Grid 4 colunas) */
+.options-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+/* Estilo PADRÃO para os cards (usado nos Passos 1, 2, 4) */
+.option-card {
+  display: block;
+  cursor: pointer;
+  border: 4px solid transparent;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: all 0.2s ease-in-out;
+  position: relative; /* Necessário para o badge */
+}
+
+.option-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Imagem padrão dos cards */
+.option-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* Nome abaixo da imagem/ícone (exclui o badge) */
+.option-card span:not(.order-badge) {
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  color: var(--cor-vinho);
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Estilo para radio checked (Passo 1) */
+.question-step input[type="radio"]:checked + .option-card {
+  border-color: var(--cor-vinho);
+  box-shadow: 0 8px 25px rgba(112, 38, 50, 0.3);
+}
+
+/* Estilo genérico para card selecionado (Passos 2, 3, 4, 5 - via JS) */
+.option-card.selected {
+  border-color: var(--cor-vinho);
+  box-shadow: 0 8px 25px rgba(112, 38, 50, 0.3);
+}
+
+/* --- BADGE DE ORDEM (Passo 2) --- */
+.order-badge {
+  display: none; /* JS controla a exibição */
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  background-color: var(--cor-vinho);
+  color: var(--cor-bege);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 5;
+}
+/* .option-card.selected .order-badge { display: block; } */ /* JS faz isso agora */
+
+
+/* --- BOTÃO LIMPAR (Passo 2) --- */
+.question-step .btn-limpar {
+  display: block;
+  margin: 1.5rem auto 0;
+  background: none;
+  border: none;
+  color: var(--cor-vinho);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* --- ESTILOS PARA LAYOUT DE ÍCONES (Passos 3 e 5) --- */
+/* (Estes sobrescrevem o .options-container e .option-card quando a classe .icons-container ou .icon-card é usada) */
+
+/* Container para layout de ícones */
+.icons-container {
+  display: flex; /* Muda para Flexbox */
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  /* Sobrescreve o grid-template-columns */
+  grid-template-columns: none;
+}
+
+/* Card para layout de ícones */
+.icon-card {
+  width: 140px; /* Largura menor */
+  padding: 15px 10px;
+  border-radius: 15px; /* Bordas diferentes */
+}
+
+/* Imagem (ícone) dentro do card de ícone */
+.icon-card img {
+  width: 60px; /* Tamanho do ícone */
+  height: 60px;
+  object-fit: contain; /* Preserva proporção */
+  margin: 0 auto 10px auto;
+  display: block;
+  border-radius: 0; /* Remove borda da imagem, se houver */
+}
+
+/* Texto abaixo do ícone */
+.icon-card span:not(.order-badge) {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  line-height: 1.3;
+}
+
+/* Descrição pequena no card (usado no Passo 5) */
+p.card-description {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #666;
+    margin-top: 5px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* --- NAVEGAÇÃO FIXA NA PARTE INFERIOR --- */
+.fixed-navigation-wrapper {
+  position: fixed; /* Fixa na tela */
+  bottom: 0; /* Alinha na parte inferior */
+  left: 0;
+  width: 100%; /* Ocupa a largura total */
+  background-color: var(--cor-bege); /* Cor de fundo igual ao body */
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05); /* Sombra sutil para destacar */
+  padding: 1rem 0; /* Adiciona um padding para a navegação */
+  z-index: 1000; /* Garante que fique acima de outros elementos */
+}
+
+/* Centraliza e limita a largura do container interno */
+.fixed-navigation-wrapper .navigation-container {
+    margin: 0 auto; /* Centraliza */
+    max-width: 900px; /* Limita a largura igual ao .questionario-main */
+    padding: 0 1rem; /* Mantém o padding lateral */
+}
+
+/* No CSS responsivo (@media (max-width: 768px)), você também pode precisar garantir
+que o padding da seção principal não esconda o conteúdo por trás da navegação fixa.
+Isso já deve ser resolvido no HTML/PHP, adicionando um "espaço" extra. */
+/* --- NAVEGAÇÃO --- */
+.navigation-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  gap: 1rem; /* Espaço entre os botões */
+}
+
+.progress-bar {
+  flex-grow: 1;
+  height: 8px;
+  background-color: var(--cor-cinza-claro);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-right: 1rem; /* Ajustado para dar espaço ao botão voltar */
+}
+
+.progress-bar-inner {
+  width: 20%;
+  height: 100%;
+  background-color: var(--cor-vinho);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.btn-nav { /* Estilo base para todos os botões de navegação */
+  background-color: var(--cor-vinho);
+  color: var(--cor-bege);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 35px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap; /* Evita que o texto quebre linha */
+}
+
+.btn-nav:hover {
+  opacity: 0.85;
+}
+
+
+/* --- ESTILO ESPECÍFICO PARA A PRIMEIRA PERGUNTA --- */
+.step-1 .option-card {
+  transform: scale(1.15); /* aumenta o tamanho do card */
+  height: auto;
+}
+
+.step-1 .option-card img {
+  height: 220px; /* aumenta a altura da imagem */
+  object-fit: cover;
+}
+
+/* Botão Voltar */
+.btn-voltar-step {
+  background-color: #fff;
+  color: var(--cor-vinho);
+  border: 2px solid var(--cor-vinho);
+  /* margin-right: auto; -> Remove para alinhar com os outros */
+}
+
+.btn-voltar-step:hover {
+  background-color: var(--cor-bege);
+  opacity: 1;
+}
+
+/* Botão Skip (NÃO PRECISO...) */
+.btn-skip {
+    background-color: #fff;
+    color: var(--cor-vinho);
+    border: 2px solid var(--cor-vinho);
+    /* display: none; -> REMOVIDO! JS controla */
+}
+
+.btn-skip:hover {
+    background-color: var(--cor-bege);
+    opacity: 1;
+}
+
+/* --- RESPONSIVO --- */
+@media (max-width: 768px) {
+  /* Layout padrão para telas médias */
+  .options-container {
+    grid-template-columns: repeat(2, 1fr);
+    /* Remove o flex se definido para .icons-container */
+    display: grid !important;
+    justify-items: center; /* Centraliza cards na grid */
+  }
+  .icon-card {
+     width: 150px; /* Ajusta largura no mobile */
+  }
+
+  .question-step h1 { font-size: 1.5rem; }
+
+  .navigation-container {
+    flex-direction: column-reverse; /* Botões embaixo, barra em cima */
+    align-items: stretch; /* Botões ocupam largura total */
+    gap: 1rem;
+  }
+  .progress-bar {
+       order: -1; /* Barra de progresso primeiro */
+       margin-right: 0; /* Remove margem */
+       margin-bottom: 1.5rem; /* Espaço abaixo da barra */
+   }
+   /* Ordem dos botões no mobile */
+   .btn-nav { order: 1; width: 100%; margin-bottom: 0.5rem;} /* Ordem padrão */
+   .btn-voltar-step { order: 2; } /* Voltar fica abaixo */
+   .btn-skip { order: 3; margin-top: 0.5rem;} /* Skip por último */
+}
+
+@media (max-width: 480px) {
+  /* Layout padrão para telas pequenas */
+  .options-container {
+    grid-template-columns: 1fr; /* Uma coluna */
+  }
+  .option-card img { height: 180px; } /* Imagem um pouco maior */
+  .icon-card { width: 180px; }
+  .icon-card img { height: 70px; width: 70px; }
+}

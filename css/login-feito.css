@@ -1,0 +1,357 @@
+:root {
+    /* Cores e Variáveis Globais */
+    --primary-color: #8c0f2a;
+    --secondary-color: #5d0819;
+    --page-background: #faf5ef;
+    --sidebar-bg: #faf5ef;
+    --font-color: #3d3d3d;
+    --accent-color: #770820;
+    --border-color: #ddd;
+    --blue: #007bff;
+    --green: #28a745;
+    --yellow: #ffc107;
+    --red: #dc3545;
+}
+
+/* ------------------- BASE E LAYOUT ------------------- */
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--page-background);
+    color: var(--font-color);
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+a { text-decoration: none; color: inherit; }
+
+/* LAYOUT PRINCIPAL */
+.profile-dashboard {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr) 270px; 
+    grid-template-rows: auto 1fr;
+    gap: 25px;
+    padding: 15px 20px; 
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* ------------------- CABEÇALHO ------------------- */
+.main-header {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--sidebar-bg);
+    border-radius: 10px;
+    border-bottom: 2px solid var(--primary-color);
+    margin-bottom: 0;
+}
+
+.header-left { display: flex; align-items: center; }
+.logo-link {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Playfair Display', serif; font-size: 1.8rem;
+    font-weight: 700; color: #7A1F34; text-decoration: none;
+}
+.logo-image { height: 35px; width: auto; }
+
+.header-pages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem; 
+    flex-grow: 1;
+    font-size: 1.4rem; 
+    color: var(--primary-color);
+    margin: 0 15px;
+}
+
+.header-icons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    min-width: 100px;
+}
+
+/* ------------------- BARRA LATERAL ESQUERDA ------------------- */
+.profile-sidebar {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex; flex-direction: column; gap: 15px;
+}
+
+.user-info {
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px; margin-bottom: 10px;
+}
+.profile-photo {
+    width: 90px; height: 90px; border-radius: 50%; 
+    object-fit: cover; border: 2px solid var(--primary-color); margin-bottom: 10px;
+}
+.user-info h3 { margin: 5px 0; font-size: 1.1rem; }
+.user-info p { margin: 0; font-size: 0.85rem; color: #666; }
+
+.sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
+.nav-item {
+    display: flex; align-items: center; gap: 15px; padding: 12px 15px;
+    cursor: pointer; font-weight: 600; border-radius: 8px; transition: background 0.2s;
+    font-size: 0.95rem;
+}
+.nav-item i { color: var(--primary-color); width: 22px; text-align: center; }
+.nav-item:hover { background-color: var(--accent-color); color: #fff; }
+.nav-item:hover i { color: #fff; }
+
+.sidebar-chart { margin-top: auto; padding-top: 10px; }
+.chart-title { font-size: 0.85rem; font-weight: bold; margin-bottom: 5px; color: var(--font-color); text-align: center; }
+.chart-area { display: flex; align-items: flex-end; justify-content: center; gap: 5px; height: 80px; }
+.chart-bar { width: 18%; background-color: var(--primary-color); border-radius: 3px 3px 0 0; opacity: 0.8; transition: height 0.5s ease; }
+
+/* ------------------- CONTEÚDO PRINCIPAL (MEIO) ------------------- */
+.section-container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+}
+
+.section-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 20px;
+}
+.section-header h2 { font-size: 1.1rem; color: var(--font-color); margin: 0; font-weight: 700; }
+#show-more-btn { font-size: 0.85rem; color: var(--primary-color); font-weight: 600; cursor: pointer; }
+
+.horizontal-scroll-cards {
+    display: flex; 
+    gap: 25px; 
+    overflow-x: auto; 
+    padding-bottom: 10px;
+    padding-right: 10px; 
+    scrollbar-width: thin; 
+    scrollbar-color: var(--accent-color) #f0f0f0;
+}
+.place-card { flex-shrink: 0; width: 140px; text-align: center; }
+.card-image-placeholder {
+    width: 100%; height: 110px; background-color: #dfcab2;
+    border-radius: 10px; margin-bottom: 8px; object-fit: cover;
+}
+.place-card p { font-size: 0.8rem; color: var(--primary-color); font-weight: 600; margin-top: 5px; }
+
+/* Busca */
+.search-bar {
+    display: flex; align-items: center; gap: 10px;
+    border: 1px solid var(--border-color); border-radius: 50px;
+    padding: 8px 15px; margin: 15px 0;
+}
+.search-bar input { border: none; outline: none; flex-grow: 1; background: transparent; font-size: 0.95rem; }
+
+/* Categorias para Explorar */
+.explore-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 25px; 
+    height: 320px; 
+    overflow-y: auto; 
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.explore-card {
+    position: relative; height: 180px; border-radius: 15px;
+    overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s; background-size: cover; background-position: center;
+}
+.explore-card:hover { transform: translateY(-4px); }
+.explore-card::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.25); transition: background-color 0.3s ease; z-index: 0;
+}
+.explore-card:hover::before { background-color: rgba(0, 0, 0, 0.4); }
+
+.card-aventuras { background-image: url('../images/aventuranatureza.png'); }
+.card-restaurantes { background-image: url('../images/restaurantecafe.png'); }
+.card-culturais { background-image: url('../images/experienciasculturais.png'); }
+.card-atividades { background-image: url('../images/atividade-diferente.jpg'); }
+.card-musica { background-image: url('../images/encontro-musica.jpg'); }
+.card-relaxar { background-image: url('../images/relaxar.jpg'); }
+.card-viagem { background-image: url('../images/roadtrip.jpg'); }
+.card-ambientes { background-image: url('../images/ambienteíntimo.png'); }
+.card-petfriendly { background-image: url('../images/pet-friendly.jpg'); }
+
+.card-overlay {
+    position: absolute; bottom: 0; left: 0; width: 100%; height: 35px;
+    background-color: rgba(122, 12, 36, 0.95);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 12px; color: #fff; z-index: 1;
+}
+.explore-card h3 { font-size: 0.75rem; margin: 0; letter-spacing: 0.5px; }
+.explore-card i { font-size: 0.9rem; }
+.explore-card.hidden { display: none; }
+.empty-state-message { grid-column: 1 / -1; text-align: center; color: #888; padding: 20px; }
+
+/* ------------------- BARRA LATERAL DIREITA ------------------- */
+.matches-sidebar {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex; flex-direction: column;
+}
+
+.matches-header h4 {
+    font-size: 0.95rem; color: var(--primary-color);
+    text-align: center; margin-bottom: 12px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+
+/* Eventos Ticketmaster */
+.events-list { max-height: 250px; overflow-y: auto; scrollbar-width: thin; }
+.event-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 0; border-bottom: 1px solid #eee; font-size: 0.85rem;
+}
+.event-details { display: flex; flex-direction: column; gap: 2px; width: 85%; }
+.event-name { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.event-info { font-size: 0.75rem; color: #666; }
+
+/* Mini Agenda */
+.agenda-section { margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px; }
+.agenda-list { display: flex; flex-direction: column; gap: 10px; }
+.agenda-item {
+    display: flex; align-items: center; gap: 10px; padding: 8px;
+    background: var(--page-background); border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+.agenda-date {
+    background: var(--primary-color); color: #fff;
+    padding: 4px; border-radius: 4px; text-align: center; min-width: 38px;
+}
+.agenda-date .day { font-size: 1rem; font-weight: bold; display: block; line-height: 1; }
+.agenda-date .month { font-size: 0.6rem; text-transform: uppercase; }
+.agenda-details { overflow: hidden; white-space: nowrap; }
+.agenda-details .title { font-size: 0.85rem; font-weight: 600; display: block; text-overflow: ellipsis; overflow: hidden; }
+.agenda-details .location { font-size: 0.75rem; color: #666; }
+.agenda-full-link { display: block; text-align: center; font-size: 0.8rem; margin-top: 10px; color: var(--primary-color); }
+
+/* ------------------- EXTRAS: EDITAR PERFIL & NOTIFICAÇÕES ------------------- */
+.edit-grid { display: grid; grid-template-columns: auto 1fr; gap: 30px; padding: 20px 0; }
+.photo-upload-section { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.profile-photo-preview { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid var(--border-color); }
+.upload-label { background: var(--sidebar-bg); padding: 8px 15px; border-radius: 50px; cursor: pointer; font-size: 0.85rem; font-weight: 600; }
+.form-input { padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 8px; width: 100%; box-sizing: border-box; }
+.form-actions { display: flex; justify-content: flex-end; gap: 15px; margin-top: 20px; }
+.btn-salvar { background: var(--primary-color); color: #fff; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: bold; }
+.btn-cancel { padding: 10px 25px; color: var(--font-color); font-weight: 600; }
+.message { padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+.message.success { background-color: #d1e7dd; color: #0f5132; }
+.message.error { background-color: #f8d7da; color: #842029; }
+
+/* Notificações */
+.notification-icon-container { position: relative; display: inline-flex; align-items: center; cursor: pointer; }
+.notification-panel { display: none; position: absolute; top: 120%; right: 0; width: 300px; background: #fff; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 100; border: 1px solid #ddd; }
+.notification-panel.show { display: block; }
+.notification-header { padding: 10px 15px; font-weight: bold; border-bottom: 1px solid #eee; color: var(--primary-color); }
+.notification-item { display: flex; gap: 10px; padding: 10px 15px; border-bottom: 1px solid #eee; font-size: 0.85rem; }
+.notification-item:hover { background: var(--page-background); }
+.notification-icon { width: 20px; text-align: center; }
+
+.toast-notification {
+    position: fixed; top: 20px; right: 20px; background: var(--primary-color); color: #fff;
+    padding: 15px; border-radius: 8px; z-index: 1050; display: flex; gap: 10px;
+    transform: translateX(120%); transition: 0.5s;
+}
+.toast-notification.show { transform: translateX(0); }
+.toast-close-btn { background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; }
+
+
+/* ======================================================= */
+/* === RESPONSIVIDADE (MEDIA QUERIES) === */
+/* ======================================================= */
+
+/* 1. TELAS GRANDES / NOTEBOOKS (Até 1200px) */
+@media (max-width: 1200px) {
+    .profile-dashboard {
+        grid-template-columns: 220px minmax(0, 1fr) 250px;
+        gap: 15px;
+    }
+}
+
+/* 2. TABLETS (Até 992px) */
+@media (max-width: 992px) {
+    .profile-dashboard {
+        grid-template-columns: 80px 1fr;
+        grid-template-rows: auto auto; 
+    }
+    
+    .user-info { display: none; }
+    .sidebar-nav .nav-item span { display: none; }
+    .nav-item { justify-content: center; padding: 15px 0; }
+    .profile-sidebar { padding: 10px 5px; }
+    .sidebar-chart { display: none; }
+
+    .matches-sidebar {
+        grid-column: 1 / -1; 
+        flex-direction: row; gap: 20px; flex-wrap: wrap;
+    }
+    .matches-container, .agenda-section { flex: 1; min-width: 300px; border: none; margin: 0; }
+    
+    .edit-grid { grid-template-columns: 1fr; justify-items: center; }
+}
+
+/* 3. CELULARES (Até 768px) */
+@media (max-width: 768px) {
+    .main-header { flex-direction: column; padding: 15px; gap: 15px; height: auto; }
+    .header-left { width: 100%; display: flex; justify-content: center; }
+    .header-pages { width: 100%; justify-content: space-evenly; margin: 10px 0; gap: 5px; }
+    .header-icons { width: 100%; justify-content: center; gap: 25px; }
+    
+    .profile-dashboard { display: flex; flex-direction: column; padding: 10px; gap: 20px; }
+    
+    .profile-sidebar { order: -1; flex-direction: row; justify-content: center; align-items: center; padding: 10px; }
+    .sidebar-nav { width: 100%; }
+    .sidebar-nav ul { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 10px; }
+    .nav-item { padding: 10px; border-radius: 50%; width: 40px; height: 40px; }
+    
+    .matches-sidebar { flex-direction: column; }
+    .matches-container, .agenda-section { min-width: 100%; }
+    
+    .explore-cards-grid { height: auto; max-height: none; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+    .horizontal-scroll-cards { gap: 15px; padding-bottom: 15px; }
+    
+    .btn-salvar, .btn-cancel { width: 100%; justify-content: center; }
+    
+    .notification-panel { right: -50px; width: 280px; }
+}
+
+/* 4. CELULARES PEQUENOS (Até 480px) */
+@media (max-width: 480px) {
+    .logo-link { font-size: 1.5rem; }
+    .header-pages a { font-size: 1.2rem; }
+    .header-icons { font-size: 1.2rem; }
+    
+    .section-container { padding: 15px 10px; }
+    .section-header h2 { font-size: 0.95rem; }
+    
+    .place-card { width: 120px; }
+    .card-image-placeholder { height: 95px; }
+    
+    .explore-cards-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+    .explore-card { height: 150px; }
+    .explore-card h3 { font-size: 0.7rem; }
+    
+    .matches-container, .agenda-section { min-width: 100%; }
+    .notification-panel { right: -80px; width: 260px; }
+    .toast-notification { width: 90%; right: 5%; top: 10px; font-size: 0.85rem; }
+}
