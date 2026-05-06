@@ -120,6 +120,7 @@
     .agendamento-item { flex-direction: column; text-align: center; gap: 10px; }
     .agendamento-date { width: 100%; flex-direction: row; gap: 10px; padding: 5px; }
     .fc-header-toolbar { flex-direction: column; gap: 10px; }
+<<<<<<< HEAD
 }
 
 .agendamento-actions {
@@ -290,4 +291,6 @@
 /* ÍCONES */
 .modal-footer i {
     margin-right: 6px;
+=======
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
 }

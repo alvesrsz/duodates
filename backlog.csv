@@ -1,0 +1,149 @@
+﻿ID,Work Item Type,Title,Assigned To,State,Tags
+"1","Epic","Cadastro",,"New","MVP"
+"3","User Story","Criar campos: Nome completo, E-mail, Senha, Confirmar senha, Data de nascimento, Cidade/Bairro","José Henrique <josemota@sempreceub.com>","Closed","MVP"
+"4","User Story","Estilizar com base no layout do app (cores, fontes, plano de fundo)","Monalisa Henkell <monalisa.henkell@sempreceub.com>","Closed","MVP"
+"5","User Story","Criar botão 'Próximo'","José Henrique <josemota@sempreceub.com>","Closed","MVP"
+"8","Feature","Tela de Cadastro",,"New","MVP"
+"9","Feature","Validação de Dados de Cadastro",,"New","MVP"
+"10","User Story","Validar se todos os campos estão preenchidos","José Henrique <josemota@sempreceub.com>","Closed","MVP"
+"11","User Story","Verificar se o e-mail é válido","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed","MVP"
+"12","User Story","Verificar se a senha e confirmação coincidem","José Henrique <josemota@sempreceub.com>","Closed","MVP"
+"13","User Story","Exibir mensagens de erro amigáveis","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed","MVP"
+"14","Feature","Envio de Confirmação por E-mail",,"New","MVP"
+"15","User Story","Configurar serviço de envio de e-mail","José Henrique <josemota@sempreceub.com>","Closed","MVP"
+"16","User Story","Criar template do e-mail de boas-vindas","Emily Rodrigues <emily.srodrigues@sempreceub.com>","Closed","MVP"
+"17","User Story","Testar envio de e-mail após o cadastro","José Henrique <josemota@sempreceub.com>","Closed","MVP"
+"18","Feature","Integração com Backend para Criação de Conta",,"New","MVP"
+"19","User Story","Criar endpoint REST /cadastro na API","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed","MVP"
+"20","User Story","Salvar dados no banco de dados","José Henrique <josemota@sempreceub.com>","Closed","MVP"
+"21","User Story","Garantir segurança dos dados (criptografia da senha)","José Henrique <josemota@sempreceub.com>","Closed","MVP"
+"23","Feature","Navegação Pós-Cadastro",,"New","MVP"
+"24","User Story","Redirecionar usuário para tela de essência","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed","MVP"
+"25","User Story","Exibir mensagem “Cadastro realizado com sucesso”","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed","MVP"
+"29","Feature","Questionário Inicial",,"New","MVP"
+"31","User Story","Criar as perguntas e opções de resposta","Monalisa Henkell <monalisa.henkell@sempreceub.com>","Closed","MVP"
+"32","User Story","Estilizar as perguntas e opções","Ana Carolina Dias Vital <ana.carolinav@sempreceub.com>","Closed","MVP"
+"33","User Story","Botão de Ações e Navegação","José Henrique <josemota@sempreceub.com>","Closed","MVP"
+"34","User Story","Armazenar as respostas ","Monalisa Henkell <monalisa.henkell@sempreceub.com>","Closed","MVP"
+"35","Epic","Login por E-mail",,"New","MVP"
+"36","Feature","Autenticação por E-mail",,"New","MVP"
+"37","Feature","Recuperação de Senha",,"New","MVP"
+"38","Feature","Desempenho e Segurança no Login",,"New","MVP"
+"39","User Story"," Fazer login com e-mail e senha","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed","MVP"
+"40","User Story","Validação de formato de e-mail","José Henrique <josemota@sempreceub.com>","Closed","MVP"
+"41","User Story","Solicitar redefinição de senha","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed","MVP"
+"42","User Story","Login rápido e responsivo","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed","MVP"
+"43","User Story","Proteção de dados de login","José Henrique <josemota@sempreceub.com>","Closed","MVP"
+"44","Epic","Perfil Básico do Usuário",,"New",
+"45","Feature","Criação da tela de Perfil",,"New","MVP"
+"46","Feature","Edição e Atualização do Perfil",,"New","MVP"
+"48","User Story","Puxar Lugades ideais de acordo com a Essencia","José Henrique <josemota@sempreceub.com>","Closed","MVP"
+"49","User Story","Acesso a todas as categorias","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed","MVP"
+"50","User Story","Editar preferências existentes - Mudar essência","José Henrique <josemota@sempreceub.com>","Closed","MVP"
+"52","User Story","Proteção dos dados do perfil","José Henrique <josemota@sempreceub.com>","Closed","MVP"
+"54","Feature","Permissão de Localização",,"New","MVP"
+"55","Feature","Detecção Automática da Localização",,"New","MVP"
+"56","Feature","Ativar/Desativar Geolocalização",,"New","MVP"
+"57","User Story","Solicitar permissão ao usuário","Ana Carolina Dias Vital <ana.carolinav@sempreceub.com>","Closed",
+"59","User Story","Exibir sugestões próximas","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"62","Epic","Recomendações Personalizadas",,"New",
+"63","Feature","Sistema de Recomendação de Atividades e Lugares - PESSOAIS",,"New",
+"64","User Story","Recomendações Personalizadas","José Henrique <josemota@sempreceub.com>","Closed",
+"66","Feature","Sistema de Avaliações e Comentários",,"New",
+"67","User Story","Avaliar",,"New",
+"68","Epic","Gerenciamento de Favoritos",,"New",
+"69","Feature","Salvar e Organizar Favoritos",,"New",
+"70","User Story","Revisitar ou planejar futuros encontros","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"71","Epic","Calendario de Planejamento",,"New",
+"72","Feature","Calendário Integrado para Casais",,"New",
+"73","User Story","Acesso ao Calendário","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"74","User Story","Criação e Edição de Encontros","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"76","User Story","Notificações e Lembretes","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"78","Epic","Design e Identidade Visual",,"New",
+"79","Feature","Interface Intuitiva e Atraente",,"New",
+"80","User Story","Paleta de Cores e Tipografia Personalizadas","Emily Rodrigues <emily.srodrigues@sempreceub.com>","Closed",
+"81","User Story","Design Responsivo e Adaptável a Diferentes Dispositivos","Geovana Arantes <geovana.arantes@sempreceub.com>","Active",
+"82","Feature","Criação de Logo e Elementos Gráficos da Marca",,"New",
+"83","User Story","Criação de Logo","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"84","User Story","Elementos Gráficos da Marca","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"85","User Story","Ícones e Ilustrações Personalizadas","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"86","User Story","Coerência Visual entre Todas as Telas","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"88","Feature","Cadastro e Login",,"New",
+"89","Feature","Criação e Sincronização de Perfis de Casal",,"New",
+"90","Feature","Favoritos",,"New",
+"91","Feature","Calendário Integrado",,"New",
+"92","Feature","Interface Intuitiva",,"New",
+"93","Feature","Identidade Visual e Marca",,"New",
+"94","Feature","Logotipo e Elementos Gráficos",,"New",
+"95","Feature","Segurança e Privacidade",,"New",
+"98","User Story"," Redefinir senha","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"99","User Story","Enviar convite","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"100","User Story","Sincronizar atividades","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"101","User Story","Compatibilidade de Gostos Diferentes","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"102","User Story","Sugestões Neutras e Criativas","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"103","User Story","Salvar locais e atividades","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"104","User Story","Acessar facilmente lista de favoritos","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"105","User Story","Remover itens da lista","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"106","User Story","Acessar calendário","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"107","User Story","Criar, editar e excluir eventos","Monalisa Henkell <monalisa.henkell@sempreceub.com>","Closed",
+"108","User Story","Sincronização em tempo real",,"New",
+"109","User Story","Notificações e lembrete","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"110","User Story","Calendário protegido por autenticação","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"111","User Story","Menus claros e organizados","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"112","User Story","Visuais autoexplicativos","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"113","User Story","Layout seja responsivo",,"Active",
+"114","User Story","Design moderno e harmonioso","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"116","User Story","Logotipo","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"117","User Story","Ícones","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"120","User Story","Criar pagina de mudar essencia","Ana Carolina Dias Vital <ana.carolinav@sempreceub.com>","Closed",
+"121","User Story","Edição de perfil ( Foto e Senha)","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"122","User Story","Acesso a eventos próximos API TICKET MASTER","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"123","Feature","Estrutura da Lógica de Tags (Backend)",,"New",
+"124","User Story","Lógica de Tags da Essência (Definir e cadastrar tags principais)","Emily Rodrigues <emily.srodrigues@sempreceub.com>","Closed",
+"125","User Story","Classificação de Lugares","Monalisa Henkell <monalisa.henkell@sempreceub.com>","Closed",
+"126","User Story","Visualização da Compatibilidade de Lugares","Ana Carolina Dias Vital <ana.carolinav@sempreceub.com>","Closed",
+"127","Feature","Padronização Visual (front-end)",,"New",
+"128","User Story","Layout e Identidade Visual / Padronização de CSS","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"130","User Story","Protótipos e Documentação","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"131","User Story","​​Exibição Filtrada de Lugares","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"132","Feature","Compatibilidade de Perfis",,"New",
+"133","User Story","Lógica de Compatibilidade de Perfis","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"134","User Story","Questionário Avançado","Monalisa Henkell <monalisa.henkell@sempreceub.com>","Closed",
+"135","User Story","Visualização de Lugares em comum","Ana Carolina Dias Vital <ana.carolinav@sempreceub.com>","Closed",
+"137","User Story","Alinhamento e padronização de icones de navegação","Ana Carolina Dias Vital <ana.carolinav@sempreceub.com>","Closed",
+"138","User Story","Gráfico de essência junto com os lugares","José Henrique <josemota@sempreceub.com>","Closed",
+"140","User Story","Questionario de essencia individual","José Henrique <josemota@sempreceub.com>","Closed",
+"141","User Story","Configuração do CSS da página de essencia","Ana Carolina Dias Vital <ana.carolinav@sempreceub.com>","Closed",
+"143","Feature","Perfil de administrador",,"New",
+"144","Feature","Tela de perfil logado",,"New",
+"146","Feature","Questionário de Essência Para Usuários",,"New",
+"147","User Story","Definir perguntas para questionário introdutório","Ana Carolina Dias Vital <ana.carolinav@sempreceub.com>","Closed",
+"148","User Story","Criar página dinâmica com as perguntas","José Henrique <josemota@sempreceub.com>","Closed",
+"149","Feature","Cadastro para Empresas",,"New",
+"150","User Story","Criar campos: Nome da Empresa, CNPJ, E-mail Comercial, Senha, Confirmar senha, Cidade/Bairro","José Henrique <josemota@sempreceub.com>","Closed",
+"151","User Story","Validar se todos os campos estão preenchidos corretamente","Monalisa Henkell <monalisa.henkell@sempreceub.com>","Closed",
+"152","User Story","Criação de: Seleção de Tags do local a ser inserido","Emily Rodrigues <emily.srodrigues@sempreceub.com>","Closed",
+"153","User Story","Criar campos: Categoria, Nome do local, Descrição, endereço, horário de funcionamento e foto","José Henrique <josemota@sempreceub.com>","Closed",
+"154","User Story","Criar botão 'Solicitar Cadastro'","José Henrique <josemota@sempreceub.com>","Closed",
+"155","User Story","Pesquisar Categorias","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",
+"156","User Story","Aceitar e desvincular Compatibilidade","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"157","User Story","Botão para criar novas Compatibilidades (5 max)","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"158","User Story","Favoritos em comum","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"159","Epic","Perfil Administrador",,"New",
+"160","User Story","Notificações","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"161","User Story","Notificação de solicitação","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"162","Feature","Dashboard e navegações",,"New",
+"163","User Story","Gerenciar e Adicionar Locais Pendentes","José Henrique <josemota@sempreceub.com>","Closed",
+"164","User Story","Gerenciar Usuários","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"165","User Story","Gerenciar Locais","José Henrique <josemota@sempreceub.com>","Closed",
+"166","User Story","Gerenciar Tags e Categorias","Emily Rodrigues <emily.srodrigues@sempreceub.com>","Closed",
+"167","Epic","Perfil Empresa",,"New",
+"168","Feature","Tela de dashboard",,"New",
+"169","User Story","Visualizar agendamentos de usuários em seu local","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"170","User Story","Gerenciar Local","Monalisa Henkell <monalisa.henkell@sempreceub.com>","Closed",
+"171","Epic","Tela Inicial",,"New",
+"172","Feature","Introdução do sistema, explicação botões de cadastro e login",,"New",
+"173","User Story","Quadrante Pra Quem é o Sistema","Wallace Alves Gomes <alvesz.gomes@sempreceub.com>","Closed",
+"174","User Story","FAQ","Monalisa Henkell <monalisa.henkell@sempreceub.com>","Closed",
+"175","User Story","Acesso ao estilos de dates oferecidos","Ana Carolina Dias Vital <ana.carolinav@sempreceub.com>","Closed",
+"176","User Story","Padronização de estilo, tipografia e cores","Geovana Arantes <geovana.arantes@sempreceub.com>","Closed",

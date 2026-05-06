@@ -17,6 +17,7 @@
 html, body {
     height: 100%;
     margin: 0;
+<<<<<<< HEAD
     overflow-x: hidden;
     font-family: 'Montserrat', sans-serif;
     background-color: var(--page-background);
@@ -25,17 +26,33 @@ html, body {
 }
 *, *:before, *:after {
     box-sizing: inherit;
+=======
+    overflow-x: hidden; /* Evita rolagem horizontal global */
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--page-background);
+    color: var(--font-color);
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
 }
 a { text-decoration: none; color: inherit; }
 
 /* LAYOUT PRINCIPAL */
 .profile-dashboard {
     display: grid;
+<<<<<<< HEAD
     grid-template-columns: 250px minmax(0, 1fr) 270px; 
     grid-template-rows: auto 1fr;
     gap: 25px;
     padding: 15px 20px; 
     min-height: 100vh;
+=======
+    /* Esq: 250px | Meio: O que sobrar (sem estourar) | Dir: 270px */
+    grid-template-columns: 250px minmax(0, 1fr) 270px; 
+    grid-template-rows: auto 1fr;
+    gap: 25px; /* AUMENTADO de 20 para 25px para dar mais ar geral */
+    padding: 15px 20px; 
+    min-height: 100vh;
+    box-sizing: border-box;
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
     width: 100%;
 }
 
@@ -133,12 +150,22 @@ a { text-decoration: none; color: inherit; }
 .section-header h2 { font-size: 1.1rem; color: var(--font-color); margin: 0; font-weight: 700; }
 #show-more-btn { font-size: 0.85rem; color: var(--primary-color); font-weight: 600; cursor: pointer; }
 
+<<<<<<< HEAD
 .horizontal-scroll-cards {
     display: flex; 
     gap: 25px; 
     overflow-x: auto; 
     padding-bottom: 10px;
     padding-right: 10px; 
+=======
+/* --- CORREÇÃO 1: Cards Horizontais (Meus Lugares Ideais) --- */
+.horizontal-scroll-cards {
+    display: flex; 
+    gap: 25px; /* AUMENTADO de 15px para 25px */
+    overflow-x: auto; 
+    padding-bottom: 10px;
+    padding-right: 10px; /* Adicionado para o último card não cortar */
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
     scrollbar-width: thin; 
     scrollbar-color: var(--accent-color) #f0f0f0;
 }
@@ -157,11 +184,20 @@ a { text-decoration: none; color: inherit; }
 }
 .search-bar input { border: none; outline: none; flex-grow: 1; background: transparent; font-size: 0.95rem; }
 
+<<<<<<< HEAD
 /* Categorias para Explorar */
 .explore-cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 25px; 
+=======
+/* --- CORREÇÃO 2: Categorias para Explorar --- */
+.explore-cards-grid {
+    display: grid;
+    /* Ajusta automaticamente colunas de no mínimo 160px (era 150px) */
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 25px; /* AUMENTADO de 15px para 25px */
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
     height: 320px; 
     overflow-y: auto; 
     padding-right: 10px;
@@ -180,6 +216,10 @@ a { text-decoration: none; color: inherit; }
 }
 .explore-card:hover::before { background-color: rgba(0, 0, 0, 0.4); }
 
+<<<<<<< HEAD
+=======
+/* Classes de Imagem (Mantidas) */
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
 .card-aventuras { background-image: url('../images/aventuranatureza.png'); }
 .card-restaurantes { background-image: url('../images/restaurantecafe.png'); }
 .card-culturais { background-image: url('../images/experienciasculturais.png'); }
@@ -280,6 +320,7 @@ a { text-decoration: none; color: inherit; }
 /* === RESPONSIVIDADE (MEDIA QUERIES) === */
 /* ======================================================= */
 
+<<<<<<< HEAD
 /* 1. TELAS GRANDES / NOTEBOOKS (Até 1200px) */
 @media (max-width: 1200px) {
     .profile-dashboard {
@@ -295,14 +336,33 @@ a { text-decoration: none; color: inherit; }
         grid-template-rows: auto auto; 
     }
     
+=======
+/* 1. TABLETS (Até 992px) */
+@media (max-width: 992px) {
+    .profile-dashboard {
+        /* Colunas: Menu Esq (80px) | Conteúdo (Resto) */
+        grid-template-columns: 80px 1fr;
+        /* Sidebar Direita vai para baixo */
+        grid-template-rows: auto auto; 
+    }
+    
+    /* Menu Lateral Encolhido */
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
     .user-info { display: none; }
     .sidebar-nav .nav-item span { display: none; }
     .nav-item { justify-content: center; padding: 15px 0; }
     .profile-sidebar { padding: 10px 5px; }
+<<<<<<< HEAD
     .sidebar-chart { display: none; }
 
     .matches-sidebar {
         grid-column: 1 / -1; 
+=======
+
+    /* Barra Direita vai para o final */
+    .matches-sidebar {
+        grid-column: 1 / -1; /* Ocupa tudo embaixo */
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
         flex-direction: row; gap: 20px; flex-wrap: wrap;
     }
     .matches-container, .agenda-section { flex: 1; min-width: 300px; border: none; margin: 0; }
@@ -310,6 +370,7 @@ a { text-decoration: none; color: inherit; }
     .edit-grid { grid-template-columns: 1fr; justify-items: center; }
 }
 
+<<<<<<< HEAD
 /* 3. CELULARES (Até 768px) */
 @media (max-width: 768px) {
     .main-header { flex-direction: column; padding: 15px; gap: 15px; height: auto; }
@@ -354,4 +415,22 @@ a { text-decoration: none; color: inherit; }
     .matches-container, .agenda-section { min-width: 100%; }
     .notification-panel { right: -80px; width: 260px; }
     .toast-notification { width: 90%; right: 5%; top: 10px; font-size: 0.85rem; }
+=======
+/* 2. CELULARES (Até 768px) */
+@media (max-width: 768px) {
+    .main-header { flex-direction: column; padding: 15px; gap: 15px; height: auto; }
+    .header-pages { width: 100%; justify-content: space-between; margin: 10px 0; }
+    
+    .profile-dashboard { display: flex; flex-direction: column; padding: 10px; gap: 20px; }
+    
+    /* Menu Lateral vira Barra de Navegação */
+    .profile-sidebar { order: -1; }
+    .sidebar-nav ul { display: flex; justify-content: space-around; }
+    .nav-item { padding: 10px; }
+    
+    .matches-sidebar { flex-direction: column; }
+    .explore-cards-grid { height: auto; max-height: 400px; }
+    
+    .btn-salvar, .btn-cancel { width: 100%; justify-content: center; }
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
 }

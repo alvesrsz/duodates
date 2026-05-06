@@ -484,7 +484,11 @@ if ($stmt_agenda) {
 
                     <?php 
                     // Tenta incluir o arquivo que busca eventos
+<<<<<<< HEAD
                     include 'buscar_ticketmaster.php';
+=======
+                    @include '../php/buscar_ticketmaster.php'; 
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
                     ?>
 
 <div class="events-list"> 

@@ -27,7 +27,11 @@ if ($user_data = $result_user->fetch_assoc()) {
 $stmt_user->close();
 
 $agendamentos = [];
+<<<<<<< HEAD
 $sql_agendamentos = "SELECT ag.id_agendamento, ag.data_agendada, ag.titulo_evento, ag.STATUS, l.titulo as nome_local
+=======
+$sql_agendamentos = "SELECT ag.data_agendada, ag.titulo_evento, l.titulo as nome_local 
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
                      FROM agendamentos ag 
                      JOIN locais l ON ag.id_local = l.id_local 
                      WHERE ag.id_usuario = ? 
@@ -160,6 +164,7 @@ $conn->close();
                                 <div class="agendamento-details">
                                     <span class="event-title"><?php echo htmlspecialchars($ag['titulo_evento']); ?></span>
                                     <span class="event-location"><i class="fas fa-map-marker-alt"></i> <?php echo htmlspecialchars($ag['nome_local']); ?></span>
+<<<<<<< HEAD
                                     <div class="agendamento-actions">
 
     <?php if(isset($ag['STATUS']) && $ag['STATUS'] == 'aprovado'): ?>
@@ -185,6 +190,8 @@ Alterar
     </a>
 
 </div>
+=======
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -222,6 +229,7 @@ Alterar
             }
         });
     </script>
+<<<<<<< HEAD
     <script>
 function abrirModalEditar(id, titulo, data) {
     const modal = document.getElementById('modalEditar');
@@ -284,5 +292,7 @@ function salvarEdicao() {
 
     </div>
 </div>
+=======
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
 </body>
 </html>

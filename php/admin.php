@@ -8,6 +8,7 @@ error_reporting(0);
 
 include '../conexao.php';
 
+<<<<<<< HEAD
 // ═══════════════════════════════════════════════════════════════════
 // ▼ INTERCEPTAÇÃO: se for empresa caindo aqui, vai pro dashboard certo
 // ═══════════════════════════════════════════════════════════════════
@@ -17,6 +18,8 @@ if (isset($_SESSION['tipo_conta']) && $_SESSION['tipo_conta'] === 'empresarial')
 }
 // ═══════════════════════════════════════════════════════════════════
 
+=======
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
 // --- VERIFICAÇÃO DE SEGURANÇA ---
 if (!isset($_SESSION['user_id']) || $_SESSION['tipo_conta'] !== 'admin') {
     header('Location: ../index.php');
@@ -739,6 +742,7 @@ if ($view == 'dashboard') {
             </main>
             
             <script>
+<<<<<<< HEAD
             const temLocaisOriginais = <?php echo ($resultado_locais && $resultado_locais->num_rows > 0) ? 'true' : 'false'; ?>;
 
             function filtrarTabelaLocais() {
@@ -779,11 +783,82 @@ if ($view == 'dashboard') {
                         linhaNenhumResultado.style.display = "none";
                     }
                 }
+=======
+            // Esta constante nos diz se a tabela tinha locais para começar (antes de qualquer filtro)
+            const temLocaisOriginais = <?php echo ($resultado_locais && $resultado_locais->num_rows > 0) ? 'true' : 'false'; ?>;
+
+            function filtrarTabelaLocais() {
+                // 1. Obter os valores atuais dos filtros
+                const filtroTitulo = document.getElementById('filtro-titulo').value.toLowerCase();
+                const filtroCat = document.getElementById('filtro-categoria').value;
+                // .toLowerCase() torna a busca de texto insensível a maiúsculas/minúsculas
+                const filtroTag = document.getElementById('filtro-tag').value.toLowerCase();
+
+                // 2. Obter a tabela e todas as suas linhas (tr)
+                const tabelaCorpo = document.getElementById('tabela-locais-corpo');
+                const linhas = tabelaCorpo.getElementsByTagName('tr');
+                
+                // 3. Obter as linhas especiais (para mostrar/esconder depois)
+                const linhaNenhumResultado = document.getElementById('nenhum-resultado-local-row');
+                const linhaNenhumLocal = document.getElementById('nenhum-local-row');
+                
+                let linhasVisiveis = 0;
+
+                // 4. Loop por todas as linhas da tabela
+                for (let i = 0; i < linhas.length; i++) {
+                    const linha = linhas[i];
+
+                    // Ignorar as linhas especiais de "nenhum local" ou "nenhum resultado"
+                    if (linha.id === 'nenhum-local-row' || linha.id === 'nenhum-resultado-local-row') {
+                        continue; 
+                    }
+
+                    // 5. Obter o texto de cada célula da linha atual
+                    const celulas = linha.getElementsByTagName('td');
+                    // Coluna 1: Título
+                    const valorTitulo = celulas[1].textContent.toLowerCase(); 
+                    // Coluna 2: Tags
+                    const valorTags = celulas[2].textContent.toLowerCase(); 
+                    // Coluna 3: Categoria
+                    const valorCat = celulas[3].textContent;
+
+                    // 6. Lógica de filtro: verificar se a linha corresponde a TODOS os filtros
+                    // (Um filtro vazio "" significa "qualquer um")
+                    const matchTitulo = (filtroTitulo === "" || valorTitulo.includes(filtroTitulo));
+                    const matchCat = (filtroCat === "" || valorCat === filtroCat);
+                    // .includes() verifica se o texto contém
+                    const matchTag = (filtroTag === "" || (valorTags.includes(filtroTag) && valorTags !== "nenhuma tag")); 
+
+                    // 7. Mostrar ou esconder a linha
+                    if (matchTitulo && matchCat && matchTag) {
+                        linha.style.display = ""; // Mostra a linha
+                        linhasVisiveis++;
+                    } else {
+                        linha.style.display = "none"; // Esconde a linha
+                    }
+                }
+
+                // 8. Lógica para mostrar a mensagem "Nenhum resultado"
+                if (linhaNenhumResultado) {
+                    if (linhasVisiveis === 0 && temLocaisOriginais) {
+                        linhaNenhumResultado.style.display = ""; // Mostra "Nenhum resultado"
+                    } else {
+                        linhaNenhumResultado.style.display = "none"; // Esconde "Nenhum resultado"
+                    }
+                }
+                
+                // 9. Se a tabela estava vazia desde o início, garante que a msg original apareça
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
                 if(linhaNenhumLocal && !temLocaisOriginais) {
                     linhaNenhumLocal.style.display = "";
                 }
             }
 
+<<<<<<< HEAD
+=======
+
+            // Script de deleção (já existente, agora dentro do DOMContentLoaded)
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
             document.addEventListener('DOMContentLoaded', function () {
                 document.querySelectorAll('.action-btn.delete').forEach(button => {
                     button.addEventListener('click', function() {
@@ -798,6 +873,10 @@ if ($view == 'dashboard') {
                             .then(data => {
                                 if (data.status === 'success') {
                                     document.getElementById('local-row-' + localId).remove();
+<<<<<<< HEAD
+=======
+                                    // Re-avalia a filtragem/contagem após deletar
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
                                     filtrarTabelaLocais(); 
                                 } else {
                                     alert('Erro: ' + data.message);
@@ -982,6 +1061,7 @@ if ($view == 'dashboard') {
             </main>
         
             <script>
+<<<<<<< HEAD
                 const temTagsOriginais = <?php echo ($resultado_tags && $resultado_tags->num_rows > 0) ? 'true' : 'false'; ?>;
 
                 function filtrarTabelaTags() {
@@ -999,10 +1079,43 @@ if ($view == 'dashboard') {
                         if (linha.id === 'nenhuma-tag-row' || linha.id === 'nenhum-resultado-row') {
                             continue; 
                         }
+=======
+                // Esta constante nos diz se a tabela tinha tags para começar (antes de qualquer filtro)
+                const temTagsOriginais = <?php echo ($resultado_tags && $resultado_tags->num_rows > 0) ? 'true' : 'false'; ?>;
+
+                function filtrarTabelaTags() {
+                    // 1. Obter os valores atuais dos filtros
+                    const filtroCat = document.getElementById('filtro-categoria').value;
+                    const filtroSub = document.getElementById('filtro-subcategoria').value;
+                    // .toLowerCase() torna a busca de texto insensível a maiúsculas/minúsculas
+                    const filtroTag = document.getElementById('filtro-tag').value.toLowerCase();
+
+                    // 2. Obter a tabela e todas as suas linhas (tr)
+                    const tabelaCorpo = document.getElementById('tabela-tags-corpo');
+                    const linhas = tabelaCorpo.getElementsByTagName('tr');
+                    
+                    // 3. Obter as linhas especiais (para mostrar/esconder depois)
+                    const linhaNenhumResultado = document.getElementById('nenhum-resultado-row');
+                    const linhaNenhumaTag = document.getElementById('nenhuma-tag-row');
+                    
+                    let linhasVisiveis = 0;
+
+                    // 4. Loop por todas as linhas da tabela
+                    for (let i = 0; i < linhas.length; i++) {
+                        const linha = linhas[i];
+
+                        // Ignorar as linhas especiais de "nenhuma tag" ou "nenhum resultado"
+                        if (linha.id === 'nenhuma-tag-row' || linha.id === 'nenhum-resultado-row') {
+                            continue; 
+                        }
+
+                        // 5. Obter o texto de cada célula da linha atual
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
                         const celulas = linha.getElementsByTagName('td');
                         const valorCat = celulas[0].textContent;
                         const valorSub = celulas[1].textContent;
                         const valorTag = celulas[2].textContent.toLowerCase();
+<<<<<<< HEAD
                         const matchCat = (filtroCat === "" || valorCat === filtroCat);
                         const matchSub = (filtroSub === "" || valorSub === filtroSub);
                         const matchTag = (filtroTag === "" || valorTag.includes(filtroTag));
@@ -1022,6 +1135,34 @@ if ($view == 'dashboard') {
                             linhaNenhumResultado.style.display = "none";
                         }
                     }
+=======
+
+                        // 6. Lógica de filtro: verificar se a linha corresponde a TODOS os filtros
+                        // (Um filtro vazio "" significa "qualquer um")
+                        const matchCat = (filtroCat === "" || valorCat === filtroCat);
+                        const matchSub = (filtroSub === "" || valorSub === filtroSub);
+                        const matchTag = (filtroTag === "" || valorTag.includes(filtroTag)); // .includes() verifica se o texto contém
+
+                        // 7. Mostrar ou esconder a linha
+                        if (matchCat && matchSub && matchTag) {
+                            linha.style.display = ""; // Mostra a linha
+                            linhasVisiveis++;
+                        } else {
+                            linha.style.display = "none"; // Esconde a linha
+                        }
+                    }
+
+                    // 8. Lógica para mostrar a mensagem "Nenhum resultado"
+                    if (linhaNenhumResultado) {
+                        if (linhasVisiveis === 0 && temTagsOriginais) {
+                            linhaNenhumResultado.style.display = ""; // Mostra "Nenhum resultado"
+                        } else {
+                            linhaNenhumResultado.style.display = "none"; // Esconde "Nenhum resultado"
+                        }
+                    }
+                    
+                    // Se a tabela estava vazia desde o início, garante que a msg original apareça
+>>>>>>> a43d483c9258fe940c36652caaa0ab57ce59bc08
                     if(linhaNenhumaTag && !temTagsOriginais) {
                         linhaNenhumaTag.style.display = "";
                     }
