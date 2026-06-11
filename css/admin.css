@@ -1,0 +1,633 @@
+/* Importando a fonte Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #5E313D;
+    --sidebar-bg: #770820;
+    --sidebar-text: #a2a3b7;
+    --sidebar-text-active: #ffffff;
+    --main-bg: #f4f7f6;
+    --panel-bg: #ffffff;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --blue: #3699FF;
+    --green: #1BC5BD;
+    --red: #F64E60;
+    --yellow: #FFA800;
+    --purple: #6f42c1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--main-bg);
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- BARRA LATERAL (SIDEBAR) --- */
+.sidebar {
+    width: 25%;
+    max-width: 260px;
+    min-width: 200px;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.sidebar-header {
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 1px solid #2d2d42;
+}
+
+.sidebar-header h2 {
+    color: var(--sidebar-text-active);
+    font-size: 1.5rem;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--sidebar-text);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+    background-color: #2d2d42;
+    color: var(--sidebar-text-active);
+}
+
+.nav-item.active {
+    background-color: var(--primary-color);
+    color: var(--sidebar-text-active);
+}
+
+.nav-item i {
+    width: 20px;
+    text-align: center;
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.main-content {
+    flex-grow: 1;
+    padding: 2rem;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.main-header h3 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.header-actions a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.panel {
+    background-color: var(--panel-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.panel.large {
+    grid-column: span 2;
+}
+.panel.full-width {
+    grid-column: 1 / -1;
+}
+
+.panel h4 {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+/* --- CARTÕES DE ESTATÍSTICA --- */
+.stat-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card h4 {
+    font-size: 1rem;
+    color: white;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.stat-card i {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    font-size: 4rem;
+    opacity: 0.2;
+}
+
+.stat-card.blue { background: var(--blue); }
+.stat-card.green { background: var(--green); }
+.stat-card.red { background: var(--red); }
+.stat-card.yellow { background: var(--yellow); }
+.stat-card.purple { background: var(--purple); }
+
+
+/* --- TABELA DE DADOS --- */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+}
+
+.data-table th {
+    font-weight: 600;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.data-table td {
+    color: #555;
+}
+
+/* --- Estilo para a lista de Top Favoritos --- */
+.top-list {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: top-list-counter;
+}
+.top-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.top-list li:last-child {
+    border-bottom: none;
+}
+.top-list li::before {
+    counter-increment: top-list-counter;
+    content: counter(top-list-counter);
+    margin-right: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    background-color: #fce8ef;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.top-list li span:last-child {
+    font-weight: bold;
+    color: #555;
+}
+.top-list li .fa-heart {
+    color: var(--red);
+    margin-left: 0.25rem;
+}
+
+/* --- Estilos para a página Gerenciar Locais --- */
+
+.data-table .table-image-thumbnail {
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #eee;
+}
+
+.data-table .actions-cell {
+    display: flex;
+    gap: 10px;
+}
+
+/* Botões genéricos de ação em tabelas */
+.action-btn {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.action-btn.edit { background-color: var(--blue); }
+.action-btn.delete { background-color: var(--red); }
+.action-btn.view { background-color: #6c757d; } /* Botão cinza 'Ver' */
+
+
+/* --- Estilos para Botões de Ação na Tabela de Pendentes (Aprovar/Reprovar) --- */
+.btn-approve,
+.btn-reject {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-approve:hover,
+.btn-reject:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.btn-approve { background-color: var(--green); }
+.btn-approve:hover { background-color: #17a89f; }
+.btn-reject { background-color: var(--red); }
+.btn-reject:hover { background-color: #d83b4e; }
+
+/* --- ESTILOS PARA A TELA DE DETALHES DE PENDENTES --- */
+.detail-view {
+    padding: 20px 0;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-section {
+    background-color: var(--panel-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.detail-section h4 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+}
+
+.detail-item {
+    margin-bottom: 1rem;
+}
+.detail-item strong {
+    display: block;
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+.detail-item span,
+.detail-item a {
+    font-size: 1em;
+    color: #333;
+    word-wrap: break-word;
+}
+.detail-item a { color: var(--blue); text-decoration: underline; }
+
+.detail-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    margin-top: 10px;
+    border: 1px solid #f0f0f0;
+}
+
+.detail-actions {
+    background-color: var(--panel-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-top: 1.5rem;
+}
+.detail-actions h4 {
+      margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+.detail-actions .actions {
+    display: flex;
+    gap: 1rem;
+}
+
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .panel.large {
+        grid-column: span 1;
+    }
+}
+@media (max-width: 992px) {
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: row;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    .sidebar {
+        width: 70px;
+        min-width: 70px;
+        flex-direction: column;
+        padding-top: 1rem;
+    }
+    .sidebar-header {
+        padding: 1rem 0;
+    }
+    .sidebar-header h2 {
+        display: none; 
+    }
+    .sidebar-nav {
+        flex-direction: column;
+        padding: 0.5rem 0;
+    }
+    .nav-item {
+        font-size: 0; 
+        justify-content: center;
+        padding: 1rem 0;
+    }
+    .nav-item i {
+        font-size: 1.2rem; 
+        margin: 0;
+    }
+    .main-content {
+        width: calc(100% - 70px);
+        padding: 1rem;
+        overflow-x: hidden;
+    }
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .data-table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* === ESTILOS PARA CHECKBOXES E FORMULÁRIOS (TAGS) === */
+.tag-checkboxes {
+    max-height: 250px;
+    overflow-y: auto; 
+    border: 1px solid #ddd;
+    border-radius: 6px; 
+    padding: 10px;
+    background-color: #fff;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 2px 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.checkbox-item:hover {
+    background-color: #f8f9fa;
+}
+
+.checkbox-item input[type="checkbox"] {
+    margin-right: 10px;
+    width: 16px; 
+    height: 16px;
+    cursor: pointer;
+}
+
+.checkbox-item label {
+    font-weight: normal;
+    margin-bottom: 0;
+    cursor: pointer;
+    flex-grow: 1;
+    color: #444;
+}
+
+.form-group small {
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 5px;
+}
+
+.form-actions {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.form-actions .btn-approve,
+.form-actions .btn-reject {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+}
+
+/* Mensagens de feedback */
+.message {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.message.success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+}
+.message.error {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+}
+
+
+/* === ESTILO PARA CAIXA DE TAGS NA TABELA (DESIGN DE BADGE) === */
+
+/* Container rolável */
+.tag-container {
+    max-height: 80px;      /* Altura máxima (aprox. 3 a 4 linhas) */
+    overflow-y: auto;      /* Adiciona a barra de rolagem vertical */
+    padding: 5px;
+    border: 1px solid #ddd; 
+    border-radius: 6px;
+    background-color: #ffffff; 
+    display: flex;
+    flex-wrap: wrap;       /* Permite que as tags quebrem para a linha de baixo */
+    gap: 5px;              /* Espaço entre as tags */
+}
+
+/* Estilo para cada tag individual (O "Badge") */
+.tag-item {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background-color: var(--primary-color); /* Fundo vinho */
+    color: white;
+    font-size: 0.75rem; /* Letra menor */
+    font-weight: 500;
+    white-space: nowrap; /* Não deixa a tag quebrar no meio da palavra */
+}
+
+/* Torna a coluna um pouco mais larga para o bloco caber melhor */
+.data-table td:nth-child(3) { /* Seleciona a 3ª célula (Tags) */
+    width: 25%;
+    min-width: 180px;
+}
+
+/* ================================== */
+/* === ESTILOS DE FORMULÁRIO (FALTANDO) === */
+/* ================================== */
+
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+/* Estilo base para inputs de texto, email, URL, textareas e selects */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="url"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    background-color: #fcfcfc;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Efeito de foco para inputs */
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="url"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(94, 49, 61, 0.15); /* Sombra suave com a cor primária */
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* === ESTILOS DE BOTÕES DE FORMULÁRIO (FALTANDO) === */
+
+/* Container para os botões */
+.form-actions {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+/* Estilos para os novos botões .save e .cancel */
+.action-btn.save {
+    background-color: var(--green); /* Verde, como o 'aprovar' */
+    color: white;
+}
+.action-btn.save:hover {
+    background-color: #17a89f;
+}
+
+.action-btn.cancel {
+    background-color: #6c757d; /* Cinza, como o 'ver' */
+    color: white;
+}
+.action-btn.cancel:hover {
+    background-color: #5a6268;
+}

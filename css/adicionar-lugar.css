@@ -1,0 +1,271 @@
+/* Importação das fontes do Google */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap');
+
+/* Variáveis de cores e fontes */
+:root {
+    --page-background: #FAF5EF;
+    --primary-color: #A73A36;
+    --primary-color-dark: #8c2d29;
+    --secondary-text-color: #3D3D3D;
+    --button-text-color: #FFFFFF;
+    --input-border-color: #D1C7BC;
+    --input-focus-border-color: var(--primary-color);
+}
+
+/* Reset e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--page-background);
+    background-image: radial-gradient(circle at top left, #ffffff, #FAF5EF 80%);
+    color: var(--secondary-text-color);
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Seta de Voltar - AGORA FIXA NA TELA */
+.back-link {
+    position: fixed; /* Fixa a posição na tela */
+    top: 2rem;
+    left: 2rem;
+    z-index: 1000; /* Garante que fique sobre outros elementos */
+    color: var(--secondary-text-color);
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    transform: scale(1.1);
+}
+
+.back-link svg {
+    width: 28px;
+    height: 28px;
+}
+
+
+.page-container {
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Cabeçalho e Título */
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+/* Container Principal do Formulário */
+.content-main {
+    background-color: #FFFFFF;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid var(--primary-color);
+    width: 100%;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-text-color);
+}
+
+input[type="text"],
+input[type="url"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--input-border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--secondary-text-color);
+    background-color: #FDFDFD;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--input-focus-border-color);
+    box-shadow: 0 0 0 4px rgba(167, 58, 54, 0.1);
+}
+
+input[type="file"] {
+    border: none;
+    background: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: #f1ebe5;
+    color: var(--primary-color);
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+}
+
+/* --- CÓDIGO ATUALIZADO --- */
+/* Agora este estilo se aplica TANTO ao botão de submit QUANTO ao link de voltar */
+button[type="submit"],
+.btn-voltar {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    margin-top: 1rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--primary-color-dark));
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(167, 58, 54, 0.2);
+    transition: all 0.3s ease;
+    
+    /* Adições importantes para o <a> se parecer com um <button> */
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Aplica o mesmo efeito de hover para ambos */
+button[type="submit"]:hover,
+.btn-voltar:hover {
+    background: linear-gradient(45deg, var(--primary-color-dark), #7c2622);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(167, 58, 54, 0.3);
+}
+
+/* Mensagens de Sucesso e Erro */
+.message {
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.message.error {
+    background-color: rgba(211, 47, 47, 0.1);
+    color: #D32F2F;
+    border: 1px solid rgba(211, 47, 47, 0.3);
+}
+
+/* Responsividade */
+@media (max-width: 640px) {
+    body {
+        padding: 1rem;
+    }
+
+    .back-link {
+        top: 1rem;
+        left: 1rem;
+    }
+    
+    .content-main {
+        padding: 1.5rem;
+    }
+}
+/* Sugestões para adicionar-lugar.css */
+
+.tags-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 350px; /* Altura máxima com rolagem */
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    margin-bottom: 15px; /* Espaçamento */
+}
+
+.tag-category-group {
+    margin-bottom: 5px;
+}
+
+.tag-category-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer; /* Indica que é clicável */
+    padding: 5px;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+}
+
+.tag-category-title:hover {
+    background-color: #eee;
+}
+
+.tag-checkbox-list {
+    padding-left: 20px; /* Indentação das tags */
+    margin-top: 10px;
+    border-left: 2px solid #eee;
+}
+
+.tag-item {
+    display: block; /* Garante que cada checkbox fique em sua linha */
+    margin-bottom: 8px;
+}
+
+.tag-item input[type="checkbox"] {
+    margin-right: 8px; /* Espaço entre o checkbox e o texto */
+}
+
+.tag-item label {
+    display: inline-block; /* Alinha o texto com o checkbox */
+    cursor: pointer;
+}

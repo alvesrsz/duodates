@@ -1,0 +1,372 @@
+/* Importando Fontes Google */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+/* DEFINIÇÃO DAS CORES */
+:root { 
+    --cor-vinho-escuro: #5c1a32; /* Vinho principal */
+    --cor-vinho-claro: #8c2a3e;  /* Vinho secundário */
+    --cor-fundo-bege: #fdfaf9;   /* Seu Bege Padrão */
+    --cor-branco-puro: #ffffff; /* Branco para o container */
+    --cor-texto: #3f3d56;       /* Cinza/roxo escuro */
+    --cor-texto-suave: #6c757d;  /* Cinza suave */
+    --cor-borda-suave: #e8e8e8;  /* Borda bem clara */
+    --cor-sombra: rgba(94, 49, 61, 0.1); /* Sombra baseada no vinho */
+    --cor-rosa-claro: #fdeef4; /* Rosa bem clarinho para seleção */
+    --cor-dourado-suave: #d4af37; /* Toque dourado */
+}
+
+/* ESTILOS GERAIS DO BODY */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cor-fundo-bege); /* Fundo Bege */
+    color: var(--cor-texto);
+    margin: 0;
+    padding: 40px 20px; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    min-height: 100vh;
+    box-sizing: border-box; /* Inclui padding na altura total */
+}
+
+/* CONTAINER PRINCIPAL DO QUESTIONÁRIO */
+.questionario-container {
+    background-color: var(--cor-branco-puro); /* Box Principal Branco */
+    padding: 40px 50px; /* Padding ajustado */
+    border-radius: 20px; 
+    box-shadow: 0 10px 40px var(--cor-sombra); 
+    width: 100%;
+    max-width: 750px; 
+    text-align: center;
+    border-top: 5px solid var(--cor-vinho-escuro); 
+    transform: translateY(0); 
+    opacity: 0; 
+    animation: fadeInContainer 0.8s ease-out 0.2s forwards; 
+    margin-bottom: 40px; /* Espaço extra no final */
+}
+
+@keyframes fadeInContainer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* CABEÇALHO DA PERGUNTA */
+.questionario-header {
+    margin-bottom: 40px;
+}
+
+.logo-duodates { 
+     font-family: 'Playfair Display', serif; 
+     font-size: 2.5rem;
+     color: var(--cor-vinho-escuro);
+     font-weight: 700;
+     margin-bottom: 25px;
+     position: relative; 
+}
+.logo-duodates::after { 
+     content: '';
+     display: block;
+     width: 50px;
+     height: 3px;
+     background-color: var(--cor-dourado-suave);
+     margin: 10px auto 0;
+     border-radius: 2px;
+}
+
+.questionario-header h2 { /* Título da pergunta */
+    color: var(--cor-vinho-claro);
+    font-size: 1.6rem; 
+    margin-bottom: 15px;
+    line-height: 1.4; 
+}
+
+.progresso-texto {
+     color: var(--cor-texto-suave);
+     font-size: 1rem;
+     font-weight: 500;
+}
+
+/* BARRA DE PROGRESSO */
+.progress-bar-container {
+     width: 80%; 
+     margin: 25px auto 0;
+     background-color: #f0f0f0;
+     border-radius: 10px;
+     height: 12px;
+     overflow: hidden; 
+}
+.progress-bar-fill {
+     height: 100%;
+     width: 0%; 
+     background: linear-gradient(90deg, var(--cor-vinho-claro) 0%, var(--cor-vinho-escuro) 100%); 
+     border-radius: 10px;
+     transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
+     box-shadow: inset 0 -2px 4px rgba(0,0,0,0.1); 
+}
+
+/* OPÇÕES DE RESPOSTA (GRID) */
+.opcoes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 20px; 
+    margin-bottom: 40px;
+}
+
+/* ESTILO DE CADA OPÇÃO (LABEL QUE ENVOLVE O RADIO/CHECKBOX) */
+.opcao-item label {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-start; /* Alinha imagem no topo */
+    padding: 15px; 
+    border: 2px solid var(--cor-borda-suave);
+    border-radius: 12px; 
+    cursor: pointer;
+    transition: all 0.3s ease; 
+    text-align: center;
+    font-weight: 500;
+    background-color: var(--cor-branco-puro); 
+    position: relative; 
+    overflow: hidden; 
+    /* ALTERADO: Aumentei a altura mínima para acomodar imagens maiores */
+    min-height: 200px; /* Ajuste este valor se precisar de mais ou menos altura */
+}
+
+.opcao-item label:hover {
+    border-color: var(--cor-vinho-claro);
+    transform: translateY(-5px); /* ALTERADO: Aumentei o efeito de "levantar" */
+    /* ALTERADO: Sombra um pouco mais visível no hover */
+    box-shadow: 0 6px 20px rgba(94, 49, 61, 0.12); 
+}
+
+/* Esconde o input real (radio ou checkbox) */
+.opcao-item input[type="radio"],
+.opcao-item input[type="checkbox"] {
+    display: none;
+}
+
+/* ESTILO QUANDO A OPÇÃO ESTÁ SELECIONADA */
+.opcao-item input[type="radio"]:checked + label,
+.opcao-item input[type="checkbox"]:checked + label {
+    border-color: var(--cor-vinho-escuro);
+    background-color: var(--cor-rosa-claro); 
+    color: var(--cor-vinho-escuro);
+    font-weight: 600;
+    /* ALTERADO: Sombra mais acentuada e efeito 3D sutil */
+    box-shadow: 0 8px 25px rgba(94, 49, 61, 0.18); 
+    transform: scale(1.04) translateY(-2px); /* ALTERADO: Aumenta um pouco mais e levanta levemente */
+}
+/* Ícone de check quando selecionado */
+.opcao-item input[type="radio"]:checked + label::before,
+.opcao-item input[type="checkbox"]:checked + label::before {
+     content: '\f00c'; 
+     font-family: 'Font Awesome 6 Free';
+     font-weight: 900;
+     position: absolute;
+     top: 10px; 
+     right: 15px;
+     color: var(--cor-vinho-escuro);
+     font-size: 1rem;
+     opacity: 0;
+     transform: scale(0.5);
+     animation: checkFadeIn 0.3s ease forwards;
+}
+
+@keyframes checkFadeIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ESTILO DAS IMAGENS NAS OPÇÕES */
+.opcao-imagem {
+    width: 100%; 
+    /* ALTERADO: Aumentei a altura da imagem consideravelmente */
+    height: 120px; /* Ajuste conforme necessário para ficar igual ao outro card */
+    object-fit: cover; 
+    margin-bottom: 15px; /* ALTERADO: Aumentei um pouco o espaço abaixo da imagem */
+    border-radius: 6px; 
+    border: 1px solid var(--cor-borda-suave); 
+    display: block; 
+    /* NOVO: Cor de fundo caso a imagem não carregue, melhor que o ícone quebrado */
+    background-color: #f0f0f0; 
+    /* NOVO: Para o caso de link quebrado, mostra um texto alternativo sutil */
+    color: #bbb;
+    text-align: center;
+    line-height: 120px; /* Centraliza o texto alternativo verticalmente */
+    font-size: 0.8em;
+}
+
+/* ESTILO DO TEXTO NAS OPÇÕES */
+.opcao-texto {
+    display: block; 
+    font-size: 1rem; /* ALTERADO: Aumentei um pouco a fonte */
+    line-height: 1.4; /* ALTERADO: Ajustei a altura da linha */
+    margin-top: auto; 
+    padding-top: 5px; 
+    /* NOVO: Aplica a cor vinho escuro ao texto */
+    color: var(--cor-vinho-escuro); 
+    font-weight: 600; /* NOVO: Deixa o texto um pouco mais forte */
+}
+
+/* BOTÕES DE NAVEGAÇÃO */
+.navegacao-botoes {
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--cor-borda-suave); 
+}
+
+.botao-questionario {
+    padding: 14px 30px; 
+    border: none;
+    border-radius: 50px; 
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--cor-vinho-escuro);
+    color: white;
+    box-shadow: 0 4px 10px var(--cor-sombra);
+    display: inline-flex; 
+    align-items: center;
+    gap: 8px; 
+}
+
+.botao-questionario:hover:not(:disabled) { 
+     background-color: var(--cor-vinho-claro);
+     transform: translateY(-3px); 
+     box-shadow: 0 6px 15px rgba(94, 49, 61, 0.2); 
+}
+.botao-questionario:active:not(:disabled) { 
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(94, 49, 61, 0.15);
+}
+
+/* Botão Anterior */
+.botao-questionario.btn-anterior { 
+     background-color: #fff;
+     color: var(--cor-vinho-claro);
+     border: 2px solid var(--cor-vinho-claro);
+     box-shadow: none;
+}
+.botao-questionario.btn-anterior:hover:not(:disabled) {
+     background-color: var(--cor-rosa-claro);
+     border-color: var(--cor-vinho-escuro);
+     color: var(--cor-vinho-escuro);
+     box-shadow: 0 4px 10px var(--cor-sombra);
+}
+ .botao-questionario.btn-anterior:active:not(:disabled) {
+     transform: translateY(-1px);
+     box-shadow: 0 2px 5px rgba(94, 49, 61, 0.1);
+}
+
+/* Botão Desabilitado */
+.botao-questionario:disabled { 
+     background-color: #e0e0e0; 
+     border-color: #e0e0e0;
+     color: #999;
+     cursor: not-allowed;
+     transform: none;
+     box-shadow: none;
+}
+
+/* CONTROLE DA VISIBILIDADE DAS PERGUNTAS */
+.pergunta-bloco { 
+    display: none; 
+    animation: questionFadeIn 0.5s ease-out; 
+}
+.pergunta-bloco.ativa { 
+    display: block; 
+} 
+/* Animação de Saída (Opcional, ativada via JS) */
+.pergunta-bloco.saindo {
+    animation: questionFadeOut 0.5s ease-out forwards;
+}
+
+@keyframes questionFadeIn {
+    from { opacity: 0; transform: translateX(30px); } 
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes questionFadeOut { /* Animação de saída */
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: 0; transform: translateX(-30px); }
+}
+
+
+/* EFEITO DE LOADING FINAL COM CORAÇÃO ANIMADO */
+#loading-compatibilidade {
+    animation: fadeInLoading 0.5s ease forwards;
+}
+
+@keyframes fadeInLoading {
+     from { opacity: 0; transform: translateY(10px); } 
+     to { opacity: 1; transform: translateY(0); }
+}
+
+/* Coração animado com sombra dinâmica */
+.coracao-animado {
+    font-size: 5rem; 
+    color: var(--cor-vinho-escuro); /* COR VINHO */
+    display: inline-block; 
+    margin-bottom: 20px;
+    animation: batidaCoracao 1.5s infinite ease-in-out; 
+    text-shadow: 3px 3px 8px rgba(0,0,0,0.15); 
+}
+
+@keyframes batidaCoracao {
+  0%, 100% { 
+    transform: scale(1); 
+    text-shadow: 3px 3px 8px rgba(0,0,0,0.15); /* Sombra normal */
+  }
+  10% { 
+    transform: scale(0.9) rotate(-3deg); 
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Sombra menor */
+  }
+  30% { 
+    transform: scale(1.15); 
+    text-shadow: 5px 5px 12px rgba(94, 49, 61, 0.2); /* Sombra maior */
+  }
+  50% { 
+    transform: scale(1) rotate(3deg); 
+    text-shadow: 3px 3px 8px rgba(0,0,0,0.15); /* Sombra normal */
+  }
+  70% { 
+    transform: scale(1.1); 
+    text-shadow: 4px 4px 10px rgba(94, 49, 61, 0.18); /* Sombra segundo pulso */
+  }
+}
+
+/* Texto do loading com animação sutil */
+#loading-compatibilidade p {
+    font-size: 1.3rem; 
+    color: var(--cor-vinho-claro);
+    font-weight: 600;
+    letter-spacing: 1px; 
+    line-height: 1.5; 
+    animation: textPulse 1.5s infinite ease-in-out alternate; 
+}
+
+@keyframes textPulse {
+    from { opacity: 0.7; } /* Começa mais apagado */
+    to { opacity: 1; }
+}
+
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+     .opcoes-container { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); } 
+}
+
+@media (max-width: 600px) {
+    body { padding: 20px 10px; }
+    .questionario-container { padding: 30px 20px; } /* Menos padding lateral */
+    .logo-duodates { font-size: 2rem; }
+    .questionario-header h2 { font-size: 1.3rem; }
+    .opcoes-container { grid-template-columns: 1fr; } /* Uma coluna */
+    .opcao-item label { min-height: 150px; padding: 10px;} /* Ajustei min-height para mobile */ 
+    .opcao-imagem { height: 70px; } /* Ajustei altura da imagem para mobile */
+    .botao-questionario { padding: 12px 20px; font-size: 0.9rem;}
+    .navegacao-botoes { flex-direction: column-reverse; gap: 15px;} 
+    .botao-questionario { width: 100%; } 
+}

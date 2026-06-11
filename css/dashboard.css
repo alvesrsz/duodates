@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --sidebar-bg: #2c3e50;
+    --main-bg: #ecf0f1;
+    --text-light: #ffffff;
+    --text-dark: #34495e;
+    --primary-color: #E94D73;
+    --card-bg: #ffffff;
+    --border-color: #bdc3c7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--main-bg);
+    color: var(--text-dark);
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- BARRA LATERAL (SIDEBAR) --- */
+.sidebar {
+    width: 25%;
+    max-width: 260px;
+    min-width: 200px;
+    background-color: var(--sidebar-bg);
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-header h3 {
+    font-weight: 600;
+}
+
+.sidebar-nav {
+    flex-grow: 1;
+    padding-top: 20px;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.sidebar-nav ul li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.sidebar-nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-nav ul li a.active {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-left: 4px solid var(--primary-color);
+    padding-left: 16px; /* Para alinhar o texto com os outros itens */
+}
+
+.sidebar-nav ul li a i {
+    width: 20px;
+    margin-right: 15px;
+    text-align: center;
+}
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-footer a {
+    display: flex;
+    align-items: center;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.sidebar-footer a:hover {
+    color: var(--primary-color);
+}
+
+.sidebar-footer a i {
+    width: 20px;
+    margin-right: 15px;
+    text-align: center;
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+}
+
+.main-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: var(--sidebar-bg);
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    width: 100%;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.report-card h4 {
+    font-size: 1rem;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.report-card .favorite-count {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.report-card .card-description {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #95a5a6;
+}
+
+.report-card.placeholder .favorite-count {
+    color: var(--border-color);
+    font-size: 2.5rem;
+}
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+    
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .sidebar-header, 
+    .sidebar-footer {
+        display: none; 
+    }
+    
+    .sidebar-nav {
+        padding-top: 0;
+        width: 100%;
+    }
+    
+    .sidebar-nav ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .sidebar-nav ul li a {
+        padding: 10px;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        font-size: 0.9rem;
+    }
+    
+    .sidebar-nav ul li a.active {
+        border-left: none;
+        border-bottom: 3px solid var(--primary-color);
+        padding-left: 10px;
+    }
+    
+    .sidebar-nav ul li a i {
+        margin-right: 5px;
+    }
+    
+    .main-content {
+        padding: 15px;
+    }
+}

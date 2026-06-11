@@ -1,0 +1,1 @@
+<?php define('GEOAPIFY_KEY', '32068fa0e70b4fc18faa9dab07dcb305'); ?>

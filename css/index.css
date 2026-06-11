@@ -1,0 +1,409 @@
+/* ======================================================= */
+/* === VARIÁVEIS E BASE === */
+/* ======================================================= */
+:root {
+  --page-background: #FAF5EF;
+  --primary-color: #5C151B; 
+  --btn-color: #4A0E15;
+  --secondary-text-color: #3D3D3D;
+  --gold-text: #C8A476;
+  --white: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--page-background);
+  overflow-x: hidden; 
+  width: 100%;
+}
+
+.scroll-container {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+.fullscreen-section {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ======================================================= */
+/* === HEADER === */
+/* ======================================================= */
+.new-header {
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  position: relative;
+  z-index: 100;
+}
+
+.new-header .logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.header-center-pin {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -150px; /* Ajustado para puxar o pin para cima */
+  z-index: 999; 
+  pointer-events: none; 
+}
+
+.header-center-pin img {
+  height: 500px !important; 
+  width: auto;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+  display: block;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-nav-link {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.btn-login-white {
+  background-color: var(--white);
+  color: var(--primary-color);
+  padding: 10px 50px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease !important;
+}
+
+/* ======================================================= */
+/* === HERO SECTION === */
+/* ======================================================= */
+.new-hero-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 80px 5%; 
+  position: relative !important;
+  overflow: hidden !important;
+  /* min-height: 100vh; Removido, redundant */
+}
+
+.hero-content-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px; 
+}
+
+.hero-left-content {
+  max-width: 1000px !important; 
+  position: relative;
+  z-index: 10; 
+  margin-top: 40px;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.8rem !important; 
+  color: var(--primary-color);
+  line-height: 1.05;
+  margin-bottom: 40px;
+  z-index: 10;
+  position: relative;
+}
+
+.btn-comecar-agora {
+  display: inline-block;
+  background-color: var(--btn-color);
+  color: var(--white);
+  padding: 20px 50px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 70px;
+  transition: all 0.3s ease !important;
+}
+
+/* ======================================================= */
+/* === RECURSOS (LOSANGOS) === */
+/* ======================================================= */
+.hero-features {
+  display: flex;
+  gap: 40px; 
+}
+
+.feature-item {
+  text-align: center;
+  transition: transform 0.3s ease !important;
+  cursor: default;
+  position: relative;
+  z-index: 1;
+}
+
+.diamond-icon {
+  width: 130px;  
+  height: 130px; 
+  background-color: var(--primary-color);
+  transform: rotate(45deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 45px;
+  margin-left: 15px;
+  border-radius: 12px;
+  transition: box-shadow 0.3s ease, filter 0.3s ease;
+  /* ATENÇÃO: Removi o overflow: hidden; para deixar a imagem vazar */
+}
+
+.diamond-icon img {
+  transform: rotate(-45deg);
+  width:600px; /* Pode aumentar à vontade! Tente 350px ou 400px se quiser maior */
+  height: auto;
+  filter: none;
+  position: absolute; /* Ajuda a centralizar a imagem vazada */
+  pointer-events: none; /* A MÁGICA: O mouse ignora a caixa gigante transparente do PNG */
+}
+
+.feature-item p {
+  font-size: 1.1rem; 
+  font-weight: 700;
+  color: var(--secondary-text-color);
+}
+
+/* Interações nos Recursos */
+.feature-item:hover {
+  transform: translateY(-12px) !important; 
+  z-index: 10; 
+}
+
+.feature-item:hover .diamond-icon {
+  box-shadow: 5px 15px 25px rgba(0, 0, 0, 0.25) !important;
+  filter: brightness(1.1) !important; 
+}
+
+/* Interações nos Botões */
+.btn-login-white:hover {
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
+  color: var(--primary-color) !important;
+}
+
+.btn-comecar-agora:hover {
+  transform: translateY(-5px) scale(1.05) !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3) !important;
+  filter: brightness(1.1) !important; 
+}
+
+/* ======================================================= */
+/* === ILUSTRAÇÃO DA MESA COZINHA === */
+/* ======================================================= */
+.hero-right-illustration {
+    position: absolute !important;
+    right: -25% !important; /* Valor negativo empurra a imagem para fora da margem invisível */
+    bottom: -150px !important; 
+    z-index: 1;
+    pointer-events: none;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.bg-writing {
+    position: absolute;
+    z-index: 1;
+    width: 100%; 
+    bottom: 1000px;
+    right: 0;
+    opacity: 0.6;
+}
+
+.illustration-img {
+    position: relative !important;
+    z-index: 3; 
+    
+    /* A MÁGICA ACONTECE AQUI: */
+    width: 1800px !important; /* Pode aumentar para 1100px ou 1200px se quiser ainda maior! */
+    max-width: none !important; /* Removemos a trava antiga de 800px que impedia o crescimento */
+    
+    height: auto !important;
+    mix-blend-mode: multiply !important; 
+    filter: none !important; 
+    opacity: 0.95; 
+}
+
+/* ======================================================= */
+/* === ESTATÍSTICAS === */
+/* ======================================================= */
+.stats-banner {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 80px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stats-text-area { max-width: 50%; }
+.stats-text-area h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: var(--gold-text);
+  margin-bottom: 15px;
+}
+.stats-text-area p { font-size: 1.1rem; line-height: 1.6; }
+
+.stats-numbers-area {
+  display: flex;
+  gap: 60px;
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  color: var(--gold-text);
+  text-align: center;
+}
+
+.stat-number span { color: var(--white); }
+
+/* ======================================================= */
+/* === CARROSSEL E FAQ === */
+/* ======================================================= */
+/* ======================================================= */
+/* === CARROSSEL (NOVO LOOP INFINITO) E FAQ === */
+/* ======================================================= */
+.date-style-section { background-color: var(--page-background); padding: 100px 0; }
+.date-style-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--primary-color); margin-bottom: 60px; }
+
+/* Contêiner principal das setas e do carrossel */
+.carousel-wrapper { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 40px; 
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* A "Janela" que vai esconder os cards que sobram para fora */
+.style-grid-wrapper {
+    width: 1020px; /* Largura exata para caber 3 cards (320px) + 2 espaços (30px) = 1020px */
+    overflow: hidden; 
+}
+
+/* A pista (track) que desliza para a esquerda e direita */
+.style-grid { 
+    display: flex; 
+    gap: 30px; /* Espaçamento entre os cards */
+    /* Transition removida daqui pois será controlada via JavaScript */
+}
+
+/* Tamanho e Estilos do Card */
+.style-card { 
+    flex: 0 0 auto; /* Impede o card de encolher */
+    width: 320px; 
+    height: 450px; 
+    border-radius: 20px; 
+    overflow: hidden; 
+    position: relative; 
+    text-decoration: none; 
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15); 
+}
+
+.card-image { width: 100%; height: 100%; background-size: cover; background-position: center; transition: 0.6s; }
+.style-card:hover .card-image { transform: scale(1.1); }
+.card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; color: white; }
+.card-overlay i { font-size: 2.8rem; margin-bottom: 15px; }
+.card-overlay span { font-size: 1.6rem; font-weight: 700; }
+
+.nav-arrow { background: none; border: none; font-size: 3.5rem; color: var(--primary-color); cursor: pointer; transition: 0.3s; }
+.nav-arrow:hover { color: var(--gold-text); transform: scale(1.1); }
+
+.faq-section { background-color: var(--page-background); padding: 100px 15%; }
+.faq-title { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--primary-color); margin-bottom: 50px; text-align: center; }
+.faq-item { border-bottom: 1px solid #D1C7BC; padding: 30px 0; }
+.faq-question { width: 100%; text-align: left; background: none; border: none; font-size: 1.5rem; font-weight: 700; color: var(--primary-color); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-answer { display: none; padding-top: 20px; font-size: 1.2rem; color: var(--secondary-text-color); line-height: 1.6; }
+.faq-item.active .faq-answer { display: block; }
+.faq-item.active i { transform: rotate(180deg); transition: 0.3s; }
+
+.main-footer { text-align: center; padding: 50px; background-color: var(--page-background); border-top: 1px solid #D1C7BC; color: var(--secondary-text-color); font-size: 1rem; }
+
+/* ======================================================= */
+/* === RESPONSIVIDADE (Tablets e Celulares) === */
+/* ======================================================= */
+@media (max-width: 1200px) {
+  .hero-content-wrapper { flex-direction: column; text-align: center; }
+  .hero-right-illustration { justify-content: center; margin-top: 50px; position: relative !important; right: 0 !important; bottom: 0 !important; }
+  .illustration-img { max-width: 700px; }
+  .hero-features { justify-content: center; flex-wrap: wrap; }
+  .diamond-icon { margin-left: auto; margin-right: auto; }
+  .style-grid-wrapper { width: 670px; } /* Mostra 2 cards em telas médias */
+}
+
+@media (max-width: 900px) {
+  .hero-title { font-size: 3.5rem; }
+  .header-center-pin img { height: 100px; top: 15px; }
+  .stats-banner { flex-direction: column; text-align: center; gap: 50px; padding: 60px 5%; }
+  .stats-text-area { max-width: 100%; }
+  .card-group { flex-direction: column; }
+  .style-card { width: 100%; height: 300px; }
+  .faq-section { padding: 60px 5%; }
+  .style-card { width: 100%; height: 300px; }
+}
+
+@media (max-width: 768px) {
+    .new-header { flex-direction: column; padding: 15px; gap: 15px; }
+    .header-right { flex-direction: column; width: 100%; gap: 10px; }
+    .hero-title { font-size: 2.5rem !important; }
+    .btn-comecar-agora { padding: 15px 30px; font-size: 1rem; }
+    .diamond-icon { width: 100px; height: 100px; }
+    .diamond-icon img { width: 220px; } /* Aumentado para preencher mais o losango em mobile */
+    .header-center-pin img { height: auto !important; width: 80% !important; max-width: 300px; }
+    .stats-text-area h2, .date-style-title, .faq-title { font-size: 2.2rem; }
+    .stat-number { font-size: 3rem; }
+    .faq-question { font-size: 1.2rem; }
+    .style-grid { flex-direction: column; align-items: center; }
+    /* Configuração de deslizar no dedo para o Carrossel */
+    .carousel-wrapper { gap: 10px; padding: 0 5%; }
+    .nav-arrow { display: none; } /* Esconde as setas no celular */
+    
+    .style-grid-wrapper { 
+        width: 100%; 
+        overflow-x: auto; /* Permite arrastar para os lados */
+        scroll-snap-type: x mandatory; /* Efeito de snap suave (puxa o card para o centro) */
+        scrollbar-width: none; /* Esconde a barra de rolagem (Firefox) */
+    }
+    
+    .style-grid-wrapper::-webkit-scrollbar { display: none; } /* Esconde a barra de rolagem (Chrome/Safari) */
+    
+    .style-grid { gap: 15px; }
+    
+    .style-card { 
+        width: 260px; /* Um pouco menor no celular */
+        scroll-snap-align: center; /* Centraliza o card ao arrastar */
+        flex: 0 0 auto; 
+    }
+}
