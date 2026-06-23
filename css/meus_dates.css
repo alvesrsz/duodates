@@ -1,211 +1,168 @@
-:root {
-    /* Cores e Variáveis Globais */
-    --primary-color: #8c0f2a;
-    --secondary-color: #5d0819;
-    --page-background: #faf5ef;
-    --sidebar-bg: #faf5ef;
-    --font-color: #3d3d3d;
-    --accent-color: #791021;
-    --border-color: #ddd;
-    --green: #28a745;
-    --red: #dc3545;
-}
+/* ===== MEUS DATES — estilos específicos da página =====
+   Layout, cores e variáveis base vêm de login-feito.css  */
 
-/* ------------------- BASE ------------------- */
-html, body {
-    height: 100%; margin: 0; overflow-x: hidden;
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--page-background);
-    color: var(--font-color);
-}
-a { text-decoration: none; color: inherit; }
-
-/* LAYOUT PRINCIPAL 
-   Usamos exatamente o mesmo grid do login-feito.css 
-   para garantir que encaixe no seu monitor.
-*/
-.profile-dashboard {
-    display: grid;
-    /* Esq: 250px | Meio: Flexível (minmax corrige o estouro) | Dir: 270px */
-    grid-template-columns: 250px minmax(0, 1fr) 270px; 
-    grid-template-rows: auto 1fr;
-    gap: 20px;
-    padding: 15px 20px;
-    min-height: 100vh;
-    box-sizing: border-box;
-    width: 100%;
-}
-
-/* IMPORTANTE: 
-   Removemos todo o CSS de .main-header, .header-pages, .profile-sidebar aqui.
-   Como a página já carrega o 'login-feito.css', ela vai usar o cabeçalho 
-   e a barra lateral idênticos aos da página principal.
-*/
-
-/* ------------------- CONTEÚDO ESPECÍFICO: MEUS DATES ------------------- */
+/* ------------------- CONTEÚDO ESPECÍFICO ------------------- */
 .section-container {
-    background-color: #fff; border-radius: 10px; padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-bottom: 20px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    margin-bottom: 12px;
 }
 
-.actions-header { margin-bottom: 20px; }
+.actions-header { margin-bottom: 18px; }
+
 .btn-primary {
-    background-color: var(--primary-color); color: white;
-    padding: 10px 20px; border-radius: 50px; font-weight: bold;
+    background-color: var(--primary-color); color: #fff;
+    padding: 10px 22px; border-radius: 50px; font-weight: 700;
     display: inline-flex; align-items: center; gap: 10px;
+    transition: background 0.2s, transform 0.15s;
+    font-size: 0.92rem;
 }
 .btn-primary:hover { background-color: var(--secondary-color); transform: translateY(-2px); }
 
-/* Lista de Compatibilidades */
-.compatibilidade-list { display: flex; flex-direction: column; gap: 15px; }
+/* --- Lista de Compatibilidades --- */
+.compatibilidade-list { display: flex; flex-direction: column; gap: 14px; }
 
 .compatibilidade-card {
-    display: flex; align-items: center; gap: 20px; padding: 15px;
-    background-color: #fdfdfd; border: 1px solid var(--border-color);
-    border-radius: 10px; transition: 0.3s;
+    display: flex; align-items: center; gap: 18px; padding: 14px;
+    background-color: #fff; border: 1px solid var(--border-color);
+    border-radius: 10px; transition: border-color 0.2s, box-shadow 0.2s;
 }
-.compatibilidade-card:hover { border-color: var(--accent-color); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.compatibilidade-card:hover { border-color: var(--primary-color); box-shadow: 0 3px 10px rgba(0,0,0,0.06); }
 
 .compatibilidade-photo {
-    width: 60px; height: 60px; border-radius: 50%;
-    object-fit: cover; border: 2px solid var(--accent-color);
+    width: 58px; height: 58px; border-radius: 50%;
+    object-fit: cover; border: 2px solid var(--accent-color); flex-shrink: 0;
 }
 .compatibilidade-info { flex-grow: 1; }
-.compatibilidade-info h3 { margin: 0 0 5px 0; font-size: 1.1rem; }
-.compatibilidade-score { font-weight: bold; color: var(--primary-color); }
+.compatibilidade-info h3 { margin: 0 0 4px 0; font-size: 1rem; color: var(--font-color); }
+.compatibilidade-score { font-weight: 700; color: var(--primary-color); font-size: 0.92rem; }
 
-.compatibilidade-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.compatibilidade-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
 .action-link, .btn-unlink {
-    background-color: var(--sidebar-bg); color: var(--font-color);
-    padding: 6px 12px; border-radius: 50px; font-size: 0.8rem;
+    background-color: var(--card-bg); color: var(--font-color);
+    padding: 5px 11px; border-radius: 50px; font-size: 0.78rem;
     font-weight: 600; display: inline-flex; align-items: center; gap: 5px;
+    border: 1px solid var(--border-color); transition: background 0.18s, color 0.18s;
 }
-.action-link:hover { background-color: var(--accent-color); color: #fff; }
-.btn-unlink:hover { background-color: #ddd; }
+.action-link:hover { background-color: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+.btn-unlink:hover  { background-color: #e8e8e8; }
 
-/* Pendentes */
-.pending-requests-section { margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 20px; }
-.pending-requests-section h4 { font-size: 1.1rem; color: var(--primary-color); margin-bottom: 15px; }
-.compatibilidade-card.pending { background-color: #fffbf0; border-color: #ffeeba; }
-.pending-text { margin: 0; font-style: italic; color: #666; font-size: 0.9rem; }
+/* --- Pedidos Pendentes --- */
+.pending-requests-section {
+    margin-bottom: 25px; border-bottom: 1px solid var(--border-color); padding-bottom: 18px;
+}
+.pending-requests-section h4 { font-size: 1rem; color: var(--primary-color); margin-bottom: 12px; }
+.compatibilidade-card.pending { background-color: #fffbf0; border-color: #f0d88a; }
+.pending-text { margin: 0; font-style: italic; color: var(--text-mid); font-size: 0.88rem; }
 
-.btn-accept, .btn-decline { padding: 6px 15px; border-radius: 20px; border:none; cursor: pointer; color: white; display: flex; align-items: center; gap: 5px; font-size: 0.85rem;}
-.btn-accept { background-color: var(--green); }
-.btn-decline { background-color: var(--red); }
+.btn-accept  { padding: 6px 14px; border-radius: 20px; border: none; cursor: pointer; color: #fff; background-color: var(--green);  display: inline-flex; align-items: center; gap: 5px; font-size: 0.83rem; }
+.btn-decline { padding: 6px 14px; border-radius: 20px; border: none; cursor: pointer; color: #fff; background-color: var(--red); display: inline-flex; align-items: center; gap: 5px; font-size: 0.83rem; }
 
-/* Mensagens */
-.message { padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+/* --- Mensagens e Estados Vazios --- */
+.message { padding: 14px; border-radius: 8px; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
 .message.success { background-color: #d1e7dd; color: #0f5132; }
-.message.error { background-color: #f8d7da; color: #842029; }
-.empty-state { text-align: center; padding: 40px; color: #777; border: 2px dashed #ddd; border-radius: 10px; }
-.empty-state i { font-size: 2.5rem; color: #ccc; margin-bottom: 10px; display: block; }
+.message.error   { background-color: #f8d7da; color: #842029; }
+.empty-state {
+    text-align: center; padding: 35px; color: var(--text-mid);
+    border: 2px dashed var(--border-color); border-radius: 10px;
+}
+.empty-state i { font-size: 2.5rem; color: var(--border-color); margin-bottom: 10px; display: block; }
 
-/* ------------------- BARRA LATERAL DIREITA & AGENDA ------------------- */
-/* Mantemos estilos de conteúdo, mas o container usa o do login-feito */
+/* --- Sidebar Direita (Eventos + Agenda) --- */
 .matches-sidebar {
-    background-color: #fff; border-radius: 10px; padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column;
+    background-color: var(--card-bg);
+    border-radius: 10px; padding: 20px;
+    border: 1px solid var(--border-color);
+    display: flex; flex-direction: column;
 }
 .matches-header h4 {
-    font-size: 1rem; color: var(--primary-color); text-align: center;
-    margin-bottom: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;
+    font-size: 0.92rem; color: var(--primary-color); text-align: center;
+    margin-bottom: 12px; display: flex; justify-content: center; align-items: center; gap: 8px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border-color);
 }
 
-.events-list { margin-top: 15px; max-height: 250px; overflow-y: auto; scrollbar-width: thin; }
+.events-list { margin-top: 12px; max-height: 240px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--border-color) transparent; }
 .event-item {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 10px 0; border-bottom: 1px solid #eee; font-size: 0.85rem;
+    padding: 9px 0; border-bottom: 1px solid var(--border-color); font-size: 0.83rem;
+    text-decoration: none; transition: opacity 0.18s;
 }
-.event-details { display: flex; flex-direction: column; gap: 3px; max-width: 80%; }
-.event-name { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.event-info { font-size: 0.75rem; color: #666; }
+.event-item:hover { opacity: 0.72; }
+.event-item.error-message, .event-item.info-message { color: var(--text-mid); font-size: 0.8rem; border: none; }
+.event-details { display: flex; flex-direction: column; gap: 2px; max-width: 82%; }
+.event-name { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--font-color); }
+.event-info { font-size: 0.73rem; color: var(--text-mid); }
+.event-link-icon { color: var(--text-mid); font-size: 13px; }
 
-/* CSS DA AGENDA */
-.agenda-section { margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 15px; }
-.agenda-list { display: flex; flex-direction: column; gap: 10px; }
+/* Agenda */
+.agenda-section { margin-top: 15px; border-top: 1px solid var(--border-color); padding-top: 13px; }
+.agenda-list    { display: flex; flex-direction: column; gap: 9px; }
 .agenda-item {
     display: flex; align-items: center; gap: 10px; padding: 8px;
-    background-color: var(--page-background); border-radius: 6px;
-    border: 1px solid var(--border-color);
+    background: #fff; border-radius: 7px; border: 1px solid var(--border-color);
 }
 .agenda-date {
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    background-color: var(--primary-color); color: white;
-    padding: 5px; border-radius: 4px; min-width: 40px; text-align: center;
+    background-color: var(--primary-color); color: #fff;
+    padding: 5px 6px; border-radius: 5px; min-width: 38px; text-align: center; flex-shrink: 0;
 }
-.agenda-date .day { font-size: 1.1rem; font-weight: bold; line-height: 1; }
-.agenda-date .month { font-size: 0.6rem; text-transform: uppercase; }
+.agenda-date .day   { font-size: 1rem; font-weight: 700; line-height: 1; }
+.agenda-date .month { font-size: 0.58rem; text-transform: uppercase; }
 .agenda-details { overflow: hidden; white-space: nowrap; display: flex; flex-direction: column; }
-.agenda-details .title { font-size: 0.85rem; font-weight: 600; text-overflow: ellipsis; overflow: hidden; }
-.agenda-details .location { font-size: 0.75rem; color: #666; }
-.agenda-full-link { display: block; text-align: center; font-size: 0.85rem; margin-top: 10px; color: var(--primary-color); }
+.agenda-details .title    { font-size: 0.82rem; font-weight: 600; text-overflow: ellipsis; overflow: hidden; color: var(--font-color); }
+.agenda-details .location { font-size: 0.73rem; color: var(--text-mid); }
+.agenda-full-link { display: block; text-align: center; font-size: 0.78rem; margin-top: 10px; color: var(--primary-color); font-weight: 600; }
 
-/* ------------------- ESTILOS EXTRAS: LUGARES EM COMUM ------------------- */
+/* --- Lugares em Comum --- */
 .common-places-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 18px;
 }
 .common-place-card {
     background-color: #fff; border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.07); overflow: hidden;
-    transition: transform 0.3s;
+    border: 1px solid var(--border-color); overflow: hidden; transition: transform 0.25s, box-shadow 0.25s;
 }
-.common-place-card:hover { transform: translateY(-5px); }
-.common-place-card img { width: 100%; height: 180px; object-fit: cover; }
-.common-place-info { padding: 20px; }
-.common-place-info h3 { margin: 0 0 10px 0; font-size: 1.25rem; color: var(--primary-color); }
+.common-place-card:hover { transform: translateY(-4px); box-shadow: 0 6px 18px rgba(0,0,0,0.09); }
+.common-place-card img { width: 100%; height: 175px; object-fit: cover; }
+.common-place-info { padding: 16px; }
+.common-place-info h3 { margin: 0 0 8px 0; font-size: 1.1rem; color: var(--primary-color); font-weight: 700; }
 
-/* ------------------- ESTILOS EXTRAS: PERFIL EM COMUM ------------------- */
+/* --- Perfil em Comum --- */
 .profile-header-common {
     display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
-    gap: 20px; padding: 20px; border-bottom: 2px solid var(--border-color); margin-bottom: 30px;
+    gap: 20px; padding: 20px; border-bottom: 1px solid var(--border-color); margin-bottom: 25px;
 }
-.profile-header-common .user-display { display: flex; flex-direction: column; align-items: center; width: 120px; text-align: center; }
-.profile-photo-common { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-color); }
+.profile-header-common .user-display { display: flex; flex-direction: column; align-items: center; width: 115px; text-align: center; }
+.profile-photo-common { width: 95px; height: 95px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-color); }
 .compatibility-score-display { display: flex; flex-direction: column; align-items: center; padding: 10px; }
 .compatibility-score-display i.dynamic-heart {
     font-size: 4rem;
     background-image: linear-gradient(to top, var(--primary-color) var(--fill-percent, 0%), var(--border-color) var(--fill-percent, 0%));
     color: transparent; -webkit-background-clip: text; background-clip: text;
 }
-.shared-interests-container { background-color: var(--sidebar-bg); border-radius: 8px; padding: 20px; }
-.tag-list-common { display: flex; flex-wrap: wrap; gap: 10px; }
-.tag-item-common { background: var(--primary-color); color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem; }
-
+.shared-interests-container { background-color: var(--card-bg); border-radius: 8px; padding: 18px; border: 1px solid var(--border-color); }
+.tag-list-common { display: flex; flex-wrap: wrap; gap: 9px; }
+.tag-item-common { background: var(--primary-color); color: #fff; padding: 5px 12px; border-radius: 20px; font-size: 0.87rem; }
 
 /* ======================================================= */
-/* === RESPONSIVIDADE (MEDIA QUERIES) === */
+/* === RESPONSIVIDADE === */
 /* ======================================================= */
-
-/* 1. TABLETS (Até 992px) */
 @media (max-width: 992px) {
-    .profile-dashboard {
-        grid-template-columns: 80px 1fr; 
-        grid-template-rows: auto auto;
-    }
-    
-    .matches-sidebar {
-        grid-column: 1 / -1; 
-        flex-direction: row; gap: 20px; flex-wrap: wrap;
-    }
-    .matches-container, .agenda-section { flex: 1; min-width: 300px; border: none; margin: 0; }
-    
-    /* Edit Perfil Tablet */
+    .body { grid-template-columns: 72px 1fr; }
+    .rp { display: none; }
     .edit-grid { grid-template-columns: 1fr; justify-items: center; }
     .info-section { width: 100%; }
 }
-
-/* 2. CELULARES (Até 768px) */
 @media (max-width: 768px) {
-    .profile-dashboard { display: flex; flex-direction: column; padding: 10px; gap: 20px; }
-    
-    .matches-sidebar { flex-direction: column; }
-    
+    .body { display: flex; flex-direction: column; overflow-y: auto; }
+    .sidenav { flex-direction: row; overflow-x: auto; padding: .5rem; }
+    .pblock, .nlabel, .ndiv { display: none; }
+    .ni { padding: 6px; }
+    .ni span { display: none; }
     .compatibilidade-card { flex-direction: column; text-align: center; }
     .compatibilidade-actions { justify-content: center; }
-    
-    /* Comum e Edit */
     .profile-header-common { flex-direction: column; gap: 10px; }
     .compatibility-score-display i.dynamic-heart { font-size: 3rem; }
     .common-places-list { grid-template-columns: 1fr; }

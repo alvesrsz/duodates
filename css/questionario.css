@@ -1,16 +1,18 @@
-/* questionario.css (CORRIGIDO) */
+/* questionario.css */
 :root {
-  --cor-vinho: #8c0f2a;
-  --cor-bege: #faf5ef;
-  --cor-texto: #3d3d3d;
-  --cor-cinza-claro: #ddd;
+  --cor-vinho: #5C151B;
+  --cor-vinho-hover: #4A0E15;
+  --cor-bege: #FAF5EF;
+  --cor-card: #F7F0E8;
+  --cor-texto: #3D3D3D;
+  --cor-cinza-claro: #D0BAA8;
 }
 
 html, body {
   margin: 0;
   padding: 0;
   background-color: var(--cor-bege);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: var(--cor-texto);
 }
 

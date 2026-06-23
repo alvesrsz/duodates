@@ -166,8 +166,9 @@ $food_ranking_json = json_encode($food_ranking_prefill);
 <body>
   
   <header class="questionario-header">
-    <a href="../php/login-feito.php" class="logo-link"> DuoDates 
+    <a href="../php/login-feito.php" class="logo-link">
       <img src="../images/logoduodates.png" alt="Coração" class="logo-img">
+      <span>Duo Dates</span>
     </a>
   </header>
   

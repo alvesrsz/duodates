@@ -8,10 +8,10 @@
 // ===================================================================
 
 // --- Seus Dados do Banco (Verificados e Corretos) ---
-$db_host = "sql200.infinityfree.com";
-$db_user = "if0_38704863";
-$db_pass = "duodates2025";
-$db_name = "if0_38704863_db_duodate";
+$db_host = "localhost";
+$db_user = "root";
+$db_pass = "";
+$db_name = "db_duodate";
 
 // --- URL do seu Site (CORRETA com HTTPS) ---
 $seu_site_url = "https://duodate.ct.ws";

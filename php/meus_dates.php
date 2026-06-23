@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 include '../conexao.php';
 
@@ -179,7 +179,11 @@ if($result_novos_lugares && $result_novos_lugares->num_rows > 0){
 $total_notificacoes = count($notificacoes);
 
 // --- DADOS PARA SIDEBAR DIREITA (AGENDA) ---
-function formatarDataEmPortugues() { setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'portuguese'); return strtoupper(strftime('%B %Y')); }
+function formatarDataEmPortugues() {
+    $meses = ['JANEIRO','FEVEREIRO','MARÇO','ABRIL','MAIO','JUNHO',
+              'JULHO','AGOSTO','SETEMBRO','OUTUBRO','NOVEMBRO','DEZEMBRO'];
+    return $meses[(int)date('n') - 1] . ' ' . date('Y');
+}
 $currentMonthYear = formatarDataEmPortugues();
 
 $proximos_agendamentos = [];
@@ -299,79 +303,53 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meus Dates - Duo Dates</title>
-    <link rel="stylesheet" href="../css/login-feito.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/shell.css">
     <link rel="stylesheet" href="../css/meus_dates.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+<div class="shell">
 
-    <header class="main-header">
-       <div class="header-left">
-          <a href="../index.php" class="logo-link">
-            <span class="logo">Duo Dates</span>
-            <img src="../images/logoduodates.png" alt="Coração" class="logo-image">
-          </a>
+  <header class="topbar">
+    <a href="../index.php" class="logo">
+      <img src="../images/logoduodates.png" alt="Duo Dates" style="height:28px;width:auto;">
+      <span class="logo-text">Duo Dates</span>
+    </a>
+    <div class="tc">
+      <div class="tbb" title="Lugares" onclick="window.location.href='meuslugaresideais.php'"><i class="ti ti-map-pin"></i></div>
+      <div class="tbb" title="Agenda" onclick="window.location.href='meu_calendario.php'"><i class="ti ti-calendar"></i></div>
+      <div class="tbb" title="Meus Dates" onclick="window.location.href='meus_dates.php'"><i class="ti ti-users"></i></div>
+      <div class="tbb" title="Adicionar Local" onclick="window.location.href='adicionar-lugar.php'"><i class="ti ti-plus"></i></div>
+    </div>
+    <div class="tr">
+      <div class="tbb notif" title="Favoritos" onclick="window.location.href='favoritos.php'"><i class="ti ti-heart"></i></div>
+      <div class="tbb notif" id="notification-bell-icon" title="Notificações"><i class="ti ti-bell"></i></div>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <nav class="sidenav">
+      <div class="pblock">
+        <div class="av">
+          <img src="<?php echo $profilePhotoUrl; ?>" alt="Foto" onerror="this.onerror=null;this.src='../images/iconeperfil.png';">
         </div>
-        <div class="header-pages">
-            <a href="../php/meuslugaresideais.php" title="Meus Lugares Ideais"><i class="fas fa-map-marker-alt"></i></a>
-            <a href="../php/meu_calendario.php" title="Meu Calendário"><i class="far fa-calendar-alt"></i></a>
-            <a href="../php/meus_dates.php" title="Meus Dates"><i class="fas fa-user-friends"></i></a>
-            <a href="../php/adicionar_local.php" title="Adicionar Local"><i class="fas fa-plus"></i></a>
-        </div>
-        <div class="header-icons">
-            <a href="../php/favoritos.php" title="Favoritos"><i class="far fa-heart"></i></a>
-            <div class="notification-icon-container">
-                 <i class="far fa-bell <?php echo ($total_notificacoes > 0) ? 'has-notifications' : ''; ?>" id="notification-bell-icon"></i>
+        <div class="pname"><?php echo htmlspecialchars($userName); ?></div>
+        <div class="pemail"><?php echo htmlspecialchars($userEmail); ?></div>
+      </div>
+      <div class="nlabel">Menu</div>
+      <div class="ni" onclick="window.location.href='login-feito.php'"><i class="ti ti-layout-dashboard"></i> Meu perfil</div>
+      <div class="ni" onclick="window.location.href='mudar_essencia.php'"><i class="ti ti-sparkles"></i> Minha essência</div>
+      <div class="ni active" onclick="window.location.href='meus_dates.php'"><i class="ti ti-heart-handshake"></i> Meus dates</div>
+      <div class="ni" onclick="window.location.href='todoslocais.php'"><i class="ti ti-map"></i> Locais</div>
+      <div class="ni" onclick="window.location.href='editar_perfil_login_feito.php'"><i class="ti ti-user-edit"></i> Editar perfil</div>
+      <div class="ndiv"></div>
+      <div class="ni" onclick="window.location.href='logout.php'"><i class="ti ti-logout"></i> Sair</div>
+    </nav>
 
-                 <div class="notification-panel" id="notification-panel">
-                     <div class="notification-header">Notificações</div>
-                     <div class="notification-list">
-                         <?php if (empty($notificacoes)): ?>
-                             <div class="notification-item empty">Nenhuma notificação nova.</div>
-                         <?php else: ?>
-                             <?php foreach ($notificacoes as $notif): ?>
-                                 <a href="<?php echo htmlspecialchars($notif['link']); ?>" class="notification-item">
-                                     <?php if ($notif['tipo'] === 'lembrete'): ?>
-                                         <i class="fas fa-calendar-check notification-icon reminder"></i>
-                                         <div><strong>Lembrete:</strong> <?php echo htmlspecialchars($notif['titulo']); ?> em <?php echo htmlspecialchars($notif['local']); ?><small><?php echo date('d/m H:i', strtotime($notif['data'])); ?></small></div>
-                                     <?php elseif ($notif['tipo'] === 'conexao'): ?>
-                                         <i class="fas fa-user-plus notification-icon connection"></i>
-                                         <div><strong>Conexão:</strong> <?php echo htmlspecialchars($notif['nome_solicitante']); ?> quer se conectar.</div>
-                                     <?php elseif ($notif['tipo'] === 'novo_lugar'): ?>
-                                          <i class="fas fa-map-marker-alt notification-icon new-place"></i>
-                                          <div><strong>Sugestão:</strong> Confira <?php echo htmlspecialchars($notif['titulo_lugar']); ?>!</div>
-                                     <?php endif; ?>
-                                 </a>
-                             <?php endforeach; ?>
-                         <?php endif; ?>
-                     </div>
-                 </div>
-            </div>
-            </div>
-    </header>
-
-    <div class="profile-dashboard">
-        
-        <aside class="profile-sidebar">
-             <div class="user-info">
-                 <img src="<?php echo $profilePhotoUrl; ?>" alt="Foto de Perfil" class="profile-photo" onerror="this.onerror=null; this.src='<?php echo $defaultPlaceholderUrl; ?>';">
-                 <h3><?php echo htmlspecialchars($userName); ?></h3>
-                 <p><?php echo htmlspecialchars($userEmail); ?></p>
-             </div>
-            <nav class="sidebar-nav">
-                 <ul>
-                    <li><a href="../php/login-feito.php" class="nav-item"><i class="fas fa-home"></i> <span>Meu Perfil</span></a></li>
-                    <li><a href="../php/mudar_essencia.php" class="nav-item"><i class="fas fa-clipboard-list"></i><span> Minha Essência</span></a></li>
-                    <li><a href="../php/meus_dates.php" class="nav-item active"><i class="fas fa-user-friends"></i> <span>Meus Dates</span></a></li>
-                    <li><a href="../php/editar_perfil_login_feito.php" class="nav-item"><i class="fas fa-user-edit"></i><span> Editar Perfil</span></a></li>
-                    <li><a href="../php/logout.php" class="nav-item"><i class="fas fa-sign-out-alt"></i><span> Sair</span></a></li>
-                </ul>
-            </nav>
-        </aside>
-
-        <main class="main-content">
-            <section class="section-container">
+    <main class="main">
+      <div class="card">
                 
                 <?php if ($success_message): ?><p class="message success"><i class="fas fa-check-circle"></i> <?php echo $success_message; ?></p><?php endif; ?>
                 <?php if ($error_message): ?><p class="message error"><i class="fas fa-exclamation-triangle"></i> <?php echo $error_message; ?></p><?php endif; ?>
@@ -477,16 +455,13 @@ $conn->close();
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
-            </section>
-        </main>
+      </div><!-- .card -->
+    </main>
 
-        <aside class="matches-sidebar">
-            <div class="matches-container">
-                <div class="matches-header"> 
-                    <h4><i class="fas fa-ticket-alt"></i> Próximos Eventos em Brasília</h4>
-                </div>
-
-                <?php @include '../php/buscar_ticketmaster.php'; ?>
+    <aside class="rp">
+      <div class="rp-section">
+        <div class="rp-title"><i class="fas fa-ticket-alt"></i> Próximos Eventos em Brasília</div>
+        <?php @include '../php/buscar_ticketmaster.php'; ?>
 
 <div class="events-list"> 
     <?php if (isset($eventosFormatados['error'])): ?>
@@ -517,82 +492,60 @@ $conn->close();
             <i class="fas fa-info-circle"></i> Não foi possível carregar os eventos no momento.
         </div>
     <?php endif; ?>
-</div>
-                 
-                 <div class="agenda-section" style="margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 15px;">
-                    <div class="matches-header"> 
-                         <h4><i class="far fa-calendar-check"></i> AGENDA <?php echo $currentMonthYear; ?></h4>
-                    </div>
-                    <div class="agenda-list">
-                        <?php if (empty($proximos_agendamentos)): ?>
-                            <div class="agenda-empty">
-                                <i class="fas fa-calendar-times"></i>
-                                <p>Nenhum evento agendado.</p>
-                            </div>
-                        <?php else: ?>
-                            <?php 
-                            setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'portuguese'); 
-                            ?>
-                            <?php foreach ($proximos_agendamentos as $evt): ?>
-                                <div class="agenda-item">
-                                    <div class="agenda-date">
-                                        <span class="day"><?php echo date('d', strtotime($evt['data_agendada'])); ?></span>
-                                        <span class="month"><?php echo strftime('%b', strtotime($evt['data_agendada'])); ?></span>
-                                    </div>
-                                    <div class="agenda-details">
-                                        <span class="title"><?php echo htmlspecialchars($evt['titulo_evento']); ?></span>
-                                        <span class="location"><i class="fas fa-map-marker-alt"></i> <?php echo htmlspecialchars($evt['nome_local']); ?></span>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                        <a href="../php/meu_calendario.php" class="agenda-full-link">Ver calendário completo</a>
-                    </div>
-                </div> 
-            </div>
-        </aside>
-    </div>
-    
-    <?php if ($total_notificacoes > 0): ?>
-        <div id="toast-notification" class="toast-notification">
-            <i class="fas fa-bell toast-icon"></i>
-            <span class="toast-message">Você tem <?php echo $total_notificacoes; ?> notificaç<?php echo ($total_notificacoes > 1) ? 'ões' : 'ão'; ?> não lida<?php echo ($total_notificacoes > 1) ? 's' : ''; ?>!</span>
-            <button class="toast-close-btn" id="toast-close-btn">&times;</button>
+</div><!-- .events-list -->
+      </div><!-- .rp-section eventos -->
+
+      <div class="rp-section" style="margin-top:14px;border-top:1px solid var(--border);padding-top:14px;">
+        <div class="rp-title"><i class="ti ti-calendar-check"></i> AGENDA <?php echo $currentMonthYear; ?></div>
+        <div class="agenda-list">
+          <?php if (empty($proximos_agendamentos)): ?>
+            <div class="agenda-empty"><i class="ti ti-calendar-off" style="font-size:1.5rem;display:block;margin-bottom:6px"></i>Nenhum evento agendado.</div>
+          <?php else: ?>
+            <?php foreach ($proximos_agendamentos as $evt): ?>
+              <div class="agenda-item">
+                <div class="agenda-date">
+                  <span class="day"><?php echo date('d', strtotime($evt['data_agendada'])); ?></span>
+                  <?php $meses_abrev = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']; ?>
+                  <span class="month"><?php echo $meses_abrev[(int)date('n', strtotime($evt['data_agendada'])) - 1]; ?></span>
+                </div>
+                <div class="agenda-details">
+                  <span class="title"><?php echo htmlspecialchars($evt['titulo_evento']); ?></span>
+                  <span class="location"><?php echo htmlspecialchars($evt['nome_local']); ?></span>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          <?php endif; ?>
         </div>
+        <a href="../php/meu_calendario.php" class="lbtn"><i class="ti ti-calendar"></i> Ver calendário completo</a>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+    <?php if ($total_notificacoes > 0): ?>
+      <div id="toast-notification" class="toast-notification">
+        <i class="ti ti-bell" style="font-size:1.1rem"></i>
+        <span>Você tem <?php echo $total_notificacoes; ?> notificaç<?php echo ($total_notificacoes > 1) ? 'ões' : 'ão'; ?> não lida<?php echo ($total_notificacoes > 1) ? 's' : ''; ?>!</span>
+        <button class="toast-close-btn" id="toast-close-btn">&times;</button>
+      </div>
     <?php endif; ?>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const bellIconContainer = document.querySelector('.notification-icon-container');
-            const notificationPanel = document.getElementById('notification-panel');
-            if (bellIconContainer && notificationPanel) {
-                bellIconContainer.addEventListener('click', function(event) { 
-                    event.stopPropagation(); 
-                    notificationPanel.classList.toggle('show'); 
-                });
-                document.addEventListener('click', function(event) { 
-                    if (notificationPanel.classList.contains('show') && !notificationPanel.contains(event.target)) { 
-                        notificationPanel.classList.remove('show'); 
-                    } 
-                });
-                notificationPanel.addEventListener('click', function(event) { 
-                    event.stopPropagation(); 
-                });
-            }
-
             const toastNotification = document.getElementById('toast-notification');
             if (toastNotification) {
                 setTimeout(() => {
                     toastNotification.classList.add('show');
-                }, 500); 
+                }, 500);
 
                 const autoCloseToast = setTimeout(() => {
                     toastNotification.classList.remove('show');
-                }, 5500); 
+                }, 5500);
 
                 const closeBtn = document.getElementById('toast-close-btn');
                 closeBtn.addEventListener('click', () => {
-                    clearTimeout(autoCloseToast); 
+                    clearTimeout(autoCloseToast);
                     toastNotification.classList.remove('show');
                 });
             }

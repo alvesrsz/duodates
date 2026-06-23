@@ -1,0 +1,168 @@
+/* ================================================================
+   DUODATES — SISTEMA DE DESIGN
+   Importar no topo de cada CSS: @import url('./brand.css');
+   ================================================================ */
+
+/* FONTES */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@700&family=Trend+Sans+One&display=swap');
+
+/* ── TOKENS DE MARCA ── */
+:root {
+    /* Paleta oficial */
+    --brand-darkest:  #3F020D;
+    --brand-dark:     #5D0819;
+    --brand-medium:   #770820;
+    --brand-primary:  #831A29;
+    --brand-beige:    #E9D7C6;
+    --brand-cream:    #F7F0E8;
+    --brand-bg:       #FAF5EF;
+    --brand-text:     #3D3D3D;
+
+    /* Aliases usados em cada arquivo CSS — todos apontam para a paleta */
+    --primary-color:             #831A29;
+    --secondary-color:           #5D0819;
+    --accent-color:              #770820;
+    --page-background:           #FAF5EF;
+    --sidebar-bg:                #FAF5EF;
+    --font-color:                #3D3D3D;
+    --secondary-text-color:      #3D3D3D;
+    --border-color:              #DDD;
+    --input-border-color:        #D1C7BC;
+    --input-focus-border-color:  #831A29;
+    --button-text-color:         #FFFFFF;
+    --error-message-color:       #D32F2F;
+    --link-color:                #831A29;
+
+    /* Nomes antigos de variáveis */
+    --cor-vinho:           #831A29;
+    --cor-vinho-escuro:    #5D0819;
+    --cor-vinho-claro:     #831A29;
+    --cor-primaria:        #831A29;
+    --cor-primaria-hover:  #5D0819;
+    --cor-fundo-bege:      #FAF5EF;
+    --cor-bege:            #FAF5EF;
+    --cor-secundaria:      #F7F0E8;
+    --cor-texto:           #3D3D3D;
+    --cor-texto-vinho:     #770820;
+    --cor-texto-logo:      #5D0819;
+    --cor-texto-claro:     #FFFFFF;
+    --cor-texto-principal: #3D3D3D;
+    --cor-texto-secundario:#6C757D;
+    --cor-botao-vinho:     #5D0819;
+    --cor-botao-texto:     #FAF5EF;
+    --cor-botao-bege:      #F7F0E8;
+    --cor-branco-puro:     #FFFFFF;
+    --cor-branco:          #FFFFFF;
+    --cor-branco-real:     #FFFFFF;
+    --cor-texto-suave:     #6C757D;
+    --cor-borda-suave:     #E8E8E8;
+    --cor-cinza-claro:     #DDD;
+    --cor-dourado-suave:   #E9D7C6;
+    --cor-rosa-claro:      #F7E8EC;
+    --cor-fundo-pagina:    #FAF5EF;
+
+    /* Admin/dashboard/empresa */
+    --sidebar-bg-dark:     #5D0819;
+    --sidebar-text:        #FAF5EF;
+    --sidebar-text-active: #FFFFFF;
+    --main-bg:             #F7F0E8;
+    --background-color:    #FAF5EF;
+    --panel-bg:            #FFFFFF;
+    --card-bg:             #FFFFFF;
+    --card-background:     #FFFFFF;
+    --cor-fundo-pagina:    #FAF5EF;
+
+    /* Fontes */
+    --font-primary:   'Playfair Display', serif;
+    --font-secondary: 'Montserrat', sans-serif;
+    --font-title:     'Trend Sans One', sans-serif;
+}
+
+/* ── TIPOGRAFIA GLOBAL ── */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--brand-bg);
+    color: var(--brand-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Trend Sans One', sans-serif;
+    letter-spacing: 0.4px;
+}
+
+/* Logo — Playfair Display */
+.logo,
+.logo-link .logo,
+.logo-link span.logo,
+.logo-duodates,
+.logo-container .logo-link {
+    font-family: 'Playfair Display', serif;
+}
+
+/* ── DESTAQUES VISUAIS ── */
+/* Borda vinho no header */
+.main-header {
+    border-bottom: 2px solid var(--brand-primary);
+}
+
+/* Item de nav ativo */
+.nav-item.active a,
+.nav-item.active {
+    background-color: var(--brand-dark);
+    color: #FFFFFF;
+    border-radius: 8px;
+}
+.nav-item.active i { color: #FFFFFF; }
+
+/* Foto de perfil com anel de marca */
+.profile-photo,
+.profile-photo-common {
+    border: 2px solid var(--brand-primary);
+}
+
+/* Tags de interesse */
+.tag-item-common {
+    background-color: var(--brand-cream);
+    color: var(--brand-dark);
+    border: 1px solid var(--brand-beige);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.tag-item-common i { color: var(--brand-medium); }
+
+/* ── BOTÕES GLOBAIS ── */
+.btn-primary {
+    background-color: var(--brand-dark);
+    color: #FFFFFF;
+    font-family: 'Trend Sans One', sans-serif;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.15s, box-shadow 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-primary:hover {
+    background-color: var(--brand-darkest);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(93, 8, 25, 0.3);
+}
+
+/* ── INPUTS GLOBAIS ── */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 3px rgba(131, 26, 41, 0.1);
+    outline: none;
+}

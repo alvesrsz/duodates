@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 include '../conexao.php';
 
@@ -70,55 +70,53 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lugares Favoritados em Comum - Duo Dates</title>
-    <link rel="stylesheet" href="../css/login-feito.css">
-    <link rel="stylesheet" href="../css/meus_dates.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/shell.css">
+    <link rel="stylesheet" href="../css/meus_dates.css">
 </head>
 <body>
+<div class="shell">
 
-    <header class="main-header">
-        <div class="header-left">
-          <a href="../index.php" class="logo-link">
-            <span class="logo">Duo Dates</span>
-            <img src="../images/logoduodates.png" alt="Coração" class="logo-image">
-          </a>
-        </div>
-        <div class="header-pages">
-            <a href="../php/meuslugaresideais.php" title="Meus Lugares Ideais"><i class="fas fa-map-marker-alt"></i></a>
-            <a href="../php/meu_calendario.php" title="Meu Calendário"><i class="far fa-calendar-alt"></i></a>
-            <a href="../php/meus_dates.php" title="Meus Dates"><i class="fas fa-user-friends"></i></a>
-            <a href="../php/adicionar_local.php" title="Adicionar Local"><i class="fas fa-plus"></i></a>
-        </div>
-        <div class="header-icons">
-             <a href="../php/favoritos.php"><i class="far fa-heart"></i></a>
-             <div class="notification-icon-container">
-                 <i class="far fa-bell" id="notification-bell-icon"></i>
-            </div>
-        </div>
-    </header>
+  <header class="topbar">
+    <a href="../index.php" class="logo">
+      <img src="../images/logoduodates.png" alt="Duo Dates" style="height:28px;width:auto;">
+      <span class="logo-text">Duo Dates</span>
+    </a>
+    <div class="tc">
+      <div class="tbb" title="Lugares" onclick="window.location.href='meuslugaresideais.php'"><i class="ti ti-map-pin"></i></div>
+      <div class="tbb" title="Agenda" onclick="window.location.href='meu_calendario.php'"><i class="ti ti-calendar"></i></div>
+      <div class="tbb" title="Meus Dates" onclick="window.location.href='meus_dates.php'"><i class="ti ti-users"></i></div>
+      <div class="tbb" title="Adicionar Local" onclick="window.location.href='adicionar-lugar.php'"><i class="ti ti-plus"></i></div>
+    </div>
+    <div class="tr">
+      <div class="tbb" title="Favoritos" onclick="window.location.href='favoritos.php'"><i class="ti ti-heart"></i></div>
+      <div class="tbb" title="Notificações"><i class="ti ti-bell"></i></div>
+    </div>
+  </header>
 
-    <div class="profile-dashboard" style="grid-template-columns: 280px 1fr;">
-        
-        <aside class="profile-sidebar">
-            <div class="user-info">
-                <img src="<?php echo $profilePhotoUrl; ?>" alt="Foto de Perfil" class="profile-photo" onerror="this.onerror=null; this.src='../images/perfil.png';">
-                <h3><?php echo htmlspecialchars($user_data['nome']); ?></h3>
-                <p><?php echo htmlspecialchars($user_data['email']); ?></p>
-            </div>
-            <nav class="sidebar-nav">
-                 <ul>
-                    <li class="nav-item"><a href="../php/login-feito.php"><i class="fas fa-home"></i> <span>Meu Perfil</span></a></li>
-                    <li class="nav-item"><a href="../php/mudar_essencia.php"> <i class="fas fa-clipboard-list"></i><span> Minha Essência</span></a></li>
-                    <li class="nav-item active"><a href="../php/meus_dates.php"><i class="fas fa-user-friends"></i> <span>Meus Dates</span></a></li>
-                    <li class="nav-item"><a href="../php/editar_perfil.php"><i class="fas fa-user-edit"></i> <span>Editar Perfil</span></a></li>
-                    <li class="nav-item"><a href="../php/logout.php"><i class="fas fa-sign-out-alt"></i> <span>Sair</span></a></li>
-                </ul>
-            </nav>
-        </aside>
+  <div class="body">
 
-        <main class="main-content">
-            
-            <section class="section-container">
+    <nav class="sidenav">
+      <div class="pblock">
+        <div class="av">
+          <img src="<?php echo $profilePhotoUrl; ?>" alt="Foto" onerror="this.onerror=null;this.src='../images/iconeperfil.png';">
+        </div>
+        <div class="pname"><?php echo htmlspecialchars($user_data['nome']); ?></div>
+        <div class="pemail"><?php echo htmlspecialchars($user_data['email']); ?></div>
+      </div>
+      <div class="nlabel">Menu</div>
+      <div class="ni" onclick="window.location.href='login-feito.php'"><i class="ti ti-layout-dashboard"></i> Meu perfil</div>
+      <div class="ni" onclick="window.location.href='mudar_essencia.php'"><i class="ti ti-sparkles"></i> Minha essência</div>
+      <div class="ni active" onclick="window.location.href='meus_dates.php'"><i class="ti ti-heart-handshake"></i> Meus dates</div>
+      <div class="ni" onclick="window.location.href='todoslocais.php'"><i class="ti ti-map"></i> Locais</div>
+      <div class="ni" onclick="window.location.href='editar_perfil_login_feito.php'"><i class="ti ti-user-edit"></i> Editar perfil</div>
+      <div class="ndiv"></div>
+      <div class="ni" onclick="window.location.href='logout.php'"><i class="ti ti-logout"></i> Sair</div>
+    </nav>
+
+    <main class="main">
+      <div class="card">
                 <div class="section-header">
                     <h2>LUGARES FAVORITADOS POR AMBOS</h2>
                 </div>
@@ -156,9 +154,33 @@ $conn->close();
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
-            </section>
+      </div><!-- .card -->
+    </main>
 
-        </main>
-    </div>
+    <aside class="rp">
+      <div class="rp-section">
+        <div class="rp-title"><i class="fas fa-ticket-alt"></i> Próximos Eventos</div>
+        <?php @include '../php/buscar_ticketmaster.php'; ?>
+        <div class="events-list">
+          <?php if (!empty($eventosFormatados) && !isset($eventosFormatados['error']) && !isset($eventosFormatados['info'])): ?>
+            <?php foreach ($eventosFormatados as $evt): ?>
+              <a href="<?php echo htmlspecialchars($evt['url']); ?>" target="_blank" class="event-item">
+                <div class="event-details">
+                  <span class="event-name"><?php echo htmlspecialchars($evt['nome']); ?></span>
+                  <span class="event-info"><i class="far fa-calendar-alt"></i> <?php echo htmlspecialchars($evt['dataHora']); ?></span>
+                </div>
+                <div class="event-link-icon"><i class="fas fa-external-link-alt"></i></div>
+              </a>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <div class="event-item" style="color:var(--text-mid);font-size:.82rem">Não foi possível carregar os eventos.</div>
+          <?php endif; ?>
+        </div>
+      </div>
+      <a href="../php/meu_calendario.php" class="lbtn"><i class="ti ti-calendar"></i> Ver calendário completo</a>
+    </aside>
+
+  </div>
+</div>
 </body>
 </html>

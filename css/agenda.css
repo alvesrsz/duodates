@@ -1,16 +1,16 @@
-/* Importando a fonte principal do site */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 :root {
-    --cor-primaria: #E94D73;
-    --cor-fundo-pagina: #FDFCFB;
+    --cor-primaria: #5C151B;
+    --cor-primaria-hover: #4A0E15;
+    --cor-fundo-pagina: #FAF5EF;
     --cor-branco: #FFFFFF;
-    --cor-texto-principal: #333333;
+    --cor-texto-principal: #3D3D3D;
     --sombra-suave: 0 5px 25px rgba(0, 0, 0, 0.07);
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: var(--cor-fundo-pagina);
     color: var(--cor-texto-principal);
     margin: 0;
@@ -58,8 +58,8 @@ header h1 { margin: 0; font-size: 1.5em; color: var(--cor-primaria); }
 }
 
 .fc-button-primary:hover {
-    background-color: #D83C61 !important;
-    border-color: #D83C61 !important;
+    background-color: var(--cor-primaria-hover) !important;
+    border-color: var(--cor-primaria-hover) !important;
 }
 
 /* Cor do dia de hoje */

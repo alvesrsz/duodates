@@ -168,7 +168,7 @@ width: 38px;                 /* tamanho do ícone */
 }
 
 .btn-cadastro-submit:hover {
-  background-color: #8c2d29;
+  background-color: #4A0E15;
   transform: translateY(-2px);
 }
 
@@ -187,7 +187,7 @@ width: 38px;                 /* tamanho do ícone */
 
 .login-link-container a:hover {
   text-decoration: underline;
-  color: #8c2d29;
+  color: #4A0E15;
 }
 
 /* Mensagens de erro e sucesso */

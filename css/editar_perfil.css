@@ -1,62 +1,99 @@
-/* === ESTILOS ESPECÍFICOS PARA A PÁGINA DE EDITAR PERFIL === */
+/* editar_perfil.css — estilos da página Editar Perfil */
 
-/* 1. SOBRESCREVE O GRID PRINCIPAL PARA 2 COLUNAS */
-.profile-dashboard.edit-profile-layout {
+/* ── TÍTULO DA SEÇÃO ──────────────────────────────────────── */
+.section-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 22px;
+}
+.section-header h2 {
+    font-size: 1.05rem; color: var(--font-color, #2A1A1E);
+    margin: 0; font-weight: 700; letter-spacing: .05em;
+}
+
+/* ── MENSAGENS ────────────────────────────────────────────── */
+.message { padding: 14px; border-radius: 8px; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+.message.success { background-color: #d1e7dd; color: #0f5132; }
+.message.error   { background-color: #f8d7da; color: #842029; }
+
+/* ── FORMULÁRIO ───────────────────────────────────────────── */
+.edit-profile-form { max-width: 820px; margin: 0 auto; }
+
+.edit-grid {
     display: grid;
-    /* Coluna Esquerda: 250px | Coluna Direita: Ocupa todo o resto */
-    grid-template-columns: 250px 1fr; 
+    grid-template-columns: auto 1fr;
     gap: 30px;
+    padding: 10px 0 20px;
 }
 
-/* 2. AJUSTES DO FORMULÁRIO */
-.edit-profile-form {
-    max-width: 800px; /* Evita que o formulário fique muito largo em telas grandes */
-    margin: 0 auto;
+.photo-upload-section {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 15px;
 }
 
-/* A estrutura .edit-grid, .form-group, etc., já está no login-feito.css,
-   então não precisamos repetir aqui, a menos que queira mudar algo específico. */
+.profile-photo-preview {
+    width: 140px; height: 140px; border-radius: 50%;
+    object-fit: cover; border: 3px solid var(--border, #D0BAA8);
+}
 
+.upload-label {
+    background: var(--bg-white, #F7F0E8);
+    padding: 8px 16px; border-radius: 50px; cursor: pointer;
+    font-size: .85rem; font-weight: 600;
+    border: 1px solid var(--border, #D0BAA8);
+    color: var(--wine, #770820);
+    transition: background .2s;
+}
+.upload-label:hover { background: var(--wine-pale, #F5E6E8); }
 
-/* ======================================================= */
-/* === RESPONSIVIDADE (Específica do layout 2 colunas) === */
-/* ======================================================= */
+.info-section { display: flex; flex-direction: column; gap: 16px; }
 
-/* Tablets (Até 992px) */
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: .88rem; font-weight: 700; color: var(--text-mid, #5A3A40); }
+.form-group small { font-size: .78rem; color: var(--text-mid, #5A3A40); }
+
+.form-input {
+    padding: 10px 12px;
+    border: 1px solid var(--border, #D0BAA8);
+    border-radius: 8px; width: 100%;
+    background: #fff; font-family: 'Montserrat', sans-serif;
+    font-size: .93rem; color: var(--text-dark, #2A1A1E);
+    transition: border-color .2s;
+}
+.form-input:focus { outline: none; border-color: var(--wine, #770820); }
+.form-input:disabled { background: #f5f5f5; color: #999; cursor: not-allowed; }
+
+.form-actions {
+    display: flex; justify-content: flex-end;
+    align-items: center; gap: 16px; margin-top: 24px;
+    border-top: 1px solid var(--border, #D0BAA8); padding-top: 20px;
+}
+
+.btn-salvar {
+    background: var(--wine, #770820); color: #fff;
+    border: none; padding: 10px 26px; border-radius: 50px;
+    cursor: pointer; font-weight: 700; font-size: .93rem;
+    font-family: 'Montserrat', sans-serif;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: background .2s;
+}
+.btn-salvar:hover { background: var(--primary-color, #5C151B); }
+
+.btn-cancel {
+    padding: 10px 20px; color: var(--text-mid, #5A3A40);
+    font-weight: 600; font-size: .93rem; cursor: pointer;
+    text-decoration: none; border-radius: 50px;
+    transition: color .2s;
+}
+.btn-cancel:hover { color: var(--wine, #770820); }
+
+/* ── RESPONSIVIDADE ───────────────────────────────────────── */
 @media (max-width: 992px) {
-    .profile-dashboard.edit-profile-layout {
-        grid-template-columns: 80px 1fr; /* Sidebar compacta | Conteúdo */
-        gap: 15px;
-    }
+    .body { grid-template-columns: 72px 1fr 0; }
+    .rp { display: none; }
 }
-
-/* Celulares (Até 768px) */
 @media (max-width: 768px) {
-    .profile-dashboard.edit-profile-layout {
-        display: flex; flex-direction: column;
-        gap: 20px;
-    }
-    
-    /* Ajuste para o formulário no mobile */
-    .edit-grid {
-        grid-template-columns: 1fr; /* Foto em cima, campos embaixo */
-        gap: 20px;
-        justify-items: center; /* Centraliza a foto */
-    }
-    
-    .info-section {
-        width: 100%; /* Campos ocupam largura total */
-    }
-    
-    .form-actions {
-        flex-direction: column-reverse; /* Botão Salvar em cima */
-        gap: 10px;
-    }
-    
-    .btn-salvar, .btn-cancel {
-        width: 100%;
-        text-align: center;
-        justify-content: center;
-    }
+    .edit-grid { grid-template-columns: 1fr; justify-items: center; }
+    .info-section { width: 100%; }
+    .form-actions { flex-direction: column-reverse; gap: 10px; }
+    .btn-salvar, .btn-cancel { width: 100%; text-align: center; justify-content: center; }
 }
-

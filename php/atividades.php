@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 include('../conexao.php');
 
@@ -61,7 +61,7 @@ $defaultPlaceholderUrl = "../images/placeholder_local.png"; // Imagem padrão
                  <a href="../php/meuslugaresideais.php" title="Meus Lugares Ideais"><i class="fas fa-map-marker-alt"></i></a>
                  <a href="../php/meu_calendario.php" title="Meu Calendário"><i class="far fa-calendar-alt"></i></a>
                  <a href="../php/meus_dates.php" title="Meus Dates"><i class="fas fa-user-friends"></i></a>
-                 <a href="../php/adicionar_local.php" title="Adicionar Local"><i class="fas fa-plus"></i></a>
+                 <a href="../php/adicionar-lugar.php" title="Adicionar Local"><i class="fas fa-plus"></i></a>
              </div>
              <div class="header-icons">
                  <a href="../php/favoritos.php" title="Favoritos"><i class="far fa-heart"></i></a>

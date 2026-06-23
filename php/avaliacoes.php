@@ -27,30 +27,11 @@ if ($res_user && $res_user->num_rows > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DuoDates - Avaliações dos Clientes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { display: flex; background-color: #F4F7F6; color: #333; min-height: 100vh; }
-        .sidebar { width: 250px; background-color: #8C1C30; color: white; display: flex; flex-direction: column; padding-top: 20px; }
-        .sidebar h2 { text-align: center; margin-bottom: 30px; font-weight: 800; font-size: 24px; }
-        .sidebar a { color: #f0f0f0; text-decoration: none; padding: 15px 20px; display: block; font-size: 15px; transition: 0.3s; }
-        .sidebar a:hover, .sidebar a.active { background-color: rgba(255,255,255,0.1); border-left: 4px solid #fff; }
-        .sidebar a i { width: 25px; }
-        .main-content { flex: 1; padding: 30px; overflow-y: auto; }
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-        .header h1 { font-size: 24px; color: #2c3e50; }
-        .rating-box { background: linear-gradient(135deg, #10b981, #34d399); color: white; padding: 20px; border-radius: 10px; display: inline-flex; align-items: center; gap: 15px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .rating-box .value { font-size: 36px; font-weight: bold; }
-        .rating-box i { font-size: 30px; }
-        .review-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 15px; }
-        .review-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
-        .client-name { font-weight: bold; color: #2c3e50; }
-        .stars { color: #fbbf24; }
-        .comment { color: #555; font-size: 14px; line-height: 1.5; }
-    </style>
+    <link rel="stylesheet" href="../css/empresa.css">
 </head>
 <body>
     <div class="sidebar">
-        <h2>DuoDates<br><span style="font-size:14px; font-weight:normal;">Painel do Parceiro</span></h2>
+        <h2>DuoDates<span>Painel do Parceiro</span></h2>
         <a href="dashboard_empresa.php"><i class="fas fa-chart-line"></i> Visão Geral</a>
         <a href="meu_estabelecimento.php"><i class="fas fa-store"></i> Meu Estabelecimento</a>
         <a href="agendamentos.php"><i class="fas fa-calendar-check"></i> Agendamentos</a>
@@ -69,7 +50,7 @@ if ($res_user && $res_user->num_rows > 0) {
             </div>
         </div>
 
-        <h2 style="font-size: 18px; color: #555; margin-bottom: 15px;">Feedbacks Recentes</h2>
+        <h2 class="feedbacks-title">Feedbacks Recentes</h2>
 
         <div class="review-card">
             <div class="review-header">

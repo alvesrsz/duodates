@@ -58,7 +58,7 @@ try {
 <title>Todos os Locais - Duo Dates</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -80,7 +80,7 @@ html,body{height:100%;font-family:'Montserrat',sans-serif;font-weight:500;backgr
 /* TOPBAR */
 .topbar{background:var(--bg-white);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo-text{font-size:30px;font-weight:700;color:var(--wine);letter-spacing:-0.5px;}
+.logo-text{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--wine);}
 .tc{display:flex;gap:2px}
 .tbb{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text-mid);font-size:19px;cursor:pointer;transition:background .15s,color .15s}
 .tbb:hover{background:var(--wine-pale);color:var(--wine)}
@@ -144,13 +144,14 @@ html,body{height:100%;font-family:'Montserrat',sans-serif;font-weight:500;backgr
   <header class="topbar">
     <div class="logo">
       <a href="login-feito.php" class="logo" style="text-decoration:none;">
+        <img src="../images/logoduodates.png" alt="Duo Dates" style="height:28px;width:auto;">
         <span class="logo-text">Duo Dates</span>
       </a>
     </div>
     <div class="tc">
       <div class="tbb" title="Lugares" onclick="window.location.href='meuslugaresideais.php'"><i class="ti ti-map-pin"></i></div>
       <div class="tbb" title="Agenda" onclick="window.location.href='meu_calendario.php'"><i class="ti ti-calendar"></i></div>
-      <div class="tbb" title="Matches" onclick="window.location.href='perfil_em_comum.php'"><i class="ti ti-users"></i></div>
+      <div class="tbb" title="Matches" onclick="window.location.href='meus_dates.php'"><i class="ti ti-users"></i></div>
       <div class="tbb" title="Novo" onclick="window.location.href='criar_conexao.php'"><i class="ti ti-plus"></i></div>
     </div>
     <div class="tr">

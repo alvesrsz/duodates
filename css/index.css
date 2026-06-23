@@ -48,6 +48,10 @@ html, body {
   z-index: 100;
 }
 
+.new-header .logo-link {
+  text-decoration: none;
+}
+
 .new-header .logo {
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;

@@ -1,0 +1,218 @@
+/* shell.css — estrutura compartilhada, baseada no layout do login-feito.php */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  /* Variáveis do shell */
+  --bg:#770820;
+  --bg-card:#F7F0E8;
+  --bg-white:#F7F0E8;
+  --wine:#770820;
+  --wine-pale:#F5E6E8;
+  --wine-border:#770820;
+  --text-dark:#2A1A1E;
+  --text-mid:#5A3A40;
+  --text-light:#770820;
+  --border:#D0BAA8;
+
+  /* Aliases para arquivos CSS de página (meus_dates.css, editar_perfil.css etc.) */
+  --primary-color:#5C151B;
+  --secondary-color:#4A0E15;
+  --card-bg:#F7F0E8;
+  --page-background:#FAF5EF;
+  --border-color:#D0BAA8;
+  --font-color:#2A1A1E;
+  --accent-color:#C8A476;
+  --sidebar-bg:#F7F0E8;
+  --green:#28a745;
+  --red:#dc3545;
+}
+
+html,body{
+  height:100%;
+  font-family:'Montserrat',sans-serif;
+  font-weight:500;
+  background:var(--bg);
+  color:var(--text-dark);
+  overflow:hidden;
+}
+
+/* ── SHELL ─────────────────────────────────────────────────── */
+.shell{display:grid;grid-template-rows:58px 1fr;height:100vh}
+
+/* ── TOPBAR ─────────────────────────────────────────────────── */
+.topbar{
+  background:var(--bg-white);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 1.5rem;
+}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-text{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--wine)}
+.tc{display:flex;gap:2px}
+.tbb{
+  width:36px;height:36px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text-mid);font-size:19px;cursor:pointer;
+  transition:background .15s,color .15s;
+  text-decoration:none;
+}
+.tbb:hover{background:var(--wine-pale);color:var(--wine)}
+.tr{display:flex;gap:3px}
+.notif{position:relative}
+.notif::after{
+  content:'';position:absolute;top:6px;right:6px;
+  width:6px;height:6px;background:var(--wine);
+  border-radius:50%;border:1.5px solid var(--bg-white);
+}
+
+/* ── BODY GRID ──────────────────────────────────────────────── */
+.body{display:grid;grid-template-columns:215px 1fr 260px;overflow:hidden;height:100%}
+
+/* ── SIDENAV ────────────────────────────────────────────────── */
+.sidenav{
+  background:var(--bg-white);
+  border-right:1px solid var(--border);
+  padding:1.25rem 1rem;
+  display:flex;flex-direction:column;
+  overflow-y:auto;
+}
+.pblock{
+  text-align:center;
+  margin-bottom:1.25rem;
+  padding-bottom:1.125rem;
+  border-bottom:1px solid var(--border);
+}
+.av{
+  width:68px;height:68px;border-radius:50%;
+  background:var(--wine-pale);
+  border:2.5px solid var(--wine-border);
+  margin:0 auto 9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;color:var(--wine);font-weight:600;
+  overflow:hidden;position:relative;
+}
+.av img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.pname{font-size:14px;font-weight:700;color:var(--text-dark)}
+.pemail{font-size:10px;color:var(--text-light);margin-top:2px;font-weight:500}
+.nlabel{
+  font-size:9px;font-weight:700;color:var(--text-light);
+  letter-spacing:.09em;text-transform:uppercase;
+  padding:0 8px;margin:8px 0 3px;
+}
+.ni{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 9px;border-radius:8px;
+  font-size:13px;font-weight:600;
+  color:var(--text-mid);cursor:pointer;
+  transition:background .15s,color .15s;
+  margin-bottom:1px;
+  text-decoration:none;
+}
+.ni i{font-size:16px}
+.ni:hover,.ni.active{background:var(--wine-pale);color:var(--wine)}
+.ni.active{font-weight:700}
+.ndiv{height:1px;background:var(--border);margin:8px 0}
+
+/* ── MAIN CONTENT ───────────────────────────────────────────── */
+.main{
+  background:var(--bg);
+  padding:1.25rem;
+  display:flex;flex-direction:column;
+  gap:1.125rem;
+  overflow-y:auto;
+}
+.slabel{
+  font-size:9px;font-weight:700;color:var(--text-light);
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:.45rem;
+}
+.card{
+  background:var(--bg-white);
+  border-radius:13px;
+  border:1px solid var(--border);
+  padding:1.125rem;
+}
+.ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:.875rem}
+.ctitle{font-size:15px;font-weight:700;color:var(--text-dark)}
+.badge{
+  background:var(--wine-pale);color:var(--wine);
+  font-size:10px;padding:3px 9px;border-radius:20px;
+  font-weight:700;border:1px solid var(--wine-border);
+}
+
+/* ── RIGHT PANEL ────────────────────────────────────────────── */
+.rp{
+  background:var(--bg-white);
+  border-left:1px solid var(--border);
+  padding:1.125rem;
+  overflow-y:auto;
+}
+.rp-section{margin-bottom:1.5rem}
+.rp-title{
+  font-size:13px;font-weight:700;color:var(--wine);
+  letter-spacing:.06em;
+  display:flex;align-items:center;gap:7px;
+  margin-bottom:.8rem;padding-bottom:.5rem;
+  border-bottom:1px solid var(--border);
+}
+/* ── EVENTOS (right panel) ──────────────────────────────────── */
+.events-list{max-height:340px;overflow-y:auto;padding-right:4px}
+.events-list::-webkit-scrollbar{width:4px}
+.events-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.event-item{
+  display:flex;justify-content:space-between;align-items:center;
+  text-decoration:none;padding:11px 0;
+  border-bottom:1px solid #E5D5C5;
+  transition:opacity .2s;
+}
+.event-item:last-child{border-bottom:none}
+.event-item:hover{opacity:.7}
+.event-details{flex:1}
+.event-name{font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:3px;display:block}
+.event-info{font-size:11px;font-weight:500;color:#7A6A6E;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.event-link-icon{color:var(--text-mid);font-size:13px;margin-left:8px}
+/* ── AGENDA (right panel) ───────────────────────────────────── */
+.agenda-list{display:flex;flex-direction:column;gap:8px}
+.agenda-item{
+  display:flex;align-items:center;gap:10px;padding:8px;
+  background:var(--bg-white);border-radius:7px;
+  border:1px solid var(--border);
+}
+.agenda-date{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--wine);color:#fff;
+  padding:5px 7px;border-radius:5px;min-width:40px;text-align:center;flex-shrink:0;
+}
+.agenda-date .day{font-size:1rem;font-weight:700;line-height:1}
+.agenda-date .month{font-size:.58rem;text-transform:uppercase}
+.agenda-details{overflow:hidden}
+.agenda-details .title{font-size:.82rem;font-weight:600;color:var(--text-dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.agenda-details .location{font-size:.73rem;color:var(--text-mid)}
+.agenda-empty{text-align:center;padding:16px 0;color:var(--text-mid);font-size:.82rem}
+/* ── BOTÃO VER CALENDÁRIO ───────────────────────────────────── */
+.lbtn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  margin-top:1rem;font-size:13px;font-weight:700;color:var(--wine);
+  cursor:pointer;text-decoration:none;
+  padding:10px 15px;border-radius:8px;
+  background:var(--wine-pale);
+  transition:background .2s;width:100%;
+}
+.lbtn:hover{background:#e8d0d4}
+.lbtn i{font-size:15px}
+
+/* ── NOTIFICAÇÃO TOAST ──────────────────────────────────────── */
+.toast-notification{
+  position:fixed;bottom:-100px;left:50%;transform:translateX(-50%);
+  background:var(--wine);color:#fff;
+  padding:12px 20px;border-radius:10px;
+  display:flex;align-items:center;gap:10px;
+  font-size:.9rem;font-weight:600;
+  box-shadow:0 4px 15px rgba(0,0,0,.3);
+  transition:bottom .4s ease;z-index:9999;
+}
+.toast-notification.show{bottom:30px}
+.toast-close-btn{background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer;padding:0;line-height:1;margin-left:8px}

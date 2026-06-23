@@ -35,30 +35,11 @@ if ($resultado_user && $resultado_user->num_rows > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DuoDates - Meu Estabelecimento</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { display: flex; background-color: #F4F7F6; color: #333; min-height: 100vh; }
-        .sidebar { width: 250px; background-color: #8C1C30; color: white; display: flex; flex-direction: column; padding-top: 20px; }
-        .sidebar h2 { text-align: center; margin-bottom: 30px; font-weight: 800; font-size: 24px; }
-        .sidebar a { color: #f0f0f0; text-decoration: none; padding: 15px 20px; display: block; font-size: 15px; transition: 0.3s; }
-        .sidebar a:hover, .sidebar a.active { background-color: rgba(255,255,255,0.1); border-left: 4px solid #fff; }
-        .sidebar a i { width: 25px; }
-        .main-content { flex: 1; padding: 30px; overflow-y: auto; }
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-        .header h1 { font-size: 24px; color: #2c3e50; }
-        .panel { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); max-width: 700px; }
-        .panel h3 { font-size: 18px; color: #8C1C30; margin-bottom: 20px; border-bottom: 2px solid #f4f7f6; padding-bottom: 10px; }
-        .info-group { margin-bottom: 15px; }
-        .info-group label { font-size: 13px; color: #888; display: block; margin-bottom: 5px; font-weight: 600; }
-        .info-group p { font-size: 16px; color: #333; background: #F9FAFB; padding: 10px; border-radius: 6px; border: 1px solid #E5E7EB; }
-        .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; display: inline-block; }
-        .badge.aprovado { background: #d1fae5; color: #065f46; }
-        .badge.pendente { background: #fef3c7; color: #92400e; }
-    </style>
+    <link rel="stylesheet" href="../css/empresa.css">
 </head>
 <body>
     <div class="sidebar">
-        <h2>DuoDates<br><span style="font-size:14px; font-weight:normal;">Painel do Parceiro</span></h2>
+        <h2>DuoDates<span>Painel do Parceiro</span></h2>
         <a href="dashboard_empresa.php"><i class="fas fa-chart-line"></i> Visão Geral</a>
         <a href="meu_estabelecimento.php" class="active"><i class="fas fa-store"></i> Meu Estabelecimento</a>
         <a href="agendamentos.php"><i class="fas fa-calendar-check"></i> Agendamentos</a>

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 include '../conexao.php';
 
@@ -275,54 +275,222 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de <?php echo htmlspecialchars($user_data['nome']); ?> e <?php echo htmlspecialchars($partner_data['nome']); ?></title>
-    <link rel="stylesheet" href="../css/login-feito.css">
-    <link rel="stylesheet" href="../css/meus_dates.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/shell.css">
+    <link rel="stylesheet" href="../css/meus_dates.css">
+    <style>
+        /* ── AI HERO SECTION ── */
+        .ai-hero-section {
+            position: relative;
+            background: linear-gradient(135deg, #5d0819 0%, #8c0f2a 55%, #b52040 100%);
+            border-radius: 20px;
+            padding: 36px 32px 28px;
+            margin: 28px 0 36px;
+            overflow: hidden;
+            color: #fff;
+        }
+        .ai-orb {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            pointer-events: none;
+        }
+        .ai-orb-1 { width: 220px; height: 220px; top: -70px; right: -50px; }
+        .ai-orb-2 { width: 130px; height: 130px; bottom: -40px; left: 10px; }
+        .ai-orb-3 { width: 80px;  height: 80px;  top: 20px;  left: 38%; background: rgba(255,255,255,0.04); }
+
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .ai-hero-title {
+            font-size: 1.65rem;
+            font-weight: 800;
+            margin: 0 0 8px;
+            line-height: 1.2;
+        }
+        .ai-hero-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.82;
+            line-height: 1.65;
+            max-width: 560px;
+            margin: 0 0 26px;
+        }
+
+        /* ── BOTÃO ── */
+        .btn-ai-recomendar {
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            color: #8c0f2a;
+            border: none;
+            padding: 13px 30px;
+            border-radius: 50px;
+            font-size: 0.97rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+        }
+        .btn-ai-recomendar:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.35); }
+        .btn-ai-recomendar:disabled { opacity: 0.65; cursor: not-allowed; }
+        .btn-shimmer {
+            position: absolute;
+            top: 0; left: -100%;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+            animation: shimmer 2.8s infinite;
+        }
+        @keyframes shimmer { 0% { left: -100%; } 100% { left: 200%; } }
+
+        /* ── LOADING ── */
+        .ai-loading {
+            display: none;
+            align-items: center;
+            gap: 14px;
+            margin-top: 22px;
+            color: rgba(255,255,255,0.92);
+            font-weight: 600;
+            font-size: 0.93rem;
+        }
+        .ai-loading.visivel { display: flex; }
+        .ai-dots { display: flex; gap: 5px; }
+        .ai-dots span {
+            width: 9px; height: 9px;
+            background: #fff;
+            border-radius: 50%;
+            animation: bounce 1.1s infinite ease-in-out;
+        }
+        .ai-dots span:nth-child(2) { animation-delay: 0.18s; }
+        .ai-dots span:nth-child(3) { animation-delay: 0.36s; }
+        @keyframes bounce { 0%,60%,100% { transform: translateY(0); opacity: 0.6; } 30% { transform: translateY(-9px); opacity: 1; } }
+
+        /* ── ERRO ── */
+        .ai-erro {
+            display: none;
+            background: rgba(255,255,255,0.13);
+            border-left: 4px solid rgba(255,200,200,0.8);
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: #ffe0e0;
+            font-size: 0.88rem;
+            margin-top: 16px;
+        }
+        .ai-erro.visivel { display: block; }
+
+        /* ── CARDS ── */
+        .ai-cards-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 14px;
+            margin-top: 26px;
+        }
+        .ai-card {
+            background: rgba(255,255,255,0.11);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 22px 20px;
+            color: #fff;
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.5s ease, transform 0.5s ease, background 0.2s, box-shadow 0.2s;
+        }
+        .ai-card.visivel { opacity: 1; transform: translateY(0); }
+        .ai-card:hover { background: rgba(255,255,255,0.18); box-shadow: 0 10px 36px rgba(0,0,0,0.25); transform: translateY(-5px); }
+        .ai-card:nth-child(1) { transition-delay: 0s; }
+        .ai-card:nth-child(2) { transition-delay: 0.15s; }
+        .ai-card:nth-child(3) { transition-delay: 0.3s; }
+
+        .ai-card-accent {
+            height: 3px;
+            border-radius: 3px;
+            margin-bottom: 16px;
+        }
+        #card-analise  .ai-card-accent { background: #fbbf24; }
+        #card-sugestao .ai-card-accent { background: #34d399; }
+        #card-evento   .ai-card-accent { background: #60a5fa; }
+
+        .ai-card-icon-wrap {
+            width: 44px; height: 44px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.15);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+        .ai-card-titulo {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+            opacity: 0.65;
+            margin-bottom: 8px;
+        }
+        .ai-card-texto {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+    </style>
 </head>
 <body>
+<div class="shell">
 
-    <header class="main-header">
-        <div class="header-left">
-          <a href="../index.php" class="logo-link">
-            <span class="logo">Duo Dates</span>
-            <img src="../images/logoduodates.png" alt="Coração" class="logo-image">
-          </a>
-        </div>
-        <div class="header-pages">
-            <a href="../php/meuslugaresideais.php" title="Meus Lugares Ideais"><i class="fas fa-map-marker-alt"></i></a>
-            <a href="../php/meu_calendario.php" title="Meu Calendário"><i class="far fa-calendar-alt"></i></a>
-            <a href="../php/meus_dates.php" title="Meus Dates"><i class="fas fa-user-friends"></i></a>
-            <a href="../php/adicionar_local.php" title="Adicionar Local"><i class="fas fa-plus"></i></a>
-        </div>
-        <div class="header-icons">
-             <a href="../php/favoritos.php"><i class="far fa-heart"></i></a>
-            <div class="notification-icon-container">
-                 <i class="far fa-bell" id="notification-bell-icon"></i>
-            </div>
-        </div>
-    </header>
+  <header class="topbar">
+    <a href="../index.php" class="logo">
+      <img src="../images/logoduodates.png" alt="Duo Dates" style="height:28px;width:auto;">
+      <span class="logo-text">Duo Dates</span>
+    </a>
+    <div class="tc">
+      <div class="tbb" title="Lugares" onclick="window.location.href='meuslugaresideais.php'"><i class="ti ti-map-pin"></i></div>
+      <div class="tbb" title="Agenda" onclick="window.location.href='meu_calendario.php'"><i class="ti ti-calendar"></i></div>
+      <div class="tbb" title="Meus Dates" onclick="window.location.href='meus_dates.php'"><i class="ti ti-users"></i></div>
+      <div class="tbb" title="Adicionar Local" onclick="window.location.href='adicionar-lugar.php'"><i class="ti ti-plus"></i></div>
+    </div>
+    <div class="tr">
+      <div class="tbb" title="Favoritos" onclick="window.location.href='favoritos.php'"><i class="ti ti-heart"></i></div>
+      <div class="tbb" title="Notificações"><i class="ti ti-bell"></i></div>
+    </div>
+  </header>
 
-    <div class="profile-dashboard" style="grid-template-columns: 280px 1fr;">
-        
-        <aside class="profile-sidebar">
-            <div class="user-info">
-                <img src="<?php echo $userPhotoUrl; ?>" alt="Foto de Perfil" class="profile-photo" onerror="this.onerror=null; this.src='../images/perfil.png';">
-                <h3><?php echo htmlspecialchars($user_data['nome']); ?></h3>
-                <p><?php echo htmlspecialchars($user_data['email']); ?></p>
-            </div>
-            <nav class="sidebar-nav">
-                 <ul>
-                    <li class="nav-item"><a href="../php/login-feito.php"><i class="fas fa-home"></i> <span>Meu Perfil</span></a></li>
-                    <li class="nav-item"><a href="../php/mudar_essencia.php"> <i class="fas fa-clipboard-list"></i><span> Minha Essência</span></a></li>
-                    <li class="nav-item active"><a href="../php/meus_dates.php"><i class="fas fa-user-friends"></i> <span>Meus Dates</span></a></li>
-                    <li class="nav-item"><a href="../php/editar_perfil.php"><i class="fas fa-user-edit"></i> <span>Editar Perfil</span></a></li>
-                    <li class="nav-item"><a href="../php/logout.php"><i class="fas fa-sign-out-alt"></i> <span>Sair</span></a></li>
-                </ul>
-            </nav>
-        </aside>
+  <div class="body">
 
-        <main class="main-content">
-            <section class="section-container">
+    <nav class="sidenav">
+      <div class="pblock">
+        <div class="av">
+          <img src="<?php echo $userPhotoUrl; ?>" alt="Foto" onerror="this.onerror=null;this.src='../images/iconeperfil.png';">
+        </div>
+        <div class="pname"><?php echo htmlspecialchars($user_data['nome']); ?></div>
+        <div class="pemail"><?php echo htmlspecialchars($user_data['email']); ?></div>
+      </div>
+      <div class="nlabel">Menu</div>
+      <div class="ni" onclick="window.location.href='login-feito.php'"><i class="ti ti-layout-dashboard"></i> Meu perfil</div>
+      <div class="ni" onclick="window.location.href='mudar_essencia.php'"><i class="ti ti-sparkles"></i> Minha essência</div>
+      <div class="ni active" onclick="window.location.href='meus_dates.php'"><i class="ti ti-heart-handshake"></i> Meus dates</div>
+      <div class="ni" onclick="window.location.href='todoslocais.php'"><i class="ti ti-map"></i> Locais</div>
+      <div class="ni" onclick="window.location.href='editar_perfil_login_feito.php'"><i class="ti ti-user-edit"></i> Editar perfil</div>
+      <div class="ndiv"></div>
+      <div class="ni" onclick="window.location.href='logout.php'"><i class="ti ti-logout"></i> Sair</div>
+    </nav>
+
+    <main class="main">
+      <div class="card">
                 
                 <div class="profile-header-common">
                     <div class="user-display">
@@ -349,6 +517,52 @@ $conn->close();
                         <span><?php echo htmlspecialchars($partner_data['nome']); ?></span>
                     </div>
                 </div>
+
+                <!-- === SEÇÃO DE RECOMENDAÇÃO POR IA === -->
+                <div class="ai-hero-section">
+                    <div class="ai-orb ai-orb-1"></div>
+                    <div class="ai-orb ai-orb-2"></div>
+                    <div class="ai-orb ai-orb-3"></div>
+
+                    <div class="ai-badge"><i class="fas fa-robot"></i> Inteligência Artificial</div>
+                    <h2 class="ai-hero-title">Recomendação Personalizada para vocês</h2>
+                    <p class="ai-hero-subtitle">Nossa IA analisa os perfis de vocês dois, os interesses em comum e eventos disponíveis em Brasília para criar a sugestão perfeita de date.</p>
+
+                    <button class="btn-ai-recomendar" id="btn-recomendar">
+                        <span class="btn-shimmer"></span>
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                        <span>Gerar Recomendação com IA</span>
+                    </button>
+
+                    <div class="ai-loading" id="ai-loading">
+                        <div class="ai-dots"><span></span><span></span><span></span></div>
+                        Analisando perfis e buscando eventos...
+                    </div>
+
+                    <div class="ai-erro" id="ai-erro"></div>
+
+                    <div class="ai-cards-wrapper">
+                        <div class="ai-card" id="card-analise">
+                            <div class="ai-card-accent"></div>
+                            <div class="ai-card-icon-wrap">💞</div>
+                            <div class="ai-card-titulo">Análise do Casal</div>
+                            <div class="ai-card-texto" id="texto-analise"></div>
+                        </div>
+                        <div class="ai-card" id="card-sugestao">
+                            <div class="ai-card-accent"></div>
+                            <div class="ai-card-icon-wrap">🗓️</div>
+                            <div class="ai-card-titulo">Sugestão de Date</div>
+                            <div class="ai-card-texto" id="texto-sugestao"></div>
+                        </div>
+                        <div class="ai-card" id="card-evento">
+                            <div class="ai-card-accent"></div>
+                            <div class="ai-card-icon-wrap">🎟️</div>
+                            <div class="ai-card-titulo">Evento em Destaque</div>
+                            <div class="ai-card-texto" id="texto-evento"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- === FIM SEÇÃO IA === -->
 
                 <div class="shared-interests-container">
                     <h3 class="common-subtitle">O que vocês têm em comum na essência</h3>
@@ -430,16 +644,86 @@ $conn->close();
                     <?php endif; ?>
                 </div>
 
-            </section>
-        </main>
-    </div>
-    
+      </div><!-- .card -->
+    </main>
+
+    <aside class="rp">
+      <div class="rp-section">
+        <div class="rp-title"><i class="fas fa-ticket-alt"></i> Próximos Eventos</div>
+        <?php @include '../php/buscar_ticketmaster.php'; ?>
+        <div class="events-list">
+          <?php if (!empty($eventosFormatados) && !isset($eventosFormatados['error']) && !isset($eventosFormatados['info'])): ?>
+            <?php foreach ($eventosFormatados as $evt): ?>
+              <a href="<?php echo htmlspecialchars($evt['url']); ?>" target="_blank" class="event-item">
+                <div class="event-details">
+                  <span class="event-name"><?php echo htmlspecialchars($evt['nome']); ?></span>
+                  <span class="event-info"><i class="far fa-calendar-alt"></i> <?php echo htmlspecialchars($evt['dataHora']); ?></span>
+                </div>
+                <div class="event-link-icon"><i class="fas fa-external-link-alt"></i></div>
+              </a>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <div class="event-item" style="color:var(--text-mid);font-size:.82rem">Não foi possível carregar os eventos.</div>
+          <?php endif; ?>
+        </div>
+      </div>
+      <a href="../php/meu_calendario.php" class="lbtn"><i class="ti ti-calendar"></i> Ver calendário completo</a>
+    </aside>
+
+  </div>
+</div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const bellIconContainer = document.querySelector('.notification-icon-container');
-            if (bellIconContainer) {
-                // Lógica de notificação (opcional se não tiver o painel, mas mantém sem erro)
-            }
+            const btn = document.getElementById('btn-recomendar');
+            const loading = document.getElementById('ai-loading');
+            const erroDiv = document.getElementById('ai-erro');
+            const cards = document.querySelectorAll('.ai-card');
+
+            btn.addEventListener('click', function () {
+                btn.disabled = true;
+                loading.classList.add('visivel');
+                erroDiv.classList.remove('visivel');
+                cards.forEach(c => c.classList.remove('visivel'));
+
+                const formData = new FormData();
+                formData.append('partner_id', '<?php echo $partner_id; ?>');
+                formData.append('id_conexao', '<?php echo $id_conexao; ?>');
+
+                fetch('../php/recomendar_dates.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    loading.classList.remove('visivel');
+
+                    if (data.erro) {
+                        erroDiv.textContent = '⚠️ ' + data.erro;
+                        erroDiv.classList.add('visivel');
+                        btn.disabled = false;
+                        return;
+                    }
+
+                    document.getElementById('texto-analise').textContent = data.analise;
+                    document.getElementById('texto-sugestao').textContent = data.sugestao;
+                    document.getElementById('texto-evento').textContent = data.evento;
+
+                    document.getElementById('card-analise').classList.add('visivel');
+                    document.getElementById('card-sugestao').classList.add('visivel');
+                    document.getElementById('card-evento').classList.add('visivel');
+
+                    const label = btn.querySelector('span:last-child');
+                    if (label) label.textContent = 'Gerar Nova Recomendação';
+                    btn.disabled = false;
+                })
+                .catch(() => {
+                    loading.classList.remove('visivel');
+                    erroDiv.textContent = '⚠️ Erro de conexão. Verifique a internet e tente novamente.';
+                    erroDiv.classList.add('visivel');
+                    btn.disabled = false;
+                });
+            });
         });
     </script>
 </body>

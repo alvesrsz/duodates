@@ -14,13 +14,13 @@
 
 /* 2. Container do Calendário */
 #calendar-container {
-    background-color: #fff;
+    background-color: var(--card-bg, #F7F0E8);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    margin-bottom: 30px;
-    /* Limita largura em telas muito grandes para não esticar demais */
-    max-width: 900px; 
+    border: 1px solid var(--border-color, #D0BAA8);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    margin-bottom: 20px;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -53,8 +53,8 @@
 
 .agendamento-item {
     display: flex; align-items: center; gap: 20px; padding: 15px;
-    background-color: #fff; border: 1px solid var(--border-color);
-    border-radius: 8px; margin-bottom: 15px; transition: box-shadow 0.3s;
+    background-color: var(--card-bg, #F7F0E8); border: 1px solid var(--border-color);
+    border-radius: 8px; margin-bottom: 12px; transition: box-shadow 0.3s;
 }
 .agendamento-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
 
@@ -90,8 +90,8 @@
 }
 .fc .fc-daygrid-day.fc-day-today { background-color: #fcf8e3 !important; }
 .fc .fc-event {
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
     color: white; font-weight: 500; cursor: pointer;
 }
 .fc .fc-toolbar-title { color: var(--primary-color); font-size: 1.5rem; }
@@ -266,7 +266,7 @@
 
 /* BOTÃO SALVAR */
 .btn-confirm {
-    background: linear-gradient(135deg, #ff4d6d, #ff758f);
+    background: linear-gradient(135deg, #5C151B, #770820);
     color: #fff;
     margin-right: 8px;
 }

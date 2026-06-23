@@ -256,6 +256,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <strong>É obrigatório selecionar pelo menos uma tag de cada grupo.</strong>
                 </p>
 
+                <div class="ia-banner">
+                    <div class="ia-banner-header">
+                        <p><strong>✨ Preencher formulário com IA</strong>
+                        Digite o nome do lugar e a IA pesquisa e preenche todos os campos automaticamente.</p>
+                    </div>
+                    <div class="ia-search-row">
+                        <input type="text" id="nome-lugar-ia" placeholder="Ex: Outback, Jardim Botânico, Casa de Shows...">
+                        <button type="button" id="btn-pesquisar-ia">🔍 Preencher com IA</button>
+                    </div>
+                    <div class="ia-separator"><span>ou, se já preencheu o título e a descrição</span></div>
+                    <div class="ia-tags-row">
+                        <button type="button" id="btn-sugerir-ia">✨ Sugerir apenas as Tags</button>
+                        <span id="ia-status" style="display:none;"></span>
+                    </div>
+                </div>
+
                 <div class="tags-container">
                 
                     <?php if (empty($tags_agrupadas)): ?>
@@ -318,6 +334,148 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <script>
+        // ── Geolocalização silenciosa (fallback: Brasília, DF) ───────────
+        let _userLat = null, _userLon = null;
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                pos => { _userLat = pos.coords.latitude; _userLon = pos.coords.longitude; },
+                () => {}
+            );
+        }
+
+        // ── IA: Preencher formulário completo a partir do nome do lugar ───
+        function marcarTags(ids) {
+            document.querySelectorAll('input[name="tags[]"]').forEach(cb => cb.checked = false);
+            let marcadas = 0;
+            ids.forEach(id => {
+                const cb = document.getElementById('tag_' + id);
+                if (cb) { cb.checked = true; marcadas++; }
+            });
+            document.querySelectorAll('.tag-category-group').forEach(g => g.open = true);
+            return marcadas;
+        }
+
+        document.getElementById('btn-pesquisar-ia').addEventListener('click', function () {
+            const nomeLugar = document.getElementById('nome-lugar-ia').value.trim();
+            const status    = document.getElementById('ia-status');
+            const btn       = this;
+
+            if (!nomeLugar) {
+                document.getElementById('nome-lugar-ia').focus();
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = '⏳ Pesquisando...';
+            status.style.display = 'inline';
+            status.style.color   = '#5D0819';
+            status.textContent   = 'A IA está pesquisando o lugar...';
+
+            const formData = new FormData();
+            formData.append('nome_lugar', nomeLugar);
+            if (_userLat !== null) {
+                formData.append('lat', _userLat);
+                formData.append('lon', _userLon);
+            }
+
+            fetch('../php/pesquisar_lugar.php', { method: 'POST', body: formData })
+                .then(r => r.json())
+                .then(data => {
+                    btn.disabled = false;
+                    btn.textContent = '🔍 Preencher com IA';
+
+                    if (data.erro) {
+                        status.style.color = '#dc3545';
+                        status.textContent = '⚠️ ' + data.erro;
+                        return;
+                    }
+
+                    // Preenche os campos de texto
+                    if (data.titulo)      document.getElementById('titulo').value      = data.titulo;
+                    if (data.descricao)   document.getElementById('descricao').value   = data.descricao;
+                    if (data.local_info)  document.getElementById('local_info').value  = data.local_info;
+                    if (data.horario_info) document.getElementById('horario_info').value = data.horario_info;
+                    if (data.link_botao)  document.getElementById('link_botao').value  = data.link_botao;
+                    if (data.texto_botao) document.getElementById('texto_botao').value = data.texto_botao;
+
+                    // Seleciona a categoria
+                    if (data.id_categoria) {
+                        document.getElementById('id_categoria').value = data.id_categoria;
+                    }
+
+                    // Marca as tags
+                    let marcadas = 0;
+                    if (data.tag_ids && Array.isArray(data.tag_ids)) {
+                        marcadas = marcarTags(data.tag_ids);
+                    }
+
+                    status.style.color = '#28a745';
+                    status.textContent = `✅ Formulário preenchido! ${marcadas} tag(s) sugerida(s). Revise antes de enviar.`;
+                })
+                .catch(() => {
+                    btn.disabled = false;
+                    btn.textContent = '🔍 Preencher com IA';
+                    status.style.color = '#dc3545';
+                    status.textContent = '⚠️ Erro de conexão. Verifique sua internet.';
+                });
+        });
+
+        // Dispara ao pressionar Enter no campo de pesquisa
+        document.getElementById('nome-lugar-ia').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                document.getElementById('btn-pesquisar-ia').click();
+            }
+        });
+
+        // ── IA: Sugerir apenas as Tags (com base em título e descrição) ──
+        document.getElementById('btn-sugerir-ia').addEventListener('click', function () {
+            const titulo    = document.getElementById('titulo').value.trim();
+            const descricao = document.getElementById('descricao').value.trim();
+            const status    = document.getElementById('ia-status');
+            const btn       = this;
+
+            if (!titulo && !descricao) {
+                alert('Preencha o Título e/ou a Descrição do lugar antes de usar a sugestão de tags.');
+                document.getElementById('titulo').focus();
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = '⏳ Analisando...';
+            status.style.display = 'inline';
+            status.style.color   = '#5D0819';
+            status.textContent   = 'A IA está analisando as tags...';
+
+            const formData = new FormData();
+            formData.append('titulo',    titulo);
+            formData.append('descricao', descricao);
+
+            fetch('../php/sugerir_tags.php', { method: 'POST', body: formData })
+                .then(r => r.json())
+                .then(data => {
+                    btn.disabled = false;
+                    btn.textContent = '✨ Sugerir apenas as Tags';
+
+                    if (data.erro) {
+                        status.style.color = '#dc3545';
+                        status.textContent = '⚠️ ' + data.erro;
+                        return;
+                    }
+
+                    const marcadas = marcarTags(data.ids || []);
+                    status.style.color = '#28a745';
+                    status.textContent = `✅ ${marcadas} tag(s) sugerida(s)! Revise e ajuste se necessário.`;
+                })
+                .catch(() => {
+                    btn.disabled = false;
+                    btn.textContent = '✨ Sugerir apenas as Tags';
+                    status.style.color = '#dc3545';
+                    status.textContent = '⚠️ Erro de conexão. Verifique sua internet.';
+                });
+        });
+        // ─────────────────────────────────────────────────────────────────
+
         function validarFormulario() {
             const gruposDeTags = document.querySelectorAll('.tag-category-group');
             let categoriasFaltando = [];
@@ -325,7 +483,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             for (const grupo of gruposDeTags) {
                 const nomeCategoria = grupo.querySelector('.tag-category-title').innerText;
                 const checkboxesMarcados = grupo.querySelectorAll('input[type="checkbox"]:checked');
-                
+
                 if (checkboxesMarcados.length === 0) {
                     categoriasFaltando.push(nomeCategoria);
                 }
@@ -333,10 +491,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (categoriasFaltando.length > 0) {
                 alert('Erro: Você deve selecionar pelo menos uma tag de cada grupo.\n\nGrupos faltando:\n- ' + categoriasFaltando.join('\n- '));
-                return false; 
+                return false;
             }
 
-            return true; 
+            return true;
         }
     </script>
 </body>

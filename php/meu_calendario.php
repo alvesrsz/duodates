@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 include '../conexao.php';
 
@@ -83,7 +83,7 @@ $conn->close();
             <a href="../php/meuslugaresideais.php" title="Meus Lugares"><i class="fas fa-map-marker-alt"></i></a>
             <a href="../php/meu_calendario.php" title="Calendário"><i class="far fa-calendar-alt"></i></a>
             <a href="../php/meus_dates.php" title="Meus Dates"><i class="fas fa-user-friends"></i></a>
-            <a href="../php/adicionar_local.php" title="Adicionar Local"><i class="fas fa-plus"></i></a>
+            <a href="../php/adicionar-lugar.php" title="Adicionar Local"><i class="fas fa-plus"></i></a>
          </div>
         <div class="header-icons">
             <a href="../php/favoritos.php"><i class="far fa-heart"></i></a>
@@ -155,7 +155,8 @@ $conn->close();
                             <div class="agendamento-item">
                                 <div class="agendamento-date">
                                     <span class="day"><?php echo date('d', strtotime($ag['data_agendada'])); ?></span>
-                                    <span class="month"><?php echo strftime('%b', strtotime($ag['data_agendada'])); ?></span>
+                                    <?php $meses_abrev = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']; ?>
+                                    <span class="month"><?php echo $meses_abrev[(int)date('n', strtotime($ag['data_agendada'])) - 1]; ?></span>
                                     <span class="time"><?php echo date('H:i', strtotime($ag['data_agendada'])); ?></span>
                                 </div>
                                 <div class="agendamento-details">

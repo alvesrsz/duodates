@@ -3,10 +3,10 @@
 // OBJETIVO: Conexão segura com o Banco de Dados do Infinity Free
 // DADOS PREENCHIDOS AUTOMATICAMENTE COM BASE NA SUA IMAGEM
 
-$servername = "sql200.infinityfree.com";  // MySQL Hostname (da imagem)
-$username = "if0_38704863";               // MySQL Username (da imagem)
-$password = "duodates2025";               // Senha informada
-$dbname = "if0_38704863_db_duodate";      // Nome do Banco (da imagem)
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "db_duodate";
 
 // Cria a conexão
 $conn = new mysqli($servername, $username, $password, $dbname);

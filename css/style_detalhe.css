@@ -1,41 +1,23 @@
-/* style_detalhe.css */
+/* style_detalhe.css — estilos da página de detalhe do local */
 :root {
-    --cor-vinho: #702632; /* Cor principal (vinho) */
-    --cor-bege: #F5F0E8;  /* Cor de fundo da página */
-    --cor-texto: #4B3F3A; /* Cor de texto principal (marrom escuro) */
-    --cor-cinza-claro: #D1CBC6; /* Cinza para bordas/fundos suaves */
-    --cor-texto-secundario: #666; /* Cinza para textos menores */
-    --cor-branco: #ffffff; /* Branco */
-    --cor-vinho-hover: #501a23; /* Tom mais escuro de vinho para hover */
+    --cor-vinho:      #5C151B;
+    --cor-bege:       #F7F0E8;
+    --cor-texto:      #3D3D3D;
+    --cor-cinza-claro: #D0BAA8;
+    --cor-texto-secundario: #5A3A40;
+    --cor-branco:     #ffffff;
+    --cor-vinho-hover: #4A0E15;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: var(--cor-bege);
     color: var(--cor-texto);
-    margin: 0;
-    padding: 0; /* Remove padding padrão */
-    padding-top: 80px; /* Adiciona espaço para o header fixo, ajuste se necessário */
+    margin: 0; padding: 0;
     box-sizing: border-box;
 }
 
-/* --- CABEÇALHO (Estilos básicos se precisar incluir header.php) --- */
-/* (Adapte estes estilos ou copie do seu CSS principal) */
-.main-header {
-   position: fixed; /* Header fixo no topo */
-   top: 0;
-   left: 0;
-   width: 100%;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 10px 30px; /* Ajuste o padding */
-   background-color: var(--cor-bege);
-   z-index: 1000;
-   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-   border-bottom: 2px solid var(--cor-vinho);
-   box-sizing: border-box;
-}
+/* Header controlado por login-feito.css — apenas ajustes específicos */
 .header-left { display: flex; align-items: center; }
 .logo-link {
     display: flex;

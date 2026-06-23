@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&family=Oswald:wght@500;600&display=swap');
 
 :root {
-    --sidebar-bg: #2c3e50;
-    --main-bg: #ecf0f1;
+    --sidebar-bg: #770820;
+    --main-bg: #FAF5EF;
     --text-light: #ffffff;
-    --text-dark: #34495e;
-    --primary-color: #E94D73;
-    --card-bg: #ffffff;
-    --border-color: #bdc3c7;
+    --text-dark: #3D3D3D;
+    --primary-color: #5C151B;
+    --primary-hover: #4A0E15;
+    --card-bg: #F7F0E8;
+    --border-color: #D0BAA8;
 }
 
 * {
@@ -17,7 +18,7 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: var(--main-bg);
     color: var(--text-dark);
 }
@@ -46,7 +47,8 @@ body {
 }
 
 .sidebar-header h3 {
-    font-weight: 600;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
 }
 
 .sidebar-nav {
@@ -116,7 +118,11 @@ body {
 .main-header h1 {
     font-size: 1.8rem;
     margin-bottom: 30px;
-    color: var(--sidebar-bg);
+    color: var(--primary-color);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
 }
 
 .cards-container {

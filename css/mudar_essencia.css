@@ -1,9 +1,10 @@
 :root {
-  --cor-vinho: #8c0f2a;
-  --cor-bege: #faf5ef;
-  --cor-texto-vinho: #791021;
-  --cor-botao-vinho: #3f020d;
-  --cor-botao-texto: #faf5ef;
+  --cor-vinho: #5C151B;
+  --cor-vinho-hover: #4A0E15;
+  --cor-bege: #FAF5EF;
+  --cor-texto-vinho: #5C151B;
+  --cor-botao-vinho: #4A0E15;
+  --cor-botao-texto: #FAF5EF;
 }
 
 /* ===== RESET ===== */
@@ -41,7 +42,7 @@ body {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
   font-weight: 700;
-  color: #8c0f2a;              /* vinho */
+  color: #5C151B;              /* vinho */
   text-decoration: none;
 }
 
@@ -54,7 +55,7 @@ body {
     font-family: 'Playfair Display', serif; 
     font-size: 2.2rem; 
     align-items: center; 
-    color: #8c0f2a; }
+    color: #5C151B; }
 
 .header-bar {
   height: 5px;

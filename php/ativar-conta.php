@@ -16,10 +16,10 @@ error_reporting(E_ALL); // Mude para 0 em produção
 include('../conexao.php'); // <-- Use include('conexao.php') SE você já tem um arquivo centralizado
 /*
 // Se não usar include('conexao.php'), descomente e preencha abaixo:
-$db_host = "sql200.infinityfree.com";
-$db_user = "if0_38704863";
-$db_pass = "duodates2025";
-$db_name = "if0_38704863_db_duodate";
+$db_host = "localhost";
+$db_user = "root";
+$db_pass = "";
+$db_name = "db_duodate";
 $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 
 if (!$conn) {

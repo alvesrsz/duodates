@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 // Defina UM placeholder padrão.
 $defaultPlaceholderUrl = "../images/perfil.png"; 
@@ -132,7 +132,11 @@ while ($row = $res_notif->fetch_assoc()) {
 $stmt_notif->close();
 $total_notificacoes = count($notificacoes);
 
-function formatarDataEmPortugues() { setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'portuguese'); return strtoupper(strftime('%B %Y')); }
+function formatarDataEmPortugues() {
+    $meses = ['JANEIRO','FEVEREIRO','MARÇO','ABRIL','MAIO','JUNHO',
+              'JULHO','AGOSTO','SETEMBRO','OUTUBRO','NOVEMBRO','DEZEMBRO'];
+    return $meses[(int)date('n') - 1] . ' ' . date('Y');
+}
 $currentMonthYear = formatarDataEmPortugues();
 
 // Mockup para "O que combina comigo"
@@ -190,7 +194,7 @@ $conn->close();
             <a href="../php/meuslugaresideais.php" title="Meus Lugares Ideais"><i class="fas fa-map-marker-alt"></i></a>
             <a href="../php/meu_calendario.php" title="Meu Calendário"><i class="far fa-calendar-alt"></i></a>
             <a href="../php/meus_dates.php" title="Meus Dates"><i class="fas fa-user-friends"></i></a>
-            <a href="../php/adicionar_local.php" title="Adicionar Local"><i class="fas fa-plus"></i></a> 
+            <a href="../php/adicionar-lugar.php" title="Adicionar Local"><i class="fas fa-plus"></i></a> 
         </div>
         <div class="header-icons">
             <a href="../php/favoritos.php" title="Favoritos"><i class="far fa-heart"></i></a>
@@ -337,7 +341,8 @@ $conn->close();
                                 <div class="agenda-item">
                                     <div class="agenda-date">
                                         <span class="day"><?php echo date('d', strtotime($evt['data_agendada'])); ?></span>
-                                        <span class="month"><?php echo strftime('%b', strtotime($evt['data_agendada'])); ?></span>
+                                        <?php $meses_abrev = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']; ?>
+                                        <span class="month"><?php echo $meses_abrev[(int)date('n', strtotime($evt['data_agendada'])) - 1]; ?></span>
                                     </div>
                                     <div class="agenda-details">
                                         <span class="title"><?php echo htmlspecialchars($evt['titulo_evento']); ?></span>
